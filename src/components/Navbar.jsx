@@ -1,8 +1,12 @@
-//import React from 'react';
+import { useState } from 'react'; // Added useState for menu toggle
 import '../App.css';
+import Logo from '../assets/logo.jpg';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react'; // Standard icons for hamburger
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const fadeVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
@@ -20,20 +24,32 @@ const Header = () => {
         variants={fadeVariants}
       >
         <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-7xl mx-auto">
-          {/* Logo Section */}
-          <motion.div 
-            className="flex items-center gap-3"
-            variants={fadeVariants}
-          >
-            <span className="material-symbols-outlined text-blue-900 text-3xl">
-              church
-            </span>
-            <span className="text-2xl font-bold text-blue-900 font-['Noto_Serif']">
-              SMMM
-            </span>
-          </motion.div>
+          
+          {/* Left Section: Hamburger + Logo */}
+          <div className="flex items-center gap-4">
+            {/* Hamburger Button (Hidden on desktop) */}
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 text-blue-900 hover:bg-slate-100 rounded-md transition-colors"
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
 
-          {/* Navigation */}
+            {/* Logo Section */}
+            <motion.div 
+              className="flex items-center gap-3"
+              variants={fadeVariants}
+            >
+              <img 
+                src={Logo}
+                alt="SMMM Logo"
+                className="h-12 w-24 object-contain"
+              />
+            </motion.div>
+          </div>
+
+          {/* Navigation (Desktop) */}
           <nav className="hidden md:flex items-center gap-8">
             <motion.a 
               variants={fadeVariants}
@@ -73,6 +89,20 @@ const Header = () => {
             Donate
           </motion.button>
         </div>
+
+        {/* Mobile Menu Dropdown (Optional logic) */}
+        {isOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            className="md:hidden bg-white border-t border-slate-100 px-6 py-4 flex flex-col gap-4"
+          >
+            <a href="#" className="text-blue-900 font-semibold">Home</a>
+            <a href="#" className="text-slate-600">About Us</a>
+            <a href="#" className="text-slate-600">Mission</a>
+            <a href="#" className="text-slate-600">Superiors</a>
+          </motion.div>
+        )}
       </motion.header>
     </AnimatePresence>
   );
