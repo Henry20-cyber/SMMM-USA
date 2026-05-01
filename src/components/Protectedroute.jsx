@@ -1,15 +1,32 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "../supabase/supabaseClient";
 
 const ProtectedRoute = ({ children }) => {
-  // Logic: Check if the admin is logged in (e.g., a token in localStorage)
-  const isAuthenticated = localStorage.getItem('token'); 
+  const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // If not authenticated, redirect to the login page
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data } = await supabase.auth.getUser();
 
-  // If authenticated, render the Admin components
+      if (data?.user) {
+        const role = data.user.user_metadata?.role;
+        if (role === "admin") {
+          setIsAdmin(true);
+        }
+      }
+
+      setLoading(false);
+    };
+
+    checkUser();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+
+  if (!isAdmin) return <Navigate to="/" />;
+
   return children;
 };
 
