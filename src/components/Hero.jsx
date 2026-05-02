@@ -29,7 +29,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Content Container */}
-      <div className="relative z-10 text-center md:p-8 max-w-5xl">
+      <div className="relative z-10 text-center md:px-8 max-w-5xl">
         <motion.h1 
           className="font-display-lg md:text-8xl text-5xl text-bold font-bebas text-display-lg text-white mb-6"
           variants={fadeIn}
@@ -58,7 +58,7 @@ const Hero = () => {
 
         {/* Decorative Bar */}
         <motion.div 
-          className="mt-12 w-24 h-1 bg-secondary mx-auto"
+          className="mt-12 w-24 h-1 bg-blue-500 mx-auto"
           variants={fadeIn}
         ></motion.div>
       </div>

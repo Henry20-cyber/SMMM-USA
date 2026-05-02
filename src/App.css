@@ -73,5 +73,14 @@
   /* Fonts */
   --font-headline-md: "Noto Serif", serif;
   --font-body-md: "Manrope", sans-serif;
-  --font-bebas: "Bebas Neue", sans-serif; 
+  --font-bebas: "Bebas Neue", sans-serif;
+   
+}
+
+
+.eb-garamond {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 400-800;
+  font-style: normal;
 }

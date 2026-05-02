@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import  { Link }  from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../App.css';
 import Logo from '../assets/logo2.png';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react'; 
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,17 +11,31 @@ const Header = () => {
 
   const menuItems = [
     {
-      title: 'Services',
-      options: [{ name: 'Web Development', href: "#" }, { name: 'UI/UX Design', href: "#" }, { name: 'Cloud Solutions', href: "#" }]
+      title: 'Home',
+      options: [
+        { name: 'News Post', path: "#" },
+        { name: 'UI/UX Design', path: "#" },
+        { name: 'Cloud Solutions', path: "#" }
+      ]
     },
     {
-      title: 'Company',
-      options: [{ name: 'About Us', href: "#" }, { name: 'Careers', href: "#" }, { name: 'Login', href: "/login" }]
+      title: 'About Us',
+      options: [
+        { name: 'About', path: "#" },
+        { name: 'Donations', path: "#" },
+        { name: 'Gallery', path: "#" },
+        { name: 'Admin Login', path: "/login" }
+      ]
     }
   ];
 
   const toggleDropdown = (title) => {
     setOpenDropdown(openDropdown === title ? null : title);
+  };
+
+  const closeMenus = () => {
+    setIsOpen(false);
+    setOpenDropdown(null);
   };
 
   const fadeVariants = {
@@ -34,7 +48,7 @@ const Header = () => {
   return (
     <AnimatePresence>
       <motion.header
-        className="fixed top-0 w-full z-50 border-b border-blue-900/10 bg-white shadow-sm"
+        className="fixed top-0 w-full z-50 border-b border-blue-900/10 bg-white shadow-sm opacity-10"
         initial="initial"
         animate="animate"
         exit="exit"
@@ -53,15 +67,15 @@ const Header = () => {
             </button>
 
             <motion.div className="flex items-center gap-3" variants={fadeVariants}>
-              <img src={Logo} alt="SMMM Logo" className="h-12 w-36 object-contain" />
+              <Link to="/" onClick={closeMenus}>
+                <img src={Logo} alt="SMMM Logo" className="h-12 w-12 object-contain" />
+              </Link>
             </motion.div>
           </div>
 
           {/* Navigation (Desktop) */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link className="text-blue-900 border-b-2 border-yellow-600 font-semibold font-['Noto_Serif'] text-lg" to="/">
-              Home
-            </Link>
+          <nav className="hidden md:flex items-center gap-8 relative">
+            
 
             {menuItems.map((item) => (
               <div key={item.title} className="relative group">
@@ -85,21 +99,26 @@ const Header = () => {
                       className="absolute left-0 mt-2 w-48 bg-white border border-slate-100 shadow-xl rounded-xl py-2 overflow-hidden"
                     >
                       {item.options.map((option) => (
-                        <a 
+                        <Link 
                           key={option.name} 
                           to={option.path} 
+                          onClick={closeMenus}
                           className="block px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           {option.name}
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
-            ))}
+            ))} 
 
-            <Link className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" to="/mission">
+            <Link 
+              className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
+              to="/mission"
+              onClick={closeMenus}
+            >
               Mission
             </Link>
           </nav>
@@ -122,7 +141,7 @@ const Header = () => {
               exit={{ height: 0, opacity: 0 }}
               className="md:hidden bg-white border-t border-slate-100 px-6 py-4 flex flex-col gap-4 overflow-hidden"
             >
-              <Link to="/" className="text-blue-900 font-semibold">
+              <Link to="/" onClick={closeMenus} className="text-blue-900 font-semibold">
                 Home
               </Link>
               
@@ -139,7 +158,12 @@ const Header = () => {
                   {openDropdown === item.title && (
                     <div className="pl-4 flex flex-col gap-2 border-l-2 border-slate-100 ml-1">
                       {item.options.map(opt => (
-                        <Link key={opt.name} to={opt.path} className="text-slate-500 py-1">
+                        <Link 
+                          key={opt.name} 
+                          to={opt.path} 
+                          onClick={closeMenus}
+                          className="text-slate-500 py-1"
+                        >
                           {opt.name}
                         </Link>
                       ))}
@@ -148,10 +172,10 @@ const Header = () => {
                 </div>
               ))}
 
-              <Link to="/mission" className="text-slate-600">
+              <Link to="/mission" onClick={closeMenus} className="text-slate-600">
                 Mission
               </Link>
-              <Link to="/superiors" className="text-slate-600">
+              <Link to="/superiors" onClick={closeMenus} className="text-slate-600">
                 Superiors
               </Link>
             </motion.div>

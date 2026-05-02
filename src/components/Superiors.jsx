@@ -18,7 +18,7 @@ const Superiors = () => {
           className="text-center mb-16"
           {...fadeIn}
         >
-          <h2 className="font-headline-md text-headline-md text-primary mb-4">Our Superiors</h2>
+          <h2 className="font-headline-md text-5xl text-primary mb-4">Our Regional Executives </h2>
           <p className="font-body-md text-on-surface-variant max-w-xl mx-auto">
             Guided by wisdom and spiritual leadership, our superiors steer the mission of the US Chapter.
           </p>
@@ -38,9 +38,9 @@ const Superiors = () => {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZq5GO42KC3rUxDj8UKt2VDuijt46ERBvU_4Y3cmDlyxtat6Ye79Bp7wzxG37aHYdSDw8SHLJtu1JB80pvcA8Szwpc4a1XeRu4fk9Xg3ljTK5BPTR71VkjYic_Hurrd77I57kZEqkVwji79SUrkhHDKdIJxiUIxmP4xRy9ThGu6JBb4kkhLHtIgm3X44uBw0mJAQgkcz0543Zy1yAg9XhVjDEFxy6f49b7jTzJTuCd0MeNc4ezS5lqk10vogbbI-3BKPiN46YDkeE"
             />
             <div className="text-center">
-              <h4 className="font-headline-md text-xl text-primary mb-1">Very Rev. Fr. Dr. Mark Obi</h4>
-              <p className="font-label-sm text-secondary">Superior General</p>
-              <p className="text-sm text-on-surface-variant mt-2 italic">2018 - Present</p>
+              <h4 className="font-headline-md text-xl text-primary mb-1">Very Rev. Dr. Anselm Ugochukwu Ibe, SMMM </h4>
+              <p className="font-label-sm text-secondary">•	Regional Superior</p>
+              <p className="text-sm text-on-surface-variant mt-2 italic">2012-present</p>
             </div>
           </motion.div>
 

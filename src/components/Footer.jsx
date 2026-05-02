@@ -22,7 +22,7 @@ const Footer = () => {
         {/* Brand Section */}
         <div className="space-y-4">
           <div className="text-xl font-bold text-blue-900 font-['Noto_Serif']">
-            SMMM US Chapter
+            SMMM US Region
           </div>
           <p className="text-slate-500 font-['Noto_Serif'] text-sm leading-relaxed">
             Living witness to the Mercy of God, serving the United States through faith and compassion.
@@ -91,7 +91,10 @@ const Footer = () => {
       {/* Copyright Bar */}
       <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-blue-900/5 text-center">
         <p className="text-slate-500 font-['Noto_Serif'] text-xs">
-          © 2024 Sons of Mary Mother of Mercy US Chapter. All rights reserved.
+          © 2026 Sons of Mary Mother of Mercy US Region. All rights reserved. 
+        </p>
+        <p className="text-slate-500 font-['Noto_Serif'] text-xs"> 
+          <a href="https://henrycodes-portfolio.vercel.app/">Designed by HenryCodes™.</a>
         </p>
       </div>
     </motion.footer>

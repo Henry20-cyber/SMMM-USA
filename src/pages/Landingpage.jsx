@@ -12,8 +12,9 @@ import Footer from '../components/Footer';
 const LandingPage = () => {
   return (
     <div className="bg-background">
-      <main>
       <Navbar />
+      <main>
+     
         <Hero />
         <About />
         <History />
