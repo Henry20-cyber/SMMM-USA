@@ -1,24 +1,39 @@
 import { useState } from "react";
-import { login } from "../services/auth";
-import { motion } from 'framer-motion';
+import { supabase } from "../supabase/supabaseClient";
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [modal, setModal] = useState(null); // { type: 'success' | 'error', message: string }
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      await login(email, password);
-      navigate("/admin");
-    } catch (err) {
-      // It's usually better to use a state variable for errors 
-      // instead of a blocking alert, but this works for now!
-      alert(err.message);
-    }
+    
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      setModal({
+        type: "error",
+        message: error.message,
+      });
+    } else {
+      setModal({
+        type: "success",
+        message: "Welcome back! Redirecting to dashboard...",
+      });
+      // Delay navigation slightly so user sees the success message
+      setTimeout(() => {
+  navigate("/admin/dashboard");
+}, 800);
   };
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-6">
@@ -31,13 +46,8 @@ const Login = () => {
         <form onSubmit={handleLogin}>
           <div className="text-center mb-8">
             <motion.div 
-              // FIXED: Modern repeat syntax
               animate={{ rotate: [-10, 10] }}
-              transition={{ 
-                repeat: Infinity, 
-                repeatType: "reverse", 
-                duration: 2 
-              }}
+              transition={{ repeat: Infinity, repeatType: "reverse", duration: 2 }}
             >
               <span className="material-symbols-outlined text-blue-900 text-6xl">
                 lock_person
@@ -49,7 +59,7 @@ const Login = () => {
           
           <div className="space-y-4">
             <input
-              value={email} // Added controlled value
+              value={email}
               onChange={(e) => setEmail(e.target.value)} 
               type="email" 
               required
@@ -57,7 +67,7 @@ const Login = () => {
               className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-900 outline-none transition-all"
             />
             <input 
-              value={password} // Added controlled value
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password" 
               required
@@ -82,6 +92,35 @@ const Login = () => {
           Return to Website
         </button>
       </motion.div>
+
+      {/* MODAL FEEDBACK */}
+      <AnimatePresence>
+        {modal && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-6 z-50"
+          >
+            <motion.div 
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-sm text-center"
+            >
+              <h3 className={`text-xl font-bold mb-2 ${modal.type === "error" ? "text-red-600" : "text-green-600"}`}>
+                {modal.type === "error" ? "Login Failed" : "Success!"}
+              </h3>
+              <p className="text-slate-600 mb-6">{modal.message}</p>
+              <button
+                onClick={() => setModal(null)}
+                className="w-full py-3 bg-slate-800 text-white rounded-xl font-semibold hover:bg-slate-900 transition-colors"
+              >
+                {modal.type === "error" ? "Try Again" : "Please wait..."}
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -76,7 +76,7 @@ const Footer = () => {
         {/* Contact & Social */}
         <div>
           <h5 className="text-blue-900 font-bold mb-4 font-['Noto_Serif']">Contact</h5>
-          <p className="text-slate-500 font-['Noto_Serif'] text-sm">contact@smmmus.org</p>
+          <p className="text-slate-500 font-['Noto_Serif'] text-sm">smmmusaregion@yahoo.com</p>
           <div className="flex gap-4 mt-4">
             <span className="material-symbols-outlined text-blue-900 cursor-pointer hover:opacity-70 transition-opacity">
               social_leaderboard
