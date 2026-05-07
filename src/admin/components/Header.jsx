@@ -1,4 +1,4 @@
-import { useAuth } from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 export default function Header() {
   const { user } = useAuth();
@@ -12,7 +12,7 @@ export default function Header() {
 
       <div className="flex items-center gap-4">
         <span className="text-sm text-slate-600">
-          {user?.email || "Loading..."}
+          {user?.email}
         </span>
 
         <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-xs font-bold">

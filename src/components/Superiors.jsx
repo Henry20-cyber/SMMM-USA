@@ -55,8 +55,8 @@ const Superiors = () => {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9VlEB6ThPkVJaMEzyCos2tWk4cSe0CRZfT9QELRuVjkuhZRsTr-nc3tFNl6VfgVRWQ6X8Oulwri4mOmZDLcKz5xDKwCSykpEWubLHOhHIPOA6VVr2mtpt4nvYZe2V-ZDJBC9-KuUiQvH5aJuqyeL9zhkATATHCBkf849OPUM38ItOyD4nBt8YSmvUD9Xyq2Ea1azuZkZ9rowKYxWWA7fv9BXxilY23Eu-R7GHmOiArmgbi6Mc_iexN9D_PDv7W5hFMMnCpbTrCSw"
             />
             <div className="text-center">
-              <h4 className="font-headline-md text-xl text-primary mb-1">Rev. Fr. Jude Nwachukwu</h4>
-              <p className="font-label-sm text-secondary">Regional Superior (US)</p>
+              <h4 className="font-headline-md text-xl text-primary mb-1">Rev. Fr. Michael Okafor, SMMM</h4>
+              <p className="font-label-sm text-secondary">•	The Regional Bursar</p>
               <p className="text-sm text-on-surface-variant mt-2 italic">2020 - Present</p>
             </div>
           </motion.div>
@@ -72,8 +72,8 @@ const Superiors = () => {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ7cB0WioEHP4dDAvgLwb4vn9mUuVY5nc4RFTVSjCWI3lKBVHEG4dCmS1_fgQ63ZHBCsVRcoNZisTtbT9CyPWqwaE-oCiz-VlqTMuMXTIaWWgzG_ys2DMLJ9z78xHHn07usfbOAfueeLV_QOcxfBwZ_pTiHdnnmUie5TA_5VrLBbd4kBacfG4b-Z6xonA8QQjVWyxJj7E7AxidWb5Jx5Vw5T2ZiBms9ESRyPUMaUi0Vy0z9Slq1eRvf0-Slfhkc3UWAjS1JEAiN20"
             />
             <div className="text-center">
-              <h4 className="font-headline-md text-xl text-primary mb-1">Rev. Fr. Pius Anyanwu</h4>
-              <p className="font-label-sm text-secondary">Formation Director</p>
+              <h4 className="font-headline-md text-xl text-primary mb-1">Rev. Fr. Thaddeus Agbasonu, SMMM</h4>
+              <p className="font-label-sm text-secondary">•	The Regional Secretary</p>
               <p className="text-sm text-on-surface-variant mt-2 italic">2016 - 2022</p>
             </div>
           </motion.div>

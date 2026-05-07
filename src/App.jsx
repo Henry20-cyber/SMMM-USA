@@ -13,15 +13,26 @@ import { AuthProvider } from "./context/AuthProvider";
 
 function App() {
   useEffect(() => {
-    const trackVisit = async () => {
-      const sessionId = getSessionId();
+  const trackVisit = async () => {
+    const sessionId = getSessionId();
+
+    // 🔥 Check if this session already exists
+    const { data } = await supabase
+      .from("visits")
+      .select("id")
+      .eq("session_id", sessionId)
+      .maybeSingle();
+
+    if (!data) {
       await supabase.from("visits").insert({
         session_id: sessionId,
         user_agent: navigator.userAgent,
       });
-    };
-    trackVisit();
-  }, []);
+    }
+  };
+
+  trackVisit();
+}, []);
   
   return (
     <AuthProvider>
