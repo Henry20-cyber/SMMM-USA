@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
+import LandingPage from './pages/Landingpage';
 import Login from './pages/Login';
 import Dashboard from './admin/Dashboard';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './components/Protectedroute';
 import { useEffect } from "react";
 import { supabase } from "./supabase/supabaseClient";
 import { getSessionId } from "./utils/session";
