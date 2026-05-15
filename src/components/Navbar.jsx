@@ -14,8 +14,7 @@ const Header = () => {
       title: 'Home',
       options: [
         { name: 'News Post', path: "#" },
-        { name: 'History', path: "#" },
-        { name: 'Cloud Solutions', path: "#" }
+        { name: 'History', path: "#" }
       ]
     },
     {

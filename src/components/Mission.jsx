@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
+import logo2 from '../assets/logo2.png'; // ✅ Import so bundler resolves the path
 
 const MissionVision = () => {
-  // Simple fade variant
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -9,10 +9,17 @@ const MissionVision = () => {
     transition: { duration: 0.8, ease: "easeOut" }
   };
 
+  const sectionStyle = {
+    backgroundImage: `linear-gradient(rgba(148, 163, 184, 0.9), rgba(148, 163, 184, 0.9)), url(${logo2})`,
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  };
+
   return (
     <motion.section 
-      // Changed bg-red-500 to a clean bg-slate-50
-      className="py-20 px-6 bg-slate-400 min-h-screen flex items-center justify-center"
+      style={sectionStyle}
+      className="py-20 px-6 min-h-screen flex items-center justify-center"
       initial="initial"
       whileInView="whileInView"
       viewport={{ once: true }}
@@ -23,7 +30,7 @@ const MissionVision = () => {
           {/* Mission Card */}
           <motion.div 
             variants={fadeIn}
-            className="p-12 bg-blue-900 text-white rounded-2xl flex flex-col items-center text-center shadow-xl hover:shadow-2xl transition-shadow"
+            className="p-12 bg-blue-900/95 text-white rounded-2xl flex flex-col items-center text-center shadow-xl hover:shadow-2xl transition-shadow backdrop-blur-sm"
           >
             <span className="material-symbols-outlined text-white text-5xl mb-6">
               explore
@@ -39,7 +46,7 @@ const MissionVision = () => {
           {/* Vision Card */}
           <motion.div 
             variants={fadeIn}
-            className="p-12 border border-slate-200 rounded-2xl flex flex-col items-center text-center bg-white shadow-sm"
+            className="p-12 border border-slate-200 rounded-2xl flex flex-col items-center text-center bg-white/95 shadow-sm backdrop-blur-sm"
           >
             <span className="material-symbols-outlined text-blue-900 text-5xl mb-6">
               visibility

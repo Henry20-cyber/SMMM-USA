@@ -48,10 +48,10 @@ const Hero = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center"
           variants={fadeIn}
         >
-          <button className="text-blue-500 text-on-secondary px-8 py-4 rounded-lg font-label-sm hover:scale-[1.02] transition-transform shadow-lg">
+          <button className="border p-5 bg-white rounded-lg">
             Learn More
           </button>
-          <button className="border text-white px-8 py-4 rounded-lg font-label-sm hover:bg-white/10 transition-colors bg-blue-900">
+          <button className="border p-5 rounded-lg bg-blue-900 text-white">
             Our History
           </button>
         </motion.div>

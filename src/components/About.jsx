@@ -1,20 +1,77 @@
-// import React from 'react';
 import { motion } from 'framer-motion';
 import Logo from '../assets/logo2.png';
 
-const SymbolCard = ({ title, items, colorClass }) => (
-  <motion.div 
-    whileHover={{ y: -5 }}
-    className="p-6 rounded-2xl bg-white shadow-sm border border-outline-variant hover:shadow-md transition-all duration-300"
+const symbols = [
+  {
+    icon: 'favorite',
+    title: 'The Heart',
+    color: 'text-red-600',
+    bg: 'bg-red-50',
+    border: 'border-red-200',
+    iconColor: 'text-red-500',
+    items: [
+      'Seat of Love and Mercy — the Sacred Hearts of Jesus and Mary.',
+      'A call to witness through compassion and tenderness.',
+      'Honoring Mary as the first witness to divine Mercy.',
+    ],
+  },
+  {
+    icon: 'local_fire_department',
+    title: 'The Flame',
+    color: 'text-amber-700',
+    bg: 'bg-amber-50',
+    border: 'border-amber-200',
+    iconColor: 'text-amber-500',
+    items: [
+      "The 'Flame of Love' modeled by Mary's Fiat and total surrender.",
+      'Burning zeal for God, the Church, and all humanity.',
+      'Sacrificial service especially for the poor and needy.',
+    ],
+  },
+  {
+    icon: 'church',
+    title: 'The Cross',
+    color: 'text-blue-900',
+    bg: 'bg-blue-50',
+    border: 'border-blue-200',
+    iconColor: 'text-blue-600',
+    items: [
+      'Daily call to discipleship, self-denial, and sacrifice.',
+      'Embracing charity, humility, and contemplative prayer.',
+      "Total abandonment to the Father's will in all things.",
+    ],
+  },
+  {
+    icon: 'palette',
+    title: 'SMMM & Colors',
+    color: 'text-slate-700',
+    bg: 'bg-slate-50',
+    border: 'border-slate-200',
+    iconColor: 'text-slate-500',
+    items: [
+      'White: Purity, peace, and openness to the Holy Spirit.',
+      'Red: Ardent love and the spirit of joyful martyrdom.',
+      'Blue: Tender devotion to the Blessed Virgin Mary.',
+    ],
+  },
+];
+
+const SymbolCard = ({ icon, title, color, bg, border, iconColor, items }) => (
+  <motion.div
+    whileHover={{ y: -4, scale: 1.01 }}
+    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+    className={`rounded-2xl p-6 border ${bg} ${border} flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow duration-300`}
   >
-    <h3 className={`font-bold text-xl mb-3 flex items-center gap-2 ${colorClass}`}>
-      <span className="w-2 h-2 rounded-full bg-current"></span>
-      {title}
-    </h3>
-    <ul className="space-y-3">
-      {items.map((item, idx) => (
-        <li key={idx} className="text-on-surface-variant text-sm leading-relaxed flex gap-2">
-          <span className="text-secondary">•</span>
+    <div className="flex items-center gap-3">
+      <div className={`w-10 h-10 rounded-xl flex items-center justify-center bg-white shadow-sm border ${border}`}>
+        <span className={`material-symbols-outlined text-2xl ${iconColor}`}>{icon}</span>
+      </div>
+      <h3 className={`font-bold text-lg tracking-tight ${color}`}>{title}</h3>
+    </div>
+    <ul className="space-y-2">
+      {items.map((item, i) => (
+        <li key={i} className="flex gap-2 text-sm text-slate-600 leading-relaxed">
+          <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${iconColor.replace('text-', 'bg-')}`} />
           {item}
         </li>
       ))}
@@ -23,114 +80,142 @@ const SymbolCard = ({ title, items, colorClass }) => (
 );
 
 const About = () => {
-  const containerVariants = {
-    initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: { staggerChildren: 0.2, duration: 0.8 }
-    }
+  const stagger = {
+    initial: {},
+    animate: { transition: { staggerChildren: 0.12 } },
   };
 
-  const itemVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 }
+  const fadeUp = {
+    initial: { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  };
+
+  const slideIn = {
+    initial: { opacity: 0, x: -30 },
+    animate: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } },
   };
 
   return (
-    <motion.section 
-      className="py-20 px-6 bg-surface-container-lowest"
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={containerVariants}
-    >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-        
-        {/* Image Side - Sticky on Desktop */}
-        <motion.div className="lg:sticky lg:top-24" variants={itemVariants}>
-          <div className="relative group">
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors"></div>
-            <img 
-              className="rounded-3xl shadow-2xl relative z-10 w-full object-contain bg-white p-8 border border-outline-variant" 
-              alt="SMMM Symbols" 
-              src={Logo}
-            />
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/5 rounded-full blur-xl"></div>
-          </div>
-          
-          <div className="mt-8 p-6 bg-primary/5 rounded-2xl border-l-4 border-primary">
-             <p className="italic text-primary font-serif">
-              "Witnesses to God's mercy through love and compassion."
-             </p>
-          </div>
-        </motion.div>
+    <section className="bg-white overflow-hidden">
 
-        {/* Content Side */}
-        <div className="space-y-8">
-          <motion.div variants={itemVariants}>
-            <span className="text-secondary text-sm font-bold tracking-widest uppercase block mb-2">
-              Our Identity
-            </span>
-            <h2 className="font-serif text-4xl lg:text-5xl text-primary leading-tight mb-4">
-              The Symbols of our Congregation
-            </h2>
-            <p className="text-on-surface-variant text-lg">
-              Every element of our insignia carries a profound spiritual meaning, reflecting our dedication as Sons of Mary Mother of Mercy.
-            </p>
+      {/* ── Top banner strip ── */}
+      <div className="bg-blue-900 py-3 px-6">
+        <p className="text-center text-blue-200 text-xs tracking-[0.25em] uppercase font-semibold">
+          Sons of Mary Mother of Mercy
+        </p>
+      </div>
+
+      {/* ── Main content ── */}
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 items-start">
+
+          {/* ── LEFT: Logo + quote ── */}
+          <motion.div
+            className="lg:sticky lg:top-24 flex flex-col items-center gap-8"
+            variants={slideIn}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {/* Decorative ring */}
+            <div className="relative w-full max-w-xs mx-auto">
+              <div className="absolute inset-0 rounded-full border-2 border-blue-100 scale-110 pointer-events-none" />
+              <div className="absolute inset-0 rounded-full border border-blue-50 scale-125 pointer-events-none" />
+              <div className="bg-gradient-to-b from-slate-50 to-blue-50 rounded-3xl p-8 border border-blue-100 shadow-lg">
+                <img
+                  src={Logo}
+                  alt="SMMM Congregation Emblem"
+                  className="w-full h-auto object-contain drop-shadow-sm"
+                />
+              </div>
+            </div>
+
+            {/* Pull quote */}
+            <div className="w-full max-w-xs text-center">
+              <div className="text-4xl text-blue-200 font-serif leading-none mb-2">"</div>
+              <p className="font-serif text-base italic text-blue-900 leading-relaxed">
+                Witnesses to God's mercy through love and compassion.
+              </p>
+              <div className="mt-4 h-px w-12 bg-blue-200 mx-auto" />
+            </div>
+
+            {/* Color legend pills */}
+            <div className="flex flex-wrap justify-center gap-2 w-full max-w-xs">
+              {[
+                { label: 'Purity', dot: 'bg-slate-300 border border-slate-400' },
+                { label: 'Love', dot: 'bg-red-500' },
+                { label: 'Devotion', dot: 'bg-blue-600' },
+              ].map(({ label, dot }) => (
+                <span
+                  key={label}
+                  className="flex items-center gap-1.5 text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded-full px-3 py-1"
+                >
+                  <span className={`w-2 h-2 rounded-full ${dot}`} />
+                  {label}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <motion.div variants={itemVariants}>
-              <SymbolCard 
-                title="The Heart"
-                colorClass="text-error"
-                items={[
-                  "Seat of Love and Mercy representing the Sacred Hearts.",
-                  "A call to witness through compassion.",
-                  "Honoring Mary as the first witness to Mercy."
-                ]}
-              />
+          {/* ── RIGHT: Heading + cards ── */}
+          <motion.div
+            variants={stagger}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: '-80px' }}
+            className="space-y-10"
+          >
+            {/* Section label + heading */}
+            <motion.div variants={fadeUp} className="space-y-3">
+              <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-blue-500 bg-blue-50 border border-blue-100 rounded-full px-3 py-1">
+                Our Identity
+              </span>
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-blue-900 leading-tight tracking-tight">
+                The Symbols of<br />
+                <span className="text-slate-400 font-light">our Congregation</span>
+              </h2>
+              <p className="text-slate-500 text-lg leading-relaxed max-w-xl">
+                Every element of our insignia carries a profound spiritual meaning,
+                reflecting our dedication as Sons of Mary Mother of Mercy.
+              </p>
             </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <SymbolCard 
-                title="The Flame"
-                colorClass="text-secondary"
-                items={[
-                  "The 'Flame of Love' modeled by Mary's Fiat.",
-                  "Burning zeal for God, Church, and humanity.",
-                  "Sacrificial service for the poor and needy."
-                ]}
-              />
+            {/* Divider with ornament */}
+            <motion.div variants={fadeUp} className="flex items-center gap-3">
+              <div className="h-px flex-1 bg-gradient-to-r from-blue-100 to-transparent" />
+              <span className="material-symbols-outlined text-blue-200 text-xl">star</span>
+              <div className="h-px flex-1 bg-gradient-to-l from-blue-100 to-transparent" />
             </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <SymbolCard 
-                title="The Cross"
-                colorClass="text-primary"
-                items={[
-                  "Daily call to discipleship and self-denial.",
-                  "Embracing charity, humility, and prayer.",
-                  "Abandonment to the Father's will."
-                ]}
-              />
-            </motion.div>
+            {/* Symbol cards grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {symbols.map((s) => (
+                <motion.div key={s.title} variants={fadeUp}>
+                  <SymbolCard {...s} />
+                </motion.div>
+              ))}
+            </div>
 
-            <motion.div variants={itemVariants}>
-              <SymbolCard 
-                title="SMMM & Colors"
-                colorClass="text-outline"
-                items={[
-                  "White: Purity and openness to the Spirit.",
-                  "Red: Love and the spirit of martyrdom.",
-                  "Blue: Devotion to the Blessed Virgin Mary."
-                ]}
-              />
+            {/* Bottom CTA strip */}
+            <motion.div
+              variants={fadeUp}
+              className="rounded-2xl bg-blue-900 text-white p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+            >
+              <div>
+                <p className="font-bold text-base">Explore Our Mission & Vision</p>
+                <p className="text-blue-300 text-sm mt-0.5">
+                  Discover how we live out our charism every day.
+                </p>
+              </div>
+              <button className="flex-shrink-0 bg-white text-blue-900 font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-blue-50 transition-colors">
+                Learn more →
+              </button>
             </motion.div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
