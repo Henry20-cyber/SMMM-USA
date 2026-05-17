@@ -1,8 +1,9 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import About from '../components/About';
+import About from '../components/About2';
 import History from '../components/History';
 import Mission from "../components/Mission";
+import Sacredsymbols from '../components/Sacredsymbols';
 import Superiors from '../components/Superiors';
 import Donations from '../components/Donations';
 import Chatbot from '../components/Chatbot';
@@ -18,11 +19,12 @@ const LandingPage = () => {
         <Hero />
         <About />
         <History />
+        <Sacredsymbols />
         <Mission />
         <Superiors />
         <Donations />
         <Chatbot />
-        
+
         {/* Add other components like <About /> here */}
       </main>
       <Footer />

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import DonationForm from './DonationForm'; // Adjust path as needed
+import DonationForm from './Donationform'; // Adjust path as needed
 
 const Donations = () => {
   const [showForm, setShowForm] = useState(false);

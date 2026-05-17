@@ -14,14 +14,16 @@ const Header = () => {
       title: 'Home',
       options: [
         { name: 'News Post', path: "#" },
-        { name: 'History', path: "#" }
+        { name: 'History', path: "/Story" }
       ]
     },
     {
       title: 'About Us',
       options: [
+        { name: 'Our Apostolate', path: "#" },
         { name: 'About', path: "#" },
-        { name: 'Donations', path: "#" },
+        { name: 'Our Charism', path: "#" },
+        { name: 'Spirit of the Congregation', path: "#" },
         { name: 'Gallery', path: "#" },
         { name: 'Admin Login', path: "/login" }
       ]
@@ -140,9 +142,7 @@ const Header = () => {
               exit={{ height: 0, opacity: 0 }}
               className="md:hidden bg-white border-t border-slate-100 px-6 py-4 flex flex-col gap-4 overflow-hidden"
             >
-              <Link to="/" onClick={closeMenus} className="text-blue-900 font-semibold">
-                Home
-              </Link>
+             
               
               {menuItems.map((item) => (
                 <div key={item.title} className="flex flex-col gap-2">
