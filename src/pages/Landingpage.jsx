@@ -2,9 +2,10 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About2';
 import History from '../components/History';
-import Mission from "../components/Mission";
 import Sacredsymbols from '../components/Sacredsymbols';
 import Superiors from '../components/Superiors';
+import Charism from '../components/Charism';
+import Apostolate from '../components/Apostolate';
 import Donations from '../components/Donations';
 import Chatbot from '../components/Chatbot';
 import Footer from '../components/Footer';
@@ -20,7 +21,8 @@ const LandingPage = () => {
         <About />
         <History />
         <Sacredsymbols />
-        <Mission />
+        <Charism />
+        <Apostolate />
         <Superiors />
         <Donations />
         <Chatbot />

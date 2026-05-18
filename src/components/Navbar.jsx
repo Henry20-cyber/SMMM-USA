@@ -13,15 +13,15 @@ const Header = () => {
     {
       title: 'Home',
       options: [
-        { name: 'News Post', path: "#" },
-        { name: 'History', path: "/Story" }
+        { name: 'News Post', path: "#" }
+       
       ]
     },
     {
       title: 'About Us',
       options: [
         { name: 'Our Apostolate', path: "#" },
-        { name: 'About', path: "#" },
+        { name: 'History', path: "/Story" },
         { name: 'Our Charism', path: "#" },
         { name: 'Spirit of the Congregation', path: "#" },
         { name: 'Gallery', path: "#" },
