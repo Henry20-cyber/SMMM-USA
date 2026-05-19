@@ -6,7 +6,10 @@ import Sacredsymbols from '../components/Sacredsymbols';
 import Superiors from '../components/Superiors';
 import Charism from '../components/Charism';
 import Apostolate from '../components/Apostolate';
+import MissionAreas from '../components/MissionAreas';
+import Banner from '../components/Banner';
 import Donations from '../components/Donations';
+import Contact from '../components/Contact';
 import Chatbot from '../components/Chatbot';
 import Footer from '../components/Footer';
 // Import other sections here later (About, Mission, etc.)
@@ -23,9 +26,12 @@ const LandingPage = () => {
         <Sacredsymbols />
         <Charism />
         <Apostolate />
+        <MissionAreas />
         <Superiors />
         <Donations />
+        <Contact />
         <Chatbot />
+         <Banner />
 
         {/* Add other components like <About /> here */}
       </main>
