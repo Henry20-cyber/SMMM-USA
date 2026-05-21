@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/Landingpage';
 import Login from './pages/Login';
-import Story from './pages/History'
+import Story from './pages/History';
+import Contact from './pages/Contact';
 import Dashboard from './admin/Dashboard';
 import ProtectedRoute from './components/Protectedroute';
 import { useEffect } from "react";
@@ -43,6 +44,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Story" element={<Story />} />
+          <Route path="/Contact" element={<Contact />} />
 
           {/* Protected Pages */}
           <Route 

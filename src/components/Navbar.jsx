@@ -122,6 +122,13 @@ const Header = () => {
             >
               Mission
             </Link>
+            <Link 
+              className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
+              to="/Contact"
+              onClick={closeMenus}
+            >
+              Contact Us
+            </Link>
           </nav>
 
           {/* Action Button */}
@@ -174,8 +181,8 @@ const Header = () => {
               <Link to="/mission" onClick={closeMenus} className="text-slate-600">
                 Mission
               </Link>
-              <Link to="/superiors" onClick={closeMenus} className="text-slate-600">
-                Superiors
+              <Link to="/Contact" onClick={closeMenus} className="text-slate-600">
+                Contact US
               </Link>
             </motion.div>
           )}
