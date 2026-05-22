@@ -1,6 +1,6 @@
 // import React from 'react';
 import { motion } from 'framer-motion';
-import img from '../assets/web-image.png';
+import img from '../assets/web-image.webp';
 
 const About = () => {
   // Animation presets for consistency
