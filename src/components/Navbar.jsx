@@ -20,7 +20,7 @@ const Header = () => {
     {
       title: 'About Us',
       options: [
-        { name: 'History', path: "/Story" },
+        { name: 'History', path: "/History" },
         { name: 'Admin Login', path: "/login" }
       ]
     }
@@ -111,13 +111,7 @@ const Header = () => {
               </div>
             ))} 
 
-            <Link 
-              className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
-              to="/mission"
-              onClick={closeMenus}
-            >
-              Mission
-            </Link>
+          
             <Link 
               className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
               to="/Contact"
@@ -174,9 +168,6 @@ const Header = () => {
                 </div>
               ))}
 
-              <Link to="/mission" onClick={closeMenus} className="text-slate-600">
-                Mission
-              </Link>
               <Link to="/Contact" onClick={closeMenus} className="text-slate-600">
                 Contact Us
               </Link>
