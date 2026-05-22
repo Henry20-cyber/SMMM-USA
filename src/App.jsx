@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/Landingpage';
 import Login from './pages/Login';
-import Story from './pages/History';
+import History from './pages/History';
 import Contact from './pages/Contact';
 import Dashboard from './admin/Dashboard';
 import ProtectedRoute from './components/Protectedroute';
@@ -43,7 +43,7 @@ function App() {
           {/* Public Pages */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/Story" element={<Story />} />
+          <Route path="/History" element={<History />} />
           <Route path="/Contact" element={<Contact />} />
 
           {/* Protected Pages */}

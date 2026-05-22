@@ -7,12 +7,10 @@ import AnnouncementManager from "./components/AnnouncementsManager";
 import { useVisitorStats } from "../hooks/useVisitorStats";
 import useAuth from "../hooks/useAuth";
 import useAdmin from "../hooks/useAdmin";
-import DonationAnalytics from "./components/DonationAnalytics";
 
 export default function Dashboard() {
   const { user } = useAuth();
   const { isAdmin, role } = useAdmin();
-  const [stats, setStats] = useState({ donations: 0 });
   const [lastLogin, setLastLogin] = useState(null);
   const [recentAdmins, setRecentAdmins] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -55,15 +53,7 @@ export default function Dashboard() {
           return;
         }
         
-        // 1. Fetch Stats - Donations
-        const { data: donations, error: donationsError } = await supabase
-          .from("donations")
-          .select("amount")
-          .eq("status", "success");
-
-        if (donationsError) throw donationsError;
-
-        // 2. Check for existing login in last 5 minutes
+        // 1. Check for existing login in last 5 minutes
         const { data: existing, error: existingError } = await supabase
           .from("admin_logs")
           .select("id")
@@ -73,7 +63,7 @@ export default function Dashboard() {
 
         if (existingError) throw existingError;
 
-        // 3. Insert new login log if not exists in last 5 minutes
+        // 2. Insert new login log if not exists in last 5 minutes (Removed 'role' field to fix schema cache crash)
         if (!existing) {
           const location = await getLocationFromIP();
           
@@ -83,30 +73,22 @@ export default function Dashboard() {
               user_id: user.id,
               email: user.email,
               location: location,
-              role: role || 'admin',
               login_time: new Date().toISOString()
             });
 
           if (insertError) throw insertError;
         }
 
-        // 4. Fetch recent admin logs (last 10 entries)
+        // 3. Fetch recent admin logs explicitly by column to avoid pulling a non-existent 'role' column
         const { data: logs, error: logsError } = await supabase
           .from("admin_logs")
-          .select("*")
+          .select("id, user_id, email, location, login_time")
           .order("login_time", { ascending: false })
           .limit(10);
 
         if (logsError) throw logsError;
 
-        // Calculate total donations
-        const totalDonations = donations?.reduce((sum, d) => sum + d.amount, 0) || 0;
-
         if (isMounted) {
-          setStats({
-            donations: totalDonations,
-          });
-
           if (logs && logs.length > 0) {
             setLastLogin(logs[0]);
             setRecentAdmins(logs.slice(1, 6));
@@ -170,12 +152,7 @@ export default function Dashboard() {
           </h1>
 
           {/* STATS CARDS */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <StatsCard 
-              title="Total Donations" 
-              value={`₦${stats.donations.toLocaleString()}`} 
-              icon="payments" 
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <StatsCard 
               title="Today's Visitors" 
               value={todayVisitors} 
@@ -218,7 +195,7 @@ export default function Dashboard() {
                   <div className="flex justify-between items-center">
                     <strong>Role:</strong>
                     <span className="px-2 py-1 bg-indigo-100 text-indigo-700 rounded text-xs">
-                      {lastLogin.role || 'admin'}
+                      {role || 'admin'} {/* Fallbacks safely to the local useAdmin() role hook value */}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
@@ -254,10 +231,6 @@ export default function Dashboard() {
                       <div className="flex-1">
                         <div className="font-medium text-slate-800">{admin.email}</div>
                         <div className="flex items-center gap-2 mt-1">
-                          <span className="text-xs text-slate-500">
-                            {admin.role === 'super_admin' ? '👑 ' : '👤 '}
-                            {admin.role || 'admin'}
-                          </span>
                           <span className="flex items-center gap-1 text-xs text-slate-500">
                             <span className="material-symbols-outlined text-xs">location_on</span>
                             {admin.location || 'Unknown'}
@@ -280,14 +253,6 @@ export default function Dashboard() {
           <div className="mt-6">
             <AnnouncementManager />
           </div>
-
-          {/* Donation Analytics 
-          
-          <div className="mt-6">
-            <DonationAnalytics />
-          </div>
-          
-          */}
           
         </main>
       </div>

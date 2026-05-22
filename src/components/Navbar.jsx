@@ -20,11 +20,7 @@ const Header = () => {
     {
       title: 'About Us',
       options: [
-        { name: 'Our Apostolate', path: "#" },
         { name: 'History', path: "/Story" },
-        { name: 'Our Charism', path: "#" },
-        { name: 'Spirit of the Congregation', path: "#" },
-        { name: 'Gallery', path: "#" },
         { name: 'Admin Login', path: "/login" }
       ]
     }
@@ -182,7 +178,7 @@ const Header = () => {
                 Mission
               </Link>
               <Link to="/Contact" onClick={closeMenus} className="text-slate-600">
-                Contact US
+                Contact Us
               </Link>
             </motion.div>
           )}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 
 // Hero background images array (8 images as requested)

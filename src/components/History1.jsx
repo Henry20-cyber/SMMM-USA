@@ -34,7 +34,7 @@ const timelineData = [
   }
 ];
 
-const History = () => {
+const History1 = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -101,4 +101,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default History1;
