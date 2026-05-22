@@ -1,5 +1,6 @@
 // import React from 'react';
 import { motion } from 'framer-motion';
+import img from '../assets/web-image.png';
 
 const About = () => {
   // Animation presets for consistency
@@ -33,14 +34,12 @@ const About = () => {
           className="text-center mb-16"
         >
           {/* Section Label */}
-          <p className="flex justify-center items-center gap-2 mb-4 text-xs font-bold uppercase tracking-widest text-slate-500">
+          <p className="flex justify-center items-center gap-2 mb-4 text-2xl font-bold uppercase tracking-widest text-slate-500">
             About Us
           </p>
           <h2 
             className="text-4xl md:text-5xl mb-6 font-semibold tracking-wide"
-            style={{ fontFamily: "'Cinzel', serif", color: theme.navy }}
-          >
-            Who We Are
+            style={{ fontFamily: "'Cinzel', serif", color: theme.navy }}>
           </h2>
           {/* Gold Divider */}
           <div className="w-16 h-[2px] mx-auto" style={{ backgroundColor: theme.gold }} />
@@ -110,7 +109,7 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Right: Founder Card Graphic */}
+          {/* Right: Redesigned Founder Card Profile */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -118,73 +117,67 @@ const About = () => {
             variants={fadeInVariant}
             className="relative group"
           >
-            {/* Main Navy Box Container */}
+            {/* Main Aesthetic Card Container */}
             <div 
-              className="p-10 relative overflow-hidden shadow-xl"
+              className="relative overflow-hidden shadow-2xl rounded-sm transition-transform duration-500 hover:-translate-y-1"
               style={{ background: theme.navy }}
             >
-              {/* Background Circular Vector Ornaments */}
-              <div className="absolute -top-4 -right-4 w-[120px] h-[120px] border rounded-full opacity-10 pointer-events-none" style={{ borderColor: theme.gold }} />
-              <div className="absolute -bottom-8 -left-8 w-[160px] h-[160px] border rounded-full opacity-5 pointer-events-none" style={{ borderColor: theme.gold }} />
-              
-              <p 
-                className="mb-4 text-[0.6rem] tracking-[0.2em] uppercase font-medium"
-                style={{ fontFamily: "'Cinzel', serif", color: theme.gold }}
-              >
-                Our Father Founder
-              </p>
-              
-              {/* Stylized Avatar Frame Placeholder */}
-              <div 
-                className="w-[90px] h-[90px] rounded-full border-[3px] flex items-center justify-center mb-5 transition-transform duration-500 group-hover:scale-105"
-                style={{ 
-                  background: `linear-gradient(135deg, ${theme.marianBlue}, ${theme.navyLight})`, 
-                  borderColor: theme.gold 
-                }}
-              >
-                {/* Embedded SVG Mitre Portrait Cross */}
-                <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10 opacity-80">
-                  <circle cx="20" cy="14" r="8" stroke={theme.gold} strokeWidth="1.5" fill="none"/>
-                  <path d="M4 36 C4 28, 36 28, 36 36" stroke={theme.gold} strokeWidth="1.5" fill="none"/>
-                  <path d="M14 8 L20 2 L26 8" stroke={theme.gold} strokeWidth="1.2" fill="none"/>
-                </svg>
+              {/* Image Frame Section */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-900 border-b" style={{ borderColor: 'rgba(201,168,76,0.15)' }}>
+                <img 
+                  src={img} 
+                  alt="Most Rev. Anthony Gogo Nwedo" 
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Subtle dark gradient overlay over the image bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
               </div>
-              
-              <h4 
-                className="text-[1.05rem] text-white font-semibold mb-1"
-                style={{ fontFamily: "'Cinzel', serif" }}
-              >
-                Most Rev. Anthony Gogo Nwedo
-              </h4>
-              
-              <p 
-                className="text-[0.85rem] italic mb-4"
-                style={{ fontFamily: "'Cormorant Garamond', serif", color: 'rgba(201,168,76,0.6)' }}
-              >
-                C.S.Sp. — Founder, of Blessed Memory
-              </p>
-              
-              <p 
-                className="text-[1rem] leading-relaxed"
-                style={{ fontFamily: "'Cormorant Garamond', serif", color: 'rgba(250,246,238,0.65)' }}
-              >
-                "A visionary leader who saw beyond his time — he had the vision that a time would come when the 
-                congregation would have its members on mission all over the world."
-              </p>
-              
-              {/* Artistic Cross Accent Graphic */}
-              <div className="absolute bottom-6 right-6 opacity-10 pointer-events-none">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <line x1="16" y1="2" x2="16" y2="30" stroke={theme.gold} strokeWidth="2"/>
-                  <line x1="4" y1="10" x2="28" y2="10" stroke={theme.gold} strokeWidth="2"/>
-                </svg>
+
+              {/* Content Box Section */}
+              <div className="p-8 relative">
+                <p 
+                  className="mb-2 text-[0.6rem] tracking-[0.2em] uppercase font-bold"
+                  style={{ fontFamily: "'Cinzel', serif", color: theme.gold }}
+                >
+                  Our Father Founder
+                </p>
+                
+                <h4 
+                  className="text-xl text-white font-semibold mb-1 tracking-wide"
+                  style={{ fontFamily: "'Cinzel', serif" }}
+                >
+                  Most Rev. Anthony Gogo Nwedo
+                </h4>
+                
+                <p 
+                  className="text-[0.85rem] italic mb-5 block"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", color: 'rgba(201,168,76,0.75)' }}
+                >
+                  C.S.Sp. — Founder, of Blessed Memory
+                </p>
+                
+                <p 
+                  className="text-[1rem] leading-relaxed relative z-10 font-light"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", color: 'rgba(250,246,238,0.75)' }}
+                >
+                  "A visionary leader who saw beyond his time — he had the vision that a time would come when the 
+                  congregation would have its members on mission all over the world."
+                </p>
+                
+                {/* Minimalist Watermark Cross Accent */}
+                <div className="absolute bottom-6 right-6 opacity-10 pointer-events-none">
+                  <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                    <line x1="16" y1="2" x2="16" y2="30" stroke={theme.gold} strokeWidth="1.5"/>
+                    <line x1="6" y1="11" x2="26" y2="11" stroke={theme.gold} strokeWidth="1.5"/>
+                  </svg>
+                </div>
               </div>
             </div>
             
-            {/* Layered Off-center Accent Border Box */}
+            {/* Elegant Background Framing Offset */}
             <div 
-              className="absolute top-[12px] left-[12px] right-[-12px] bottom-[-12px] border -z-10 pointer-events-none" 
-              style={{ borderColor: 'rgba(201,168,76,0.15)' }}
+              className="absolute top-[16px] left-[16px] right-[-16px] bottom-[-16px] border rounded-sm -z-10 pointer-events-none transition-all duration-500 group-hover:top-[20px] group-hover:left-[20px]" 
+              style={{ borderColor: 'rgba(201,168,76,0.2)' }}
             />
           </motion.div>
 
