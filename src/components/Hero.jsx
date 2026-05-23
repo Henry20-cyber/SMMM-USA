@@ -139,8 +139,8 @@ const Hero = () => {
           style={{ display: "inline-block", border: "1px solid rgba(201,168,76,0.25)", padding: "10px 28px", marginBottom: "3rem", backgroundColor: "rgba(10, 25, 47, 0.2)" }}
         >
           <p style={{ fontFamily: "'Cinzel', serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: "rgba(201,168,76,0.6)", textTransform: "uppercase" }}>Motto</p>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem", fontStyle: "italic", color: theme.goldPale }}>Evangelizare Pauperibus Missit Me</p>
-          <p style={{ fontFamily: "'Cinzel', serif", fontSize: "0.6rem", letterSpacing: "0.1em", color: "rgba(201,168,76,0.5)" }}>He has sent me to preach the Gospel to the poor</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem", fontStyle: "italic", color: theme.goldPale }}>testimonium perhibere misericordiae Dei</p>
+          <p style={{ fontFamily: "'Cinzel', serif", fontSize: "0.6rem", letterSpacing: "0.1em", color: "rgba(201,168,76,0.5)" }}>bearing witness to the mercy of God</p>
         </motion.div>
         
       </div>

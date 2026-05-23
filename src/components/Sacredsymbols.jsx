@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
+import img from '../assets/logo.jpg';
 
 const Sacredsymbols = () => {
   // Centralized theme colors matching your CSS variables
   const theme = {
-    creamDark: '#f7f4eb', // Example fallback for var(--cream-dark)
+    creamDark: '#f7f4eb', // Fallback for var(--cream-dark)
     gold: '#c9a84c',
     navy: '#0a192f',
     blueMarian: '#1e4d8c',
@@ -26,7 +27,7 @@ const Sacredsymbols = () => {
       className="py-20 px-6 border-t"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           
           {/* LEFT COLUMN: LOGO SYMBOLS */}
           <motion.div 
@@ -47,7 +48,16 @@ const Sacredsymbols = () => {
             
             {/* Left Divider */}
             <div className="w-12 h-[2px] mb-8" style={{ backgroundColor: theme.gold }} />
-            
+
+            {/* The Logo Container */}
+            <div className="flex justify-center md:justify-start">
+              <img 
+                src={img} 
+                alt="SMMM Official Congregation Logo" 
+                className="w-full max-w-[240px] h-auto object-contain mb-8 rounded-xl shadow-sm border border-slate-200/60 bg-white p-2"
+              />
+            </div>
+
             {/* Symbol Items List */}
             <div className="flex flex-col gap-6">
               {/* Heart */}
@@ -130,33 +140,6 @@ const Sacredsymbols = () => {
                 </div>
               </div>
             </div>
-
-            {/* Colors Breakdown Box */}
-            <div 
-              className="mt-8 p-6 bg-white shadow-sm border"
-              style={{ borderColor: 'rgba(201,168,76,0.15)' }}
-            >
-              <p 
-                className="text-[0.62rem] font-bold tracking-[0.15em] uppercase mb-4"
-                style={{ fontFamily: "'Cinzel', serif", color: theme.gold }}
-              >
-                Colors & Their Meaning
-              </p>
-              <div className="flex gap-x-6 gap-y-3 flex-wrap">
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full border border-slate-300 bg-white block" />
-                  <span className="text-sm text-slate-600">White — Purity & Openness</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full block" style={{ backgroundColor: theme.redDeep }} />
-                  <span className="text-sm text-slate-600">Red — Love & Martyrdom</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full block" style={{ backgroundColor: theme.blueMarian }} />
-                  <span className="text-sm text-slate-600">Blue — The Blessed Virgin Mary</span>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
           {/* RIGHT COLUMN: RELIGIOUS HABIT */}
@@ -180,7 +163,7 @@ const Sacredsymbols = () => {
             <div className="w-12 h-[2px] mb-8" style={{ backgroundColor: theme.gold }} />
 
             {/* Habit Graphic and Text Side by Side */}
-            <div className="flex gap-8 items-flex-start flex-col sm:flex-row">
+            <div className="flex gap-8 flex-col sm:flex-row items-start">
               
               {/* Graphic Vector Element */}
               <div className="flex-shrink-0 w-24 mx-auto sm:mx-0">
@@ -218,18 +201,18 @@ const Sacredsymbols = () => {
               </div>
 
               {/* Descriptions List */}
-              <div className="flex-1">
+              <div className="flex-1 w-full">
                 <p className="text-[1rem] text-slate-600 mb-5 leading-relaxed">
                   We wear a <strong style={{ color: theme.navy }}>white soutane</strong> with <strong style={{ color: theme.blueMarian }}>twenty-one blue buttons</strong> and a <strong style={{ color: theme.blueMarian }}>blue cord cincture</strong> with tassels.
                 </p>
                 
                 <div className="flex flex-col gap-3">
                   <div 
-                    className="p-4 border-l-3" 
+                    className="p-4 border-l-[3px]" 
                     style={{ backgroundColor: 'rgba(30,77,140,0.06)', borderLeftColor: theme.blueMarian }}
                   >
                     <p 
-                      className="text-[0.7rem] font-bold mb-1 tracking-wide" 
+                      className="text-xs font-bold mb-1 tracking-wider uppercase" 
                       style={{ fontFamily: "'Cinzel', serif", color: theme.blueMarian }}
                     >
                       21 Blue Buttons
@@ -240,11 +223,11 @@ const Sacredsymbols = () => {
                   </div>
                   
                   <div 
-                    className="p-4 border-l-3" 
+                    className="p-4 border-l-[3px]" 
                     style={{ backgroundColor: 'rgba(30,77,140,0.06)', borderLeftColor: theme.blueMarian }}
                   >
                     <p 
-                      className="text-[0.7rem] font-bold mb-1 tracking-wide" 
+                      className="text-xs font-bold mb-1 tracking-wider uppercase" 
                       style={{ fontFamily: "'Cinzel', serif", color: theme.blueMarian }}
                     >
                       3 Knots on the Cincture
@@ -256,6 +239,33 @@ const Sacredsymbols = () => {
                 </div>
               </div>
 
+            </div>
+
+            {/* Colors Breakdown Box */}
+            <div 
+              className="mt-8 p-6 bg-white shadow-sm border rounded-xl"
+              style={{ borderColor: 'rgba(201,168,76,0.15)' }}
+            >
+              <p 
+                className="text-xs font-bold tracking-widest uppercase mb-4"
+                style={{ fontFamily: "'Cinzel', serif", color: theme.gold }}
+              >
+                Colors & Their Meaning
+              </p>
+              <div className="flex gap-x-6 gap-y-3 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <span className="w-4 h-4 rounded-full border border-slate-300 bg-white block" />
+                  <span className="text-sm text-slate-600">White — Purity & Openness</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-4 h-4 rounded-full block" style={{ backgroundColor: theme.redDeep }} />
+                  <span className="text-sm text-slate-600">Red — Love & Martyrdom</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-4 h-4 rounded-full block" style={{ backgroundColor: theme.blueMarian }} />
+                  <span className="text-sm text-slate-600">Blue — The Blessed Virgin Mary</span>
+                </div>
+              </div>
             </div>
           </motion.div>
 

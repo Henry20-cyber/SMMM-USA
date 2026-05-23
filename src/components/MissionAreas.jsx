@@ -114,11 +114,7 @@ const MissionAreas = () => {
                     <h3 className="text-[1.05rem] font-semibold" style={{ fontFamily: "'Cinzel', serif" }}>
                       {region.name}
                     </h3>
-                    {region.isHomeRegion && (
-                      <p className="text-[0.55rem] font-bold tracking-[0.15em] uppercase mt-0.5" style={{ color: theme.gold }}>
-                        Our Home Region
-                      </p>
-                    )}
+                    {region.isHomeRegion}
                   </div>
                 </div>
 

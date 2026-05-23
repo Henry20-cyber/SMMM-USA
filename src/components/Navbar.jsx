@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../App.css';
 import Logo from '../assets/logo2.png';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,23 +8,53 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
 
   const menuItems = [
     {
       title: 'Home',
       options: [
-        { name: 'News Post', path: "#" }
+        { name: 'About Us', path: "/#about" },
        
+        { name: 'Sacred Symbols', path: "/#sacredsymbols" },
+        { name: 'Charism', path: "/#charism" },
+        { name: 'Apostolate', path: "/#apostolate" },
+        { name: 'Superiors', path: "/#superiors" },
+        { name: 'Donations', path: "/#donations" },        
       ]
     },
     {
       title: 'About Us',
       options: [
         { name: 'History', path: "/History" },
-        { name: 'Admin Login', path: "/login" }
+        { name: 'Our Journey Of Faith', path: "/#summary" },
+        { name: 'Mission', path: "/#mission" },
+        { name: 'Admin Login', path: "/login" },
+        
       ]
     }
   ];
+
+  const handleNavigation = (path) => {
+    closeMenus();
+
+    if (path.includes('#')) {
+      const [urlPath, hash] = path.split('#');
+      
+      // Check if we are already on that exact URL path page
+      if (window.location.pathname === urlPath) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // Safe Native Hand-off: Pass the hash location cleanly via router state
+        navigate(urlPath, { state: { scrollToHash: hash } });
+      }
+    } else {
+      navigate(path);
+    }
+  };
 
   const toggleDropdown = (title) => {
     setOpenDropdown(openDropdown === title ? null : title);
@@ -45,7 +75,7 @@ const Header = () => {
   return (
     <AnimatePresence>
       <motion.header
-        className="fixed top-0 w-full z-50 border-b border-blue-900/10 bg-white shadow-sm opacity-10"
+        className="fixed top-0 w-full z-50 border-b border-blue-900/10 bg-white shadow-sm"
         initial="initial"
         animate="animate"
         exit="exit"
@@ -53,7 +83,7 @@ const Header = () => {
       >
         <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-7xl mx-auto">
           
-          {/* Left Section: Hamburger + Logo */}
+          {/* Left Section */}
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setIsOpen(!isOpen)}
@@ -72,38 +102,37 @@ const Header = () => {
 
           {/* Navigation (Desktop) */}
           <nav className="hidden md:flex items-center gap-8 relative">
-            
-
             {menuItems.map((item) => (
-              <div key={item.title} className="relative group">
+              <div 
+                key={item.title} 
+                className="relative group"
+                onMouseEnter={() => setOpenDropdown(item.title)}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
                 <button 
                   onClick={() => toggleDropdown(item.title)}
-                  onMouseEnter={() => setOpenDropdown(item.title)}
-                  className="flex items-center gap-1 text-slate-600 hover:text-blue-900 transition-colors font-['Noto_Serif'] text-lg antialiased tracking-tight"
+                  className="flex items-center gap-1 text-slate-600 hover:text-blue-900 transition-colors font-['Noto_Serif'] text-lg antialiased tracking-tight py-2"
                 >
                   {item.title}
                   <ChevronDown size={16} className={`transition-transform duration-300 ${openDropdown === item.title ? 'rotate-180' : ''}`} />
                 </button>
 
-                {/* Desktop Dropdown Menu */}
                 <AnimatePresence>
                   {openDropdown === item.title && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      onMouseLeave={() => setOpenDropdown(null)}
-                      className="absolute left-0 mt-2 w-48 bg-white border border-slate-100 shadow-xl rounded-xl py-2 overflow-hidden"
+                      className="absolute left-0 mt-0 w-48 bg-white border border-slate-100 shadow-xl rounded-xl py-2 overflow-hidden"
                     >
-                      {item.options.map((option) => (
-                        <Link 
-                          key={option.name} 
-                          to={option.path} 
-                          onClick={closeMenus}
-                          className="block px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-900 transition-colors"
+                      {item.options.map((option, idx) => (
+                        <button 
+                          key={`${option.name}-${idx}`} 
+                          onClick={() => handleNavigation(option.path)}
+                          className="w-full text-left block px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           {option.name}
-                        </Link>
+                        </button>
                       ))}
                     </motion.div>
                   )}
@@ -111,7 +140,6 @@ const Header = () => {
               </div>
             ))} 
 
-          
             <Link 
               className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
               to="/Contact"
@@ -139,8 +167,6 @@ const Header = () => {
               exit={{ height: 0, opacity: 0 }}
               className="md:hidden bg-white border-t border-slate-100 px-6 py-4 flex flex-col gap-4 overflow-hidden"
             >
-             
-              
               {menuItems.map((item) => (
                 <div key={item.title} className="flex flex-col gap-2">
                   <button 
@@ -153,22 +179,21 @@ const Header = () => {
                   
                   {openDropdown === item.title && (
                     <div className="pl-4 flex flex-col gap-2 border-l-2 border-slate-100 ml-1">
-                      {item.options.map(opt => (
-                        <Link 
-                          key={opt.name} 
-                          to={opt.path} 
-                          onClick={closeMenus}
-                          className="text-slate-500 py-1"
+                      {item.options.map((opt, idx) => (
+                        <button 
+                          key={`${opt.name}-${idx}-mobile`} 
+                          onClick={() => handleNavigation(opt.path)}
+                          className="text-left text-slate-500 py-1 text-sm hover:text-blue-900 transition-colors"
                         >
                           {opt.name}
-                        </Link>
+                        </button>
                       ))}
                     </div>
                   )}
                 </div>
               ))}
 
-              <Link to="/Contact" onClick={closeMenus} className="text-slate-600">
+              <Link to="/Contact" onClick={closeMenus} className="text-slate-600 font-semibold">
                 Contact Us
               </Link>
             </motion.div>
