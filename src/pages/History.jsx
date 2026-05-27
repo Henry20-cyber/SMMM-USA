@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar'
+import { motion, AnimatePresence } from 'framer-motion';
+import Navbar from '../components/Navbar';
 
 // 8 carefully curated high-quality images representing pastoral service, missions, and community light
 const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1600&q=80", // Stained glass sanctuary
-  "https://images.unsplash.com/photo-1548625361-155deee26575?auto=format&fit=crop&w=1600&q=80", // Chapel architecture interior
-  "https://images.unsplash.com/photo-1515787366009-7cbdd2dc587b?auto=format&fit=crop&w=1600&q=80", // Altar candle light
-  "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?auto=format&fit=crop&w=1600&q=80", // Cathedral vault architecture
-  "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80", // Holy Bible / Scripture study
-  "https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=1600&q=80", // Sacred liturgical book
-  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80", // Fellowship community light
-  "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80"  // Peaceful church courtyard exterior
+  "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1600&q=80", 
+  "https://images.unsplash.com/photo-1548625361-155deee26575?auto=format&fit=crop&w=1600&q=80", 
+  "https://images.unsplash.com/photo-1515787366009-7cbdd2dc587b?auto=format&fit=crop&w=1600&q=80", 
+  "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?auto=format&fit=crop&w=1600&q=80", 
+  "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80", 
+  "https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=1600&q=80", 
+  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80", 
+  "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80"  
 ];
 
 const REGIONAL_SUPERIORS = [
@@ -22,6 +23,20 @@ const REGIONAL_SUPERIORS = [
   { name: "Fr. Marcellinus Ekenedo, SMMM", years: "2019-2021", isCurrent: false },
   { name: "Fr. Anselm Ugochukwu Ibe, SMMM", years: "2021-present", isCurrent: true }
 ];
+
+// Framer Motion Variants for Staggered Parent/Children lists
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -15 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } }
+};
 
 export default function History() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -37,33 +52,46 @@ export default function History() {
 
   return (
     <div className="bg-slate-50 text-slate-700 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white antialiased font-sans">
-      < Navbar />
+      <Navbar />
+      
       {/* Dynamic Fading Hero Section */}
       <section className="relative h-[380px] sm:h-[450px] bg-slate-950 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          {HERO_IMAGES.map((imageUrl, index) => (
-            <img
-              key={imageUrl}
-              src={imageUrl}
-              alt={`Pastoral environment backdrop visual frame ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out filter brightness-[0.35] scale-105 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
+          <AnimatePresence mode="popLayout">
+            <motion.img
+              key={currentImageIndex}
+              src={HERO_IMAGES[currentImageIndex]}
+              alt={`Pastoral environment backdrop visual frame ${currentImageIndex + 1}`}
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1.05 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover filter brightness-[0.35]"
             />
-          ))}
+          </AnimatePresence>
           {/* Subtle gradient treatment layer to ease image edges into content */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950/20 z-10"></div>
         </div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          className="relative z-20 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <span className="text-xs uppercase tracking-[0.25em] font-semibold text-blue-400 mb-3 block">
             Sons of Mary Mother of Mercy
           </span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
             Brief Information about the SMMM American Region
           </h1>
-          <div className="mt-5 h-1 w-24 bg-blue-600 mx-auto rounded-full"></div>
-        </div>
+          <motion.div 
+            className="mt-5 h-1 w-24 bg-blue-600 mx-auto rounded-full"
+            initial={{ width: 0 }}
+            animate={{ width: 96 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          ></motion.div>
+        </motion.div>
       </section>
 
       {/* Main Structural Content Grid Layout */}
@@ -71,7 +99,13 @@ export default function History() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           
           {/* Left Column: Historical Context & Foundations */}
-          <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 space-y-6">
+          <motion.div 
+            className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-xl font-bold tracking-tight text-slate-900 border-b border-slate-100 pb-3">
               Our Foundation & History
             </h2>
@@ -93,13 +127,19 @@ export default function History() {
             <p className="text-base leading-relaxed text-slate-600">
               With the steady growth of our membership, our Superior General, the Very Reverend Dr. James Michael Okpala-Onwuka, SMMM, formally elevated our community to the status of a region, and Fr. Eugene became our pioneer Regional Superior. Consequently, the structural arrangements for effective leadership were set in motion as SMMM’s presence continued to be visibly acknowledged and represented through the members’ apostolate in various dioceses and hospital chaplaincies across the country. Interestingly, the first regional elections were held on February 10, 2009, at St. Genevieve’s Catholic Parish in Fresno, California. Fr. Nelson Ogwuegbu was elected and later ratified as the first elected Regional Superior on March 30, 2009, alongside Fr. Anselm Ibe as Secretary and Fr. Bartholomew Ifionu as Bursar.
             </p>
-          </div>
+          </motion.div>
           
           {/* Right Column: Modern Landscape, Strength & Leadership Structure */}
           <div className="space-y-8">
             
             {/* Current Presence Metrics and Milestones */}
-            <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 space-y-6">
+            <motion.div 
+              className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 space-y-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <h2 className="text-xl font-bold tracking-tight text-slate-900 border-b border-slate-100 pb-3">
                 Current Status & Global Strength
               </h2>
@@ -116,19 +156,32 @@ export default function History() {
                   Following the mandate of our Lord Jesus Christ, we have, therefore, resolved to bring the Gospel to all nations: &ldquo;Go and make disciples of all nations…&rdquo; (Mt 28:19).
                 </p>
               </div>
-            </div>
+            </motion.div>
             
             {/* Regional Leadership Sequence Card */}
-            <div className="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md border border-slate-800 space-y-6">
-              <h3 class="text-xl font-bold tracking-tight text-blue-400">
+            <motion.div 
+              className="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md border border-slate-800 space-y-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h3 className="text-xl font-bold tracking-tight text-blue-400">
                 Past and Present Regional Superiors
               </h3>
               
               {/* Timeline Sequence Mapping */}
-              <div className="flex flex-col space-y-1 font-medium text-slate-200">
+              <motion.div 
+                className="flex flex-col space-y-1 font-medium text-slate-200"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
                 {REGIONAL_SUPERIORS.map((superior, idx) => (
-                  <div 
+                  <motion.div 
                     key={idx} 
+                    variants={itemVariants}
                     className={`flex justify-between items-center py-3 border-slate-800 transition-colors ${
                       idx !== REGIONAL_SUPERIORS.length - 1 ? 'border-b' : ''
                     } ${superior.isCurrent ? 'text-white' : 'hover:text-white'}`}
@@ -143,20 +196,19 @@ export default function History() {
                     }`}>
                       {superior.years}
                     </span>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
             
           </div>
         </div>
       </main>
       
-      {/* Standard Regional Footer Block */}
+      {/* Standard Regional Footer Block - MOVED OUTSIDE OF MAIN */}
       <footer className="w-full text-center py-8 text-xs text-slate-400 border-t border-slate-200 bg-white">
         <p>&copy; {new Date().getFullYear()} Sons of Mary Mother of Mercy (SMMM). All rights reserved.</p>
       </footer>
-      
     </div>
   );
 }

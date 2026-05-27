@@ -11,28 +11,19 @@ const Header = () => {
   const navigate = useNavigate();
 
   const menuItems = [
+   
     {
-      title: 'Home',
-      options: [
-        { name: 'About Us', path: "/#about" },
-       
-        { name: 'Sacred Symbols', path: "/#sacredsymbols" },
-        { name: 'Charism', path: "/#charism" },
-        { name: 'Apostolate', path: "/#apostolate" },
-        { name: 'Superiors', path: "/#superiors" },
-        { name: 'Donations', path: "/#donations" },        
-      ]
-    },
-    {
-      title: 'About Us',
+      title: 'Our Identity',
       options: [
         { name: 'History', path: "/History" },
-        { name: 'Our Journey Of Faith', path: "/#summary" },
         { name: 'Mission', path: "/#mission" },
-        { name: 'Admin Login', path: "/login" },
+         { name: 'Sacred Symbols', path: "/sacredsymbols" },
+        { name: 'Charism', path: "/charism" },
+        { name: 'Apostolate', path: "/apostolate" },
+        { name: 'Donations', path: "/donations" },
         
-      ]
-    }
+      ]},
+   
   ];
 
   const handleNavigation = (path) => {
@@ -82,7 +73,7 @@ const Header = () => {
         variants={fadeVariants}
       >
         <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-7xl mx-auto">
-          
+         
           {/* Left Section */}
           <div className="flex items-center gap-4">
             <button 
@@ -102,6 +93,13 @@ const Header = () => {
 
           {/* Navigation (Desktop) */}
           <nav className="hidden md:flex items-center gap-8 relative">
+            <Link 
+              className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
+              to="/"
+              onClick={closeMenus}
+            >
+              Home
+            </Link> 
             {menuItems.map((item) => (
               <div 
                 key={item.title} 

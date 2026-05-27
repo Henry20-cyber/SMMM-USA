@@ -17,7 +17,7 @@ export default function Links() {
   const links = [
     { name: 'The Vatican', url: 'https://www.vatican.va', img: vatican, fallbackText: 'VAT' },
     { name: 'EWTN Global Network', url: 'https://www.ewtn.com', img: null, fallbackText: 'EWTN', isEwtn: true },
-    { name: 'SMMM Nigeria Congregation', url: '#', img: smmm, fallbackText: 'SMMM' },
+    { name: 'SMMM Nigeria Congregation', url: 'https://smmmcongregation.org/', img: smmm, fallbackText: 'SMMM' },
     { name: 'SMMM Canada', url: 'https://smmmcanadaregion.ca/', img: smmm, fallbackText: 'SMMM' },
     { name: 'DMMM Congregation', url: 'https://sistersdmmm.org/', img: dmmm, fallbackText: 'DMMM' },
     { name: 'CBCN Nigeria', url: 'https://www.cbcn.org', img: cbcn, fallbackText: 'CBCN' },

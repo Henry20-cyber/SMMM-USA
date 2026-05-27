@@ -1,5 +1,6 @@
 // import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import img from '../assets/web-image.webp';
 
 const About = () => {
@@ -92,20 +93,20 @@ const About = () => {
             
             {/* Interactive Call To Action Buttons */}
             <div className="flex gap-4 mt-8 flex-wrap">
-              <a 
-                href="#history" 
+              <Link 
+                to="/History"
                 className="px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 border hover:opacity-90 shadow-sm"
                 style={{ backgroundColor: theme.gold, color: 'white', borderColor: theme.gold, fontFamily: "'Cinzel', serif" }}
               >
                 Our History
-              </a>
-              <a 
-                href="#charism" 
+              </Link>
+              <Link 
+                to="/Charism" 
                 className="px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 border bg-transparent hover:bg-slate-100"
                 style={{ borderColor: theme.gold, color: theme.gold, fontFamily: "'Cinzel', serif" }}
               >
                 Our Charism
-              </a>
+              </Link>
             </div>
           </motion.div>
 
@@ -183,6 +184,7 @@ const About = () => {
 
         </div>
       </div>
+      
     </section>
   );
 };

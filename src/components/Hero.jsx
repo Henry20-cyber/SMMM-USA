@@ -95,7 +95,7 @@ const Hero = () => {
           className="text-[0.65rem] md:text-xs font-bold tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border mb-6 backdrop-blur-sm shadow-sm"
           style={{ color: theme.gold, borderColor: 'rgba(201, 168, 76, 0.3)', backgroundColor: 'rgba(10, 25, 47, 0.4)' }}
         >
-          Welcome To The American Region
+          Welcome To The USA Region
         </motion.span>
 
         {/* Grand Title Heading */}
@@ -115,24 +115,7 @@ const Hero = () => {
           style={{ margin: "0 auto 1.8rem", width: '60px', height: '2px', backgroundColor: theme.gold }}
         />
 
-       {/* Scripture Quote */}
-<motion.p 
-  variants={elementVariants}
-  style={{
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "clamp(1.1rem, 2.5vw, 1.45rem)",
-    fontStyle: "italic",
-    color: "rgba(250,246,238,0.75)",
-    maxWidth: "600px",
-    margin: "0 auto 2.5rem",
-    lineHeight: "1.7" // <-- Fixed from line-height to lineHeight
-  }}
->
-  "Go and make disciples of all nations…"
-  <span style={{ display: "block", fontSize: "0.85rem", fontStyle: "normal", color: "rgba(201,168,76,0.6)", marginTop: "0.4rem", fontFamily: "'Cinzel', serif", letterSpacing: "0.08em" }}>
-    Matthew 28:19
-  </span>
-</motion.p>
+
         {/* Motto Badge */}
         <motion.div 
           variants={elementVariants}

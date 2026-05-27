@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/Landingpage';
 import Login from './pages/Login';
 import History from './pages/History';
+import Apostolate from './pages/Apostolate';
+import Charism from './pages/Charism';
+import Donations from './pages/Donations';
 import Contact from './pages/Contact';
 import Dashboard from './admin/Dashboard';
 import ProtectedRoute from './components/Protectedroute';
@@ -11,6 +14,7 @@ import { getSessionId } from "./utils/session";
 
 // ✅ FIXED: Import from AuthProvider.jsx, not AuthContext.js
 import { AuthProvider } from "./context/AuthProvider"; 
+import Sacredsymbols from './pages/Sacredsymbols';
 
 
 function App() {
@@ -44,6 +48,10 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/History" element={<History />} />
+          <Route path="/Charism" element={<Charism />} />
+          <Route path="/Apostolate" element={<Apostolate />} />
+          <Route path="/Donations" element={<Donations />} />
+          <Route path="/Sacredsymbols" element={<Sacredsymbols />} />
           <Route path="/Contact" element={<Contact />} />
 
           {/* Protected Pages */}

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import NavBar from '../components/Navbar';
 
 const Apostolate = () => {
   // Brand color palette
@@ -67,7 +68,8 @@ const Apostolate = () => {
   ];
 
   return (
-    <section id="apostolate" className="bg-slate-50 py-28 px-6 text-slate-900 overflow-hidden">
+    <section id="apostolate" className="bg-slate-50 pt-28 text-slate-900 overflow-hidden">
+      <NavBar />
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
@@ -133,6 +135,10 @@ const Apostolate = () => {
         </div>
 
       </div>
+       {/* Standard Regional Footer Block */}
+      <footer className="w-full text-center py-20 text-xs text-slate-400 border-t border-slate-200 bg-white">
+        <p>&copy; {new Date().getFullYear()} Sons of Mary Mother of Mercy (SMMM). All rights reserved.</p>
+      </footer>
     </section>
   );
 };
