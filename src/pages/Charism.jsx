@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from '../components/Navbar';
-import bg from '../assets/bg.jpg';
+import bg from '../assets/bg.webp';
 
 const heroImages = [
   bg,
