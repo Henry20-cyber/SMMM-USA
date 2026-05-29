@@ -41,6 +41,11 @@ const MissionAreas = () => {
       isHomeRegion: false
     },
     {
+      name: "Asia",
+      pills: ["Phillipines"],
+      isHomeRegion: false
+    },
+    {
       name: "North America",
       pills: ["USA", "Canada"],
       isHomeRegion: true,
@@ -151,19 +156,6 @@ const MissionAreas = () => {
           ))}
         </motion.div>
 
-        {/* Global Footer Notes Sub-panel */}
-        <motion.div 
-          className="text-center mt-8 px-6 py-4 rounded-sm"
-          style={{ border: '1px solid rgba(201,168,76,0.1)', backgroundColor: 'rgba(10, 25, 47, 0.1)' }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", color: "rgba(250,246,238,0.5)", fontSize: "0.95rem" }}>
-            Student members in the <strong style={{ color: 'rgba(201,168,76,0.6)', fontWeight: 600 }}>Republic of the Philippines</strong> also belong to the USA Region.
-          </p>
-        </motion.div>
 
       </div>
     </section>

@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from '../components/Navbar';
 import bg from '../assets/bg.webp';
+import wp7 from '../assets/wallpapers/wp(7).jpg';
+import wp8 from '../assets/wallpapers/wp(8).jpg';
+import wp5 from '../assets/wallpapers/wp(5).jpg';
 
 const heroImages = [
   bg,
-  '/images/hero-2.jpg',
-  '/images/hero-3.jpg',
-  '/images/hero-4.jpg',
-  '/images/hero-5.jpg',
-  '/images/hero-6.jpg',
-  '/images/hero-7.jpg',
-  '/images/hero-8.jpg',
+   wp7,
+   wp5,
+   wp8,
+  
 ];
 
 const Charism = () => {
@@ -98,7 +98,7 @@ const Charism = () => {
       <NavBar />
 
       {/* ================= SPLIT HERO SECTION: GRID 2 COLUMNS ================= */}
-      <section className="relative min-h-[90vh] flex items-center">
+      <section className="relative min-h-[90vh] flex items-center py-20 px-10">
         {/* Left Column: Text Content */}
         <div className="absolute inset-0 z-0 lg:relative lg:z-auto lg:w-1/2 flex items-center">
           <div className="max-w-xl mx-auto px-6 lg:px-12 py-16 lg:py-0">

@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import wp2 from '../assets/wallpapers/wp(2).jpg';
+import wp3 from '../assets/wallpapers/wp(3).jpg';
+import wp4 from '../assets/wallpapers/wp(4).jpg';
+import wp5 from '../assets/wallpapers/wp(5).jpg';
+import wp6 from '../assets/wallpapers/wp(6).jpg';
+import mary from '../assets/wallpapers/mary.jpg';
 
 const Hero = () => {
   // Hook to capture page scroll positioning for a premium background parallax effect
@@ -17,13 +23,20 @@ const Hero = () => {
   // --- NEW FEATURE: 8 IMAGES EVERY 10 SECONDS ---
   const images = [
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDg7rGbkSxtRi33eRjEeYidBr6pjcb1tbPePcGF4Wvt8XfBJVTD3scZ16a71r-WGGoEccaDERZZ3nSIm1O-zN04agoLlNYbjRpq_4VHbjuYNIo0OFRaiYkYGKh16B53KFCRzC5cprziLR2zr8UTavBG1zym8FmWUD95Hjbr3Gx-KV7ONKoRs_A0JBmlz5g7pc9Jh8g4pVp4AvcXvFRZdh5aRhb6XF6WjjP8PVXPFyTwzMj96KUmQsdRplaeUF5xtZtF-crMkmqGOZ8",
-    "https://images.unsplash.com/photo-1548625361-155defe219f2?q=80&w=1200", // Placeholder 2
+    wp2,
+    mary,
+    wp6,
+    wp3,
+   // "https://images.unsplash.com/photo-1548625361-155defe219f2?q=80&w=1200", // Placeholder 2
     "https://images.unsplash.com/photo-1478147427282-58a87a120781?q=80&w=1200", // Placeholder 3
-    "https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=1200", // Placeholder 4
-    "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1200", // Placeholder 5
-    "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?q=80&w=1200", // Placeholder 6
-    "https://images.unsplash.com/photo-1515162305285-0293e4767cc2?q=80&w=1200", // Placeholder 7
-    "https://images.unsplash.com/photo-1501393152198-34b240415948?q=80&w=1200"  // Placeholder 8
+    wp4,
+   // "https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=1200", // Placeholder 4
+   // "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1200", // Placeholder 5
+   // "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?q=80&w=1200", // Placeholder 6
+   wp5,
+
+   // "https://images.unsplash.com/photo-1515162305285-0293e4767cc2?q=80&w=1200", // Placeholder 7
+   // "https://images.unsplash.com/photo-1501393152198-34b240415948?q=80&w=1200"  // Placeholder 8
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

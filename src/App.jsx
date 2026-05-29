@@ -6,6 +6,7 @@ import Apostolate from './pages/Apostolate';
 import Charism from './pages/Charism';
 import Donations from './pages/Donations';
 import Contact from './pages/Contact';
+import Priests from './pages/Priests';
 import Dashboard from './admin/Dashboard';
 import ProtectedRoute from './components/Protectedroute';
 import { useEffect } from "react";
@@ -50,6 +51,7 @@ function App() {
           <Route path="/History" element={<History />} />
           <Route path="/Charism" element={<Charism />} />
           <Route path="/Apostolate" element={<Apostolate />} />
+          <Route path='/Priests' element={<Priests />} />
           <Route path="/Donations" element={<Donations />} />
           <Route path="/Sacredsymbols" element={<Sacredsymbols />} />
           <Route path="/Contact" element={<Contact />} />

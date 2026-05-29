@@ -5,7 +5,7 @@ const timelineData = [
   {
     year: "1970",
     title: "Founding",
-    content: "Sons of Mary Mother of Mercy (SMMM) founded on Oct 25 by Most Rev. Anthony Gogo Nwedo, C.S.Sp, as the first indigenous male religious order in West Africa."
+    content: "Sons of Mary Mother of Mercy (SMMM) founded on Oct 25 by Most Rev. Anthony Gogo Nwedo, C.S.Sp, as the first indigenous male religious order in sub-saharan West Africa."
   },
   {
     year: "1998",
@@ -25,7 +25,7 @@ const timelineData = [
   {
     year: "Today",
     title: "Global Presence",
-    content: "Currently 35 active members serve across various US Archdioceses and the Philippines, providing priestly and chaplaincy ministry."
+    content: "Currently 35 active members serve across various US dioceses, Archdioceses and the Philippines, providing priestly, chaplaincy ministry and continuing education."
   },
   {
     year: "2023",

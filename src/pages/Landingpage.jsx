@@ -6,7 +6,7 @@ import Summary from '../components/Summary';
 import Superiors from '../components/Superiors';
 // import Charism from '../components/Charism';
 // import Apostolate from './Apostolate';
-// import MissionAreas from '../components/MissionAreas';
+import MissionAreas from '../components/MissionAreas';
 import Banner from '../components/Banner';
 // import Donations from '../components/Donations';
 import Contact from '../components/Contact';
@@ -26,10 +26,11 @@ const LandingPage = () => {
         <About />
         <Superiors />
         <Summary />
+         <MissionAreas />
         {/*   <Sacredsymbols />
         <Charism />
         <Apostolate />
-        <MissionAreas />
+       
         
         <Donations /> */}
         <Contact />

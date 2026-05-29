@@ -66,7 +66,7 @@ const Header = () => {
   return (
     <AnimatePresence>
       <motion.header
-        className="fixed top-0 w-full z-50 border-b border-blue-900/10 bg-white shadow-sm"
+        className="fixed top-0 w-full h-17 z-50 border-b border-blue-900/10 bg-white shadow-sm"
         initial="initial"
         animate="animate"
         exit="exit"
@@ -138,6 +138,14 @@ const Header = () => {
               </div>
             ))} 
 
+
+            <Link 
+              className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
+              to="/Priests"
+              onClick={closeMenus}
+            >
+              Our Priests
+            </Link>
             <Link 
               className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
               to="/Contact"
@@ -165,6 +173,9 @@ const Header = () => {
               exit={{ height: 0, opacity: 0 }}
               className="md:hidden bg-white border-t border-slate-100 px-6 py-4 flex flex-col gap-4 overflow-hidden"
             >
+              <Link to="/" onClick={closeMenus} className="text-slate-600 font-semibold">
+                Home
+              </Link>
               {menuItems.map((item) => (
                 <div key={item.title} className="flex flex-col gap-2">
                   <button 
@@ -191,6 +202,9 @@ const Header = () => {
                 </div>
               ))}
 
+              <Link to="/Priests" onClick={closeMenus} className="text-slate-600 font-semibold">
+                Our Priests
+              </Link>
               <Link to="/Contact" onClick={closeMenus} className="text-slate-600 font-semibold">
                 Contact Us
               </Link>

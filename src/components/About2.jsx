@@ -150,12 +150,6 @@ const About = () => {
                   Most Rev. Anthony Gogo Nwedo
                 </h4>
                 
-                <p 
-                  className="text-[0.85rem] italic mb-5 block"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", color: 'rgba(201,168,76,0.75)' }}
-                >
-                  C.S.Sp. — Founder, of Blessed Memory
-                </p>
                 
                 <p 
                   className="text-[1rem] leading-relaxed relative z-10 font-light"

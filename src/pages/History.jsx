@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
+import wp6 from '../assets/wallpapers/wp(6).jpg';
+import wp3 from '../assets/wallpapers/wp(3).jpg';
+import wp7 from '../assets/wallpapers/wp(7).jpg';
+
 
 // 8 carefully curated high-quality images representing pastoral service, missions, and community light
 const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1600&q=80", 
-  "https://images.unsplash.com/photo-1548625361-155deee26575?auto=format&fit=crop&w=1600&q=80", 
-  "https://images.unsplash.com/photo-1515787366009-7cbdd2dc587b?auto=format&fit=crop&w=1600&q=80", 
-  "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?auto=format&fit=crop&w=1600&q=80", 
+  "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1600&q=80",
+  wp6,
+  wp7,  
   "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80", 
-  "https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=1600&q=80", 
-  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80", 
-  "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80"  
+  wp3,
 ];
 
 const REGIONAL_SUPERIORS = [

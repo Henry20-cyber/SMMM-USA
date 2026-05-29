@@ -1,5 +1,6 @@
 // import React from 'react';
 import { motion } from 'framer-motion';
+import ibe from '../assets/images/ibelaga.png';
 
 const Superiors = () => {
   const fadeIn = {
@@ -35,7 +36,7 @@ const Superiors = () => {
             <img 
               className="w-full aspect-[3/4] object-cover rounded mb-6" 
               alt="portrait of a distinguished man in a clerical collar with a warm and gentle expression" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZq5GO42KC3rUxDj8UKt2VDuijt46ERBvU_4Y3cmDlyxtat6Ye79Bp7wzxG37aHYdSDw8SHLJtu1JB80pvcA8Szwpc4a1XeRu4fk9Xg3ljTK5BPTR71VkjYic_Hurrd77I57kZEqkVwji79SUrkhHDKdIJxiUIxmP4xRy9ThGu6JBb4kkhLHtIgm3X44uBw0mJAQgkcz0543Zy1yAg9XhVjDEFxy6f49b7jTzJTuCd0MeNc4ezS5lqk10vogbbI-3BKPiN46YDkeE"
+              src={ibe}
             />
             <div className="text-center">
               <h4 className="font-headline-md text-xl text-primary mb-1">Very Rev. Dr. Anselm Ugochukwu Ibe, SMMM </h4>
