@@ -1,6 +1,6 @@
 // import React from 'react';
 import { motion } from 'framer-motion';
-import ibe from '../assets/images/ibelaga.png';
+import ibe from '../assets/images/priest(08).png';
 
 const Superiors = () => {
   const fadeIn = {

@@ -1,6 +1,17 @@
 @import "tailwindcss";
 
 @theme {
+
+  --marian-blue: "#003366";
+  --marian-dark: "#0a192f";
+  --sacred-red: "#B22222";
+  --sacred-gold: "#c9a84c";
+  --warm-stone: "#F9F7F2";
+  --vatican-grey: "#6C757D";
+  --slate-gold-fine: "rgba(201,168,76,0.15)";
+
+
+
   /* Colors */
   --color-tertiary: #151819;
   --color-on-secondary: #ffffff;
