@@ -15,10 +15,10 @@ const Header = () => {
       title: 'Our Identity',
       options: [
         { name: 'History', path: "/History" },
-        { name: 'Mission', path: "/#mission" },
         { name: 'Sacred Symbols', path: "/sacredsymbols" },
         { name: 'Charism', path: "/charism" },
         { name: 'Apostolate', path: "/apostolate" },
+        { name: 'Gallery', path: "/Gallery" },
         { name: 'Donations', path: "/donations" },
       ]
     },

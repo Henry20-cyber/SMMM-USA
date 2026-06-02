@@ -34,12 +34,7 @@ const Superiors = () => {
           >
             Our Regional Executives
           </h2>
-          <p 
-            className="text-lg max-w-xl mx-auto"
-            style={{ color: theme.black }}
-          >
-            Guided by wisdom and spiritual leadership, our superiors steer the mission of the US Chapter.
-          </p>
+      
           <div className="w-16 h-[2px] mx-auto mt-6" style={{ backgroundColor: theme.greenLight }} />
         </motion.div>
 

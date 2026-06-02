@@ -7,6 +7,7 @@ import Charism from './pages/Charism';
 import Donations from './pages/Donations';
 import Contact from './pages/Contact';
 import Priests from './pages/Priests';
+import Gallery from './pages/Gallery';
 import Dashboard from './admin/Dashboard';
 import ProtectedRoute from './components/Protectedroute';
 import { useEffect } from "react";
@@ -55,6 +56,7 @@ function App() {
           <Route path="/Donations" element={<Donations />} />
           <Route path="/Sacredsymbols" element={<Sacredsymbols />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/Gallery" element={<Gallery />} />
 
           {/* Protected Pages */}
           <Route 
