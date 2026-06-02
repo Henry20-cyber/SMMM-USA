@@ -1,14 +1,14 @@
 import React from 'react';
 
 const Banner = () => {
+  // New palette: green background, white text
   const theme = {
-    navy: '#0a192f',
-    goldMuted: 'rgba(201, 168, 76, 0.35)',
-    goldFaint: 'rgba(201, 168, 76, 0.2)',
-    borderGold: 'rgba(201, 168, 76, 0.12)'
+    greenBg: '#166534',     // rich green background (primary)
+    white: '#ffffff',
+    whiteMuted: 'rgba(255, 255, 255, 0.7)',
+    whiteFaint: 'rgba(255, 255, 255, 0.3)'
   };
 
-  // The text components array (reused to build the secondary track loop)
   const items = [
     "Evangelizare Pauperibus Misit Me",
     "Sons of Mary Mother of Mercy",
@@ -16,7 +16,6 @@ const Banner = () => {
     "Mercy · Compassion · Forgiveness · Kindness"
   ];
 
-  // Render method for a single track row
   const renderTrackContent = () => (
     <>
       {items.map((item, index) => (
@@ -26,12 +25,12 @@ const Banner = () => {
             style={{ 
               fontFamily: "'Cinzel', serif", 
               fontSize: '0.65rem', 
-              color: theme.goldMuted 
+              color: theme.whiteMuted 
             }}
           >
             {item}
           </span>
-          <span className="select-none" style={{ color: theme.goldFaint }}>✦</span>
+          <span className="select-none" style={{ color: theme.whiteFaint }}>✦</span>
         </React.Fragment>
       ))}
     </>
@@ -41,14 +40,10 @@ const Banner = () => {
     <div 
       className="relative w-full py-4 overflow-hidden border-t border-b flex"
       style={{ 
-        backgroundColor: theme.navy, 
-        borderColor: theme.borderGold 
+        backgroundColor: theme.greenBg, 
+        borderColor: theme.whiteFaint 
       }}
     >
-      {/* 
-        Injecting the infinite loop keyframes directly. 
-        translateX(-100%) pushes the content perfectly back across the screen
-      */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes marquee {
           0% { transform: translateX(0%); }
@@ -59,12 +54,10 @@ const Banner = () => {
         }
       `}} />
 
-      {/* Wrapping Container for Dual Looping Tracks */}
       <div className="flex min-w-full shrink-0 items-center justify-around gap-16 pr-16 animate-marquee-track">
         {renderTrackContent()}
       </div>
       
-      {/* Secondary Track - Shadows the original layout to eliminate blank space resets */}
       <div aria-hidden="true" className="flex min-w-full shrink-0 items-center justify-around gap-16 pr-16 animate-marquee-track">
         {renderTrackContent()}
       </div>

@@ -1,4 +1,3 @@
-// import React from 'react';
 import { motion } from 'framer-motion';
 
 const timelineData = [
@@ -35,6 +34,18 @@ const timelineData = [
 ];
 
 const Summary = () => {
+  // Green, white, black palette
+  const theme = {
+    greenDeep: '#064e3b',
+    greenPrimary: '#166534',
+    greenLight: '#4ade80',
+    white: '#ffffff',
+    black: '#111111',
+    offWhite: '#f5f5f0',
+    grayLight: '#e5e7eb',
+    grayMedium: '#9ca3af'
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -49,7 +60,7 @@ const Summary = () => {
   };
 
   return (
-    <section className="bg-surface-container-low py-20 px-6">
+    <section className="py-20 px-6" style={{ backgroundColor: theme.offWhite }}>
       {/* Section Header */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
@@ -57,13 +68,21 @@ const Summary = () => {
         viewport={{ once: true }}
         className="max-w-3xl mx-auto text-center mb-20"
       >
-        <h2 className="font-headline-md text-4xl font-bold text-primary mb-4">Our Journey of Faith</h2>
-        <div className="w-20 h-1.5 bg-secondary mx-auto rounded-full"></div>
+        <h2 
+          className="text-4xl md:text-5xl font-semibold mb-4 tracking-wide"
+          style={{ fontFamily: "'Cinzel', serif", color: theme.greenPrimary }}
+        >
+          Our Journey of Faith
+        </h2>
+        <div className="w-20 h-1 rounded-full mx-auto" style={{ backgroundColor: theme.greenLight }}></div>
       </motion.div>
 
       <div className="max-w-5xl mx-auto">
         {/* Intro Paragraph */}
-        <p className="text-lg text-outline mb-16 leading-relaxed text-center italic">
+        <p 
+          className="text-lg mb-16 leading-relaxed text-center italic"
+          style={{ color: theme.greenDeep }}
+        >
           "Go and make disciples of all nations..." — Matthew 28:19
         </p>
 
@@ -73,7 +92,8 @@ const Summary = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="relative border-l-2 border-secondary/30 ml-4 md:ml-0 md:grid md:grid-cols-2 md:gap-x-12 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:w-0.5 md:before:h-full md:before:bg-secondary/30"
+          className="relative border-l-2 ml-4 md:ml-0 md:grid md:grid-cols-2 md:gap-x-12 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:w-0.5 md:before:h-full"
+          style={{ borderLeftColor: `${theme.greenLight}40`, position: 'relative' }}
         >
           {timelineData.map((item, index) => (
             <motion.div 
@@ -84,12 +104,28 @@ const Summary = () => {
               }`}
             >
               {/* Dot on Timeline */}
-              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-secondary md:left-1/2 md:-translate-x-1/2 shadow-lg shadow-secondary/50"></div>
+              <div 
+                className="absolute -left-[9px] top-0 w-4 h-4 rounded-full md:left-1/2 md:-translate-x-1/2 shadow-lg"
+                style={{ backgroundColor: theme.greenLight, boxShadow: `0 0 0 2px ${theme.white}, 0 0 0 4px ${theme.greenLight}80` }}
+              ></div>
               
               <div className="pl-6 md:pl-0">
-                <span className="text-secondary font-bold text-xl block mb-1">{item.year}</span>
-                <h3 className="text-primary font-bold text-2xl mb-3">{item.title}</h3>
-                <p className="text-outline leading-relaxed bg-white/50 p-4 rounded-lg shadow-sm">
+                <span 
+                  className="text-xl font-bold block mb-1"
+                  style={{ color: theme.greenLight }}
+                >
+                  {item.year}
+                </span>
+                <h3 
+                  className="text-2xl font-bold mb-3"
+                  style={{ fontFamily: "'Cinzel', serif", color: theme.greenPrimary }}
+                >
+                  {item.title}
+                </h3>
+                <p 
+                  className="leading-relaxed p-4 rounded-lg shadow-sm"
+                  style={{ color: theme.black, backgroundColor: theme.white }}
+                >
                   {item.content}
                 </p>
               </div>

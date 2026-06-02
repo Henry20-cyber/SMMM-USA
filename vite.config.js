@@ -8,4 +8,12 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  esbuild: {
+    loader: 'jsx',
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      loader: { '.jsx': 'jsx' },
+    },
+  },
 })

@@ -9,7 +9,19 @@ const ChatBot = () => {
   ]);
   const scrollRef = useRef(null);
 
-  // Auto-scroll to the bottom when new messages arrive
+  // Green, white, black palette
+  const theme = {
+    greenLight: '#4ade80',
+    greenPrimary: '#166534',
+    greenDeep: '#064e3b',
+    white: '#ffffff',
+    black: '#111111',
+    offWhite: '#fafaf5',
+    textDark: '#1a1a1a',
+    textMuted: '#4b5563',
+    borderGreen: 'rgba(74, 222, 128, 0.2)'
+  };
+
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -24,7 +36,6 @@ const ChatBot = () => {
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
 
-    // Simulate AI thinking/typing
     setTimeout(() => {
       const aiResponse = { 
         role: 'assistant', 
@@ -42,10 +53,11 @@ const ChatBot = () => {
             initial={{ opacity: 0, scale: 0, originX: 1, originY: 1 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
-            className="absolute bottom-16 right-0 mb-4 w-80 bg-white rounded-xl shadow-2xl border border-blue-900/10 overflow-hidden"
+            className="absolute bottom-16 right-0 mb-4 w-80 rounded-xl shadow-2xl overflow-hidden"
+            style={{ backgroundColor: theme.white, border: `1px solid ${theme.borderGreen}` }}
           >
             {/* Header */}
-            <div className="bg-primary p-4 text-white flex justify-between items-center">
+            <div className="p-4 text-white flex justify-between items-center" style={{ backgroundColor: theme.greenPrimary }}>
               <div>
                 <h4 className="font-bold text-sm">SMMM Support</h4>
                 <p className="text-xs opacity-80">Online</p>
@@ -55,16 +67,22 @@ const ChatBot = () => {
             {/* Chat Area */}
             <div 
               ref={scrollRef}
-              className="p-4 bg-surface h-64 overflow-y-auto space-y-4 flex flex-col"
+              className="p-4 h-64 overflow-y-auto space-y-4 flex flex-col"
+              style={{ backgroundColor: theme.offWhite }}
             >
               {messages.map((msg, index) => (
                 <div 
                   key={index}
                   className={`p-3 rounded-lg text-sm max-w-[85%] ${
                     msg.role === 'user' 
-                      ? 'bg-secondary text-on-secondary self-end rounded-tr-none' 
-                      : 'bg-primary-fixed text-on-primary-fixed self-start rounded-tl-none'
+                      ? 'self-end rounded-tr-none' 
+                      : 'self-start rounded-tl-none'
                   }`}
+                  style={{
+                    backgroundColor: msg.role === 'user' ? theme.greenLight : theme.white,
+                    color: msg.role === 'user' ? theme.black : theme.textDark,
+                    border: msg.role === 'user' ? 'none' : `1px solid ${theme.borderGreen}`
+                  }}
                 >
                   {msg.content}
                 </div>
@@ -72,15 +90,20 @@ const ChatBot = () => {
             </div>
 
             {/* Input Area */}
-            <form onSubmit={handleSendMessage} className="p-3 border-t flex gap-2 bg-white">
+            <form onSubmit={handleSendMessage} className="p-3 border-t flex gap-2" style={{ backgroundColor: theme.white, borderColor: theme.borderGreen }}>
               <input 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                className="flex-1 text-xs border-none focus:ring-0 p-1 bg-transparent text-primary" 
+                className="flex-1 text-xs p-1 bg-transparent focus:outline-none" 
+                style={{ color: theme.textDark }}
                 placeholder="Ask about our mission..." 
                 type="text"
               />
-              <button type="submit" className="text-secondary hover:scale-110 transition-transform">
+              <button 
+                type="submit" 
+                className="transition-transform hover:scale-110"
+                style={{ color: theme.greenPrimary }}
+              >
                 <span className="material-symbols-outlined">send</span>
               </button>
             </form>
@@ -92,7 +115,8 @@ const ChatBot = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center"
+        className="w-14 h-14 rounded-full shadow-lg flex items-center justify-center"
+        style={{ backgroundColor: theme.greenPrimary, color: theme.white }}
       >
         <span className="material-symbols-outlined text-3xl">
           {isOpen ? 'close' : 'chat_bubble'}

@@ -1,4 +1,3 @@
-// import React from 'react';
 import { motion } from 'framer-motion';
 import NavBar from '../components/Navbar';
 
@@ -23,8 +22,22 @@ const fadeInUpVariant = {
 };
 
 export default function Donations() {
+  // Green, white, black palette
+  const theme = {
+    greenPrimary: '#166534',
+    greenLight: '#4ade80',
+    greenDeep: '#064e3b',
+    white: '#ffffff',
+    black: '#111111',
+    offWhite: '#fafaf5',
+    textDark: '#1a1a1a',
+    textMuted: '#4b5563',
+    textLight: '#6c757d',
+    borderLight: 'rgba(22, 101, 52, 0.12)'
+  };
+
   return (
-    <div className="bg-[#faf9f6] text-[#0a192f] antialiased font-sans min-h-screen flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col justify-between antialiased" style={{ backgroundColor: theme.offWhite, color: theme.textDark }}>
       {/* Dynamic Font Styling Injector */}
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -51,26 +64,25 @@ export default function Donations() {
 
         {/* Header Section */}
         <motion.header variants={fadeInUpVariant} className="text-center mb-16">
-          <span className="text-[10px] tracking-[0.3em] font-cinzel font-bold text-[#c9a84c] uppercase mb-3 block">
-            Sons of Mary Mother of Mercy &middot; American Region
-          </span>
-          <h1 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-[#003366] tracking-wide leading-tight">
+
+          <h1 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide leading-tight" style={{ color: theme.black }}>
             Help Bring a Priest to the Altar
           </h1>
-          <p className="font-cinzel text-xs sm:text-sm text-[#6C757D] tracking-widest uppercase mt-2 font-medium">
+          <p className="font-cinzel text-xs sm:text-sm tracking-widest uppercase mt-2 font-medium" style={{ color: theme.textMuted }}>
             Direct Financial Remittance &amp; Support Options
           </p>
-          <div className="w-16 h-[2px] bg-[#c9a84c] mx-auto mt-6"></div>
+          <div className="w-16 h-[2px] mx-auto mt-6" style={{ backgroundColor: theme.greenLight }}></div>
         </motion.header>
 
         {/* Quote Block */}
         <motion.div 
           variants={fadeInUpVariant} 
-          className="bg-[#0a192f] rounded-2xl p-8 md:p-10 text-center relative overflow-hidden mb-12 shadow-xl border border-[rgba(201,168,76,0.15)]"
+          className="rounded-2xl p-8 md:p-10 text-center relative overflow-hidden mb-12 shadow-xl"
+          style={{ backgroundColor: theme.greenDeep, border: `1px solid ${theme.borderLight}` }}
         >
-          <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#c9a84c_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
-          <span className="material-symbols-outlined text-[#c9a84c] text-3xl mb-4 block">format_quote</span>
-          <p className="font-garamond text-xl sm:text-2xl text-slate-100 italic leading-relaxed max-w-2xl mx-auto">
+          <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#4ade80_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+          <span className="material-symbols-outlined text-3xl mb-4 block" style={{ color: theme.greenLight }}>format_quote</span>
+          <p className="font-garamond text-xl sm:text-2xl text-white italic leading-relaxed max-w-2xl mx-auto">
             "It is through the act of giving that we discover the true purpose and care of our lives."
           </p>
         </motion.div>
@@ -82,17 +94,18 @@ export default function Donations() {
             variants={fadeInUpVariant}
             whileHover={{ y: -4 }}
             transition={{ duration: 0.2 }}
-            className="bg-white p-8 border border-[rgba(201,168,76,0.15)] rounded-xl shadow-sm flex flex-col justify-between"
+            className="bg-white p-8 rounded-xl shadow-sm flex flex-col justify-between"
+            style={{ border: `1px solid ${theme.borderLight}` }}
           >
             <div>
-              <div className="flex items-center gap-3 text-[#003366] mb-4">
-                <span className="material-symbols-outlined text-2xl text-[#c9a84c]">school</span>
+              <div className="flex items-center gap-3 mb-4" style={{ color: theme.black }}>
+                <span className="material-symbols-outlined text-2xl" style={{ color: theme.greenLight }}>school</span>
                 <h3 className="font-cinzel font-bold text-sm tracking-widest uppercase">The School Apostolate</h3>
               </div>
-              <p className="font-serif text-[15px] sm:text-base text-slate-600 leading-relaxed mb-4">
+              <p className="font-serif text-[15px] sm:text-base leading-relaxed mb-4" style={{ color: theme.textMuted }}>
                 The school apostolate is another core focus, allowing us to care for indigent children. Missionary work relies on both field service and financial contributions. Within the Sons of Mary Mother of Mercy (SMMM), your donations are essential for advancing our mission.
               </p>
-              <p className="font-serif text-[15px] sm:text-base text-slate-600 leading-relaxed">
+              <p className="font-serif text-[15px] sm:text-base leading-relaxed" style={{ color: theme.textMuted }}>
                 We invite you to participate in the formation of our future clergy. At this time, the SMMM family is blessed with many dedicated candidates pursuing vocations in both religious life and ministerial priesthood.
               </p>
             </div>
@@ -103,14 +116,15 @@ export default function Donations() {
             variants={fadeInUpVariant}
             whileHover={{ y: -4 }}
             transition={{ duration: 0.2 }}
-            className="bg-white p-8 border border-[rgba(201,168,76,0.15)] rounded-xl shadow-sm flex flex-col justify-between"
+            className="bg-white p-8 rounded-xl shadow-sm flex flex-col justify-between"
+            style={{ border: `1px solid ${theme.borderLight}` }}
           >
             <div>
-              <div className="flex items-center gap-3 text-[#003366] mb-4">
-                <span className="material-symbols-outlined text-2xl text-[#c9a84c]">assignment_turned_in</span>
+              <div className="flex items-center gap-3 mb-4" style={{ color: theme.black }}>
+                <span className="material-symbols-outlined text-2xl" style={{ color: theme.greenLight }}>assignment_turned_in</span>
                 <h3 className="font-cinzel font-bold text-sm tracking-widest uppercase">Our Core Targets</h3>
               </div>
-              <ul className="space-y-4 font-medium text-slate-700 text-sm sm:text-base">
+              <ul className="space-y-4 font-medium text-sm sm:text-base" style={{ color: theme.textDark }}>
                 {[
                   "Constructing mission schools",
                   "Providing educational scholarships",
@@ -119,7 +133,7 @@ export default function Donations() {
                   "Teacher professional development"
                 ].map((target, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[#B22222] text-xs mt-1.5">fiber_manual_record</span>
+                    <span className="material-symbols-outlined text-xs mt-1.5" style={{ color: theme.greenPrimary }}>fiber_manual_record</span>
                     <span>{target}</span>
                   </li>
                 ))}
@@ -131,75 +145,76 @@ export default function Donations() {
         {/* Remittance Block */}
         <motion.section 
           variants={fadeInUpVariant}
-          className="bg-white border border-[rgba(201,168,76,0.15)] rounded-2xl shadow-md overflow-hidden"
+          className="bg-white rounded-2xl shadow-md overflow-hidden"
+          style={{ border: `1px solid ${theme.borderLight}` }}
         >
-          <div className="p-8 md:p-12 border-b border-slate-100 text-center">
-            <h2 className="font-cinzel text-xl md:text-2xl font-bold tracking-wide text-[#003366] mb-2">Support Remittance Details</h2>
-            <p className="text-slate-500 text-xs sm:text-sm font-medium max-w-md mx-auto">You can make your direct financial contributions using the verified banking information or physical address parameters listed below.</p>
+          <div className="p-8 md:p-12 border-b text-center" style={{ borderColor: theme.borderLight }}>
+            <h2 className="font-cinzel text-xl md:text-2xl font-bold tracking-wide mb-2" style={{ color: theme.black }}>Support Remittance Details</h2>
+            <p className="text-xs sm:text-sm font-medium max-w-md mx-auto" style={{ color: theme.textMuted }}>You can make your direct financial contributions using the verified banking information or physical address parameters listed below.</p>
           </div>
 
           <div className="p-8 md:p-12 space-y-10">
 
             {/* Bank Transfer Details */}
             <div className="space-y-4">
-              <h3 className="font-cinzel font-bold text-sm tracking-widest text-[#003366] uppercase flex items-center gap-2">
-                <span className="material-symbols-outlined text-[#c9a84c]">account_balance</span> Bank Wire &amp; Transfer Details
+              <h3 className="font-cinzel font-bold text-sm tracking-widest uppercase flex items-center gap-2" style={{ color: theme.black }}>
+                <span className="material-symbols-outlined" style={{ color: theme.greenLight }}>account_balance</span> Bank Wire &amp; Transfer Details
               </h3>
 
-              <div className="bg-[#F9F7F2]/50 border border-[rgba(201,168,76,0.15)]/40 rounded-xl overflow-hidden shadow-inner">
-                <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-slate-200/60">
-                  <div className="p-4 text-xs font-bold font-cinzel text-[#6C757D] uppercase tracking-wider bg-[#F9F7F2]/80 border-b sm:border-b-0 sm:border-r border-slate-200/60">Bank Name</div>
-                  <div className="p-4 sm:col-span-2 text-sm font-semibold text-[#0a192f]">JPMorgan Chase Bank</div>
+              <div className="rounded-xl overflow-hidden shadow-inner" style={{ backgroundColor: theme.offWhite, border: `1px solid ${theme.borderLight}` }}>
+                <div className="grid grid-cols-1 sm:grid-cols-3" style={{ borderBottom: `1px solid ${theme.borderLight}` }}>
+                  <div className="p-4 text-xs font-bold font-cinzel uppercase tracking-wider" style={{ color: theme.textMuted, backgroundColor: `${theme.borderLight}20`, borderRight: `1px solid ${theme.borderLight}` }}>Bank Name</div>
+                  <div className="p-4 sm:col-span-2 text-sm font-semibold" style={{ color: theme.black }}>JPMorgan Chase Bank</div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-slate-200/60">
-                  <div className="p-4 text-xs font-bold font-cinzel text-[#6C757D] uppercase tracking-wider bg-[#F9F7F2]/80 border-b sm:border-b-0 sm:border-r border-slate-200/60">Account Name</div>
-                  <div className="p-4 sm:col-span-2 text-sm font-semibold text-[#0a192f]">Sons of Mary Mother of Mercy, SMMM</div>
+                <div className="grid grid-cols-1 sm:grid-cols-3" style={{ borderBottom: `1px solid ${theme.borderLight}` }}>
+                  <div className="p-4 text-xs font-bold font-cinzel uppercase tracking-wider" style={{ color: theme.textMuted, backgroundColor: `${theme.borderLight}20`, borderRight: `1px solid ${theme.borderLight}` }}>Account Name</div>
+                  <div className="p-4 sm:col-span-2 text-sm font-semibold" style={{ color: theme.black }}>Sons of Mary Mother of Mercy, SMMM</div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 border-b border-slate-200/60">
-                  <div className="p-4 text-xs font-bold font-cinzel text-[#6C757D] uppercase tracking-wider bg-[#F9F7F2]/80 border-b sm:border-b-0 sm:border-r border-slate-200/60">Account Number</div>
-                  <div className="p-4 sm:col-span-2 text-sm font-mono font-bold text-[#003366] tracking-wide flex items-center justify-between">
+                <div className="grid grid-cols-1 sm:grid-cols-3" style={{ borderBottom: `1px solid ${theme.borderLight}` }}>
+                  <div className="p-4 text-xs font-bold font-cinzel uppercase tracking-wider" style={{ color: theme.textMuted, backgroundColor: `${theme.borderLight}20`, borderRight: `1px solid ${theme.borderLight}` }}>Account Number</div>
+                  <div className="p-4 sm:col-span-2 text-sm font-mono font-bold tracking-wide flex items-center justify-between" style={{ color: theme.greenPrimary }}>
                     <span>322271627</span>
-                    <span className="text-[10px] uppercase font-sans font-medium text-[#6C757D] bg-white px-2 py-0.5 border border-slate-200 rounded">Checking</span>
+                    <span className="text-[10px] uppercase font-sans font-medium px-2 py-0.5 border rounded" style={{ color: theme.textMuted, backgroundColor: theme.white, borderColor: theme.borderLight }}>Checking</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3">
-                  <div className="p-4 text-xs font-bold font-cinzel text-[#6C757D] uppercase tracking-wider bg-[#F9F7F2]/80 border-b sm:border-b-0 sm:border-r border-slate-200/60">Routing Transit</div>
-                  <div className="p-4 sm:col-span-2 text-sm font-mono font-semibold text-[#0a192f]">003654</div>
+                  <div className="p-4 text-xs font-bold font-cinzel uppercase tracking-wider" style={{ color: theme.textMuted, backgroundColor: `${theme.borderLight}20`, borderRight: `1px solid ${theme.borderLight}` }}>Routing Transit</div>
+                  <div className="p-4 sm:col-span-2 text-sm font-mono font-semibold" style={{ color: theme.black }}>003654</div>
                 </div>
               </div>
             </div>
 
-            <div className="h-[1px] bg-slate-100"></div>
+            <div className="h-[1px]" style={{ backgroundColor: theme.borderLight }}></div>
 
             {/* Check Mailing Details */}
             <div className="space-y-4">
-              <h3 className="font-cinzel font-bold text-sm tracking-widest text-[#003366] uppercase flex items-center gap-2">
-                <span className="material-symbols-outlined text-[#c9a84c]">mail</span> Remittance By Check
+              <h3 className="font-cinzel font-bold text-sm tracking-widest uppercase flex items-center gap-2" style={{ color: theme.black }}>
+                <span className="material-symbols-outlined" style={{ color: theme.greenLight }}>mail</span> Remittance By Check
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                If making your contribution via physical check or draft order, please make all payments payable to <strong className="text-[#0a192f]">"SMMM American Region"</strong> and route them directly to our regional office:
+              <p className="text-xs sm:text-sm leading-relaxed" style={{ color: theme.textMuted }}>
+                If making your contribution via physical check or draft order, please make all payments payable to <strong className="font-semibold" style={{ color: theme.black }}>"SMMM American Region"</strong> and route them directly to our regional office:
               </p>
 
-              <div className="bg-white border border-slate-200 p-5 rounded-xl flex items-start gap-4 shadow-sm">
-                <span className="material-symbols-outlined text-[#B22222] text-2xl mt-0.5">corporate_fare</span>
+              <div className="bg-white p-5 rounded-xl flex items-start gap-4 shadow-sm" style={{ border: `1px solid ${theme.borderLight}` }}>
+                <span className="material-symbols-outlined text-2xl mt-0.5" style={{ color: theme.greenPrimary }}>corporate_fare</span>
                 <div>
-                  <h4 className="text-sm font-bold text-[#0a192f] mb-0.5">SMMM Regional House Office</h4>
-                  <p className="text-sm text-slate-600 leading-relaxed">1550 N. Fresno Street,</p>
-                  <p className="text-sm text-slate-600 leading-relaxed">Fresno, CA 93703</p>
+                  <h4 className="text-sm font-bold mb-0.5" style={{ color: theme.black }}>SMMM Regional House Office</h4>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.textMuted }}>1550 N. Fresno Street,</p>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.textMuted }}>Fresno, CA 93703</p>
                 </div>
               </div>
             </div>
 
             {/* Verification & Footnote Note */}
-            <div className="text-center space-y-3 py-2 border-t border-b border-slate-100">
-              <p className="text-xs text-[#6C757D] font-medium flex items-center justify-center gap-1.5">
-                <span className="material-symbols-outlined text-sm text-emerald-600">verified</span>
+            <div className="text-center space-y-3 py-2 border-t border-b" style={{ borderColor: theme.borderLight }}>
+              <p className="text-xs font-medium flex items-center justify-center gap-1.5" style={{ color: theme.textMuted }}>
+                <span className="material-symbols-outlined text-sm" style={{ color: theme.greenPrimary }}>verified</span>
                 An official tax receipt for the total value of your annual donations will be dispatched to your address.
               </p>
-              <p className="font-garamond text-base sm:text-lg text-[#003366] italic font-medium leading-relaxed">
+              <p className="font-garamond text-base sm:text-lg italic font-medium leading-relaxed" style={{ color: theme.greenPrimary }}>
                 "We remain deeply grateful for your vital financial assistance and keep you in our prayers as you support this mission!"
               </p>
             </div>
@@ -210,8 +225,8 @@ export default function Donations() {
       </motion.main>
 
       {/* Footer */}
-      <footer className="w-full text-center py-8 text-xs text-[#6C757D] border-t border-[rgba(201,168,76,0.15)] bg-white">
-        <p>&copy; 2026 Sons of Mary Mother of Mercy (SMMM). All rights reserved.</p>
+      <footer className="w-full text-center py-8 text-xs border-t" style={{ color: theme.textMuted, borderColor: theme.borderLight, backgroundColor: theme.white }}>
+        <p>&copy; {new Date().getFullYear()} Sons of Mary Mother of Mercy (SMMM). All rights reserved.</p>
       </footer>
     </div>
   );

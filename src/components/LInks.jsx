@@ -14,6 +14,20 @@ export default function Links() {
   const [isDragging, setIsDragging] = useState(false);
   const [trackWidth, setTrackWidth] = useState(0);
 
+  // Green, white, black palette
+  const theme = {
+    greenLight: '#4ade80',
+    greenPrimary: '#166534',
+    greenDeep: '#064e3b',
+    white: '#ffffff',
+    black: '#111111',
+    offWhite: '#fafaf5',
+    textDark: '#1a1a1a',
+    textMuted: '#4b5563',
+    borderGreen: 'rgba(74, 222, 128, 0.15)',
+    bgGreenSoft: 'rgba(22, 101, 52, 0.05)'
+  };
+
   const links = [
     { name: 'The Vatican', url: 'https://www.vatican.va', img: vatican, fallbackText: 'VAT' },
     { name: 'EWTN Global Network', url: 'https://www.ewtn.com', img: null, fallbackText: 'EWTN', isEwtn: true },
@@ -35,7 +49,7 @@ export default function Links() {
 
   // Control the automatic loop cycle based on interaction states
   useEffect(() => {
-    if (!isHovered && !isDragging) {
+    if (!isHovered && !isDragging && trackWidth) {
       controls.start({
         x: [0, -(trackWidth / 3)],
         transition: {
@@ -59,13 +73,13 @@ export default function Links() {
       <section className="max-w-7xl mx-auto px-6 py-16 overflow-x-hidden select-none">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 font-['Inter']">
+          <p className="text-xs font-bold uppercase tracking-widest mb-2 font-['Inter']" style={{ color: theme.greenPrimary }}>
             Resource Network
           </p>
-          <h2 className="text-3xl font-semibold tracking-wide text-[#0a192f] font-['Cinzel']">
+          <h2 className="text-3xl font-semibold tracking-wide font-['Cinzel']" style={{ color: theme.black }}>
             Useful Links
           </h2>
-          <div className="w-12 h-[2px] bg-[#c9a84c] mx-auto mt-4"></div>
+          <div className="w-12 h-[2px] mx-auto mt-4" style={{ backgroundColor: theme.greenLight }}></div>
         </div>
 
         {/* Drag Boundary Window */}
@@ -99,17 +113,21 @@ export default function Links() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                // Prevent link triggers if the user was just finishing a drag motion
                 onClick={(e) => isDragging && e.preventDefault()}
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                className="flex-shrink-0 flex items-center gap-4 bg-white px-6 py-4 rounded-xl shadow-[0_4px_20px_rgba(10,25,47,0.04)] border border-[#c9a84c]/15 w-[310px] pointer-events-auto"
+                className="flex-shrink-0 flex items-center gap-4 px-6 py-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] w-[310px] pointer-events-auto"
+                style={{ backgroundColor: theme.white, border: `1px solid ${theme.borderGreen}` }}
               >
                 {/* Logo Graphic Wrap */}
                 <div
-                  className={`w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden border border-slate-100 ${
-                    link.isEwtn ? 'bg-[#1e4d8c] font-["Cinzel"] font-bold text-white text-xs tracking-wider' : 'bg-[#f7f4eb]'
+                  className={`w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden ${
+                    link.isEwtn ? 'font-["Cinzel"] font-bold text-white text-xs tracking-wider' : ''
                   }`}
+                  style={{
+                    backgroundColor: link.isEwtn ? theme.greenPrimary : theme.offWhite,
+                    border: `1px solid ${theme.borderGreen}`
+                  }}
                 >
                   {link.img ? (
                     <img
@@ -121,12 +139,12 @@ export default function Links() {
                       }}
                     />
                   ) : (
-                    <span>{link.fallbackText}</span>
+                    <span style={{ color: link.isEwtn ? theme.white : theme.greenPrimary }}>{link.fallbackText}</span>
                   )}
                 </div>
 
                 {/* Typography Block */}
-                <span className="font-['Cinzel'] text-sm font-semibold text-[#0a192f] tracking-wide leading-tight">
+                <span className="font-['Cinzel'] text-sm font-semibold tracking-wide leading-tight" style={{ color: theme.black }}>
                   {link.name}
                 </span>
               </motion.a>

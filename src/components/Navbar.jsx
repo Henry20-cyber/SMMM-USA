@@ -11,19 +11,17 @@ const Header = () => {
   const navigate = useNavigate();
 
   const menuItems = [
-   
     {
       title: 'Our Identity',
       options: [
         { name: 'History', path: "/History" },
         { name: 'Mission', path: "/#mission" },
-         { name: 'Sacred Symbols', path: "/sacredsymbols" },
+        { name: 'Sacred Symbols', path: "/sacredsymbols" },
         { name: 'Charism', path: "/charism" },
         { name: 'Apostolate', path: "/apostolate" },
         { name: 'Donations', path: "/donations" },
-        
-      ]},
-   
+      ]
+    },
   ];
 
   const handleNavigation = (path) => {
@@ -32,14 +30,12 @@ const Header = () => {
     if (path.includes('#')) {
       const [urlPath, hash] = path.split('#');
       
-      // Check if we are already on that exact URL path page
       if (window.location.pathname === urlPath) {
         const element = document.getElementById(hash);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       } else {
-        // Safe Native Hand-off: Pass the hash location cleanly via router state
         navigate(urlPath, { state: { scrollToHash: hash } });
       }
     } else {
@@ -66,19 +62,19 @@ const Header = () => {
   return (
     <AnimatePresence>
       <motion.header
-        className="fixed top-0 w-full h-17 z-50 border-b border-blue-900/10 bg-white shadow-sm"
+        className="fixed top-0 w-full h-17 z-50 border-b border-emerald-900/10 bg-white shadow-sm"
         initial="initial"
         animate="animate"
         exit="exit"
         variants={fadeVariants}
       >
         <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-7xl mx-auto">
-         
+          
           {/* Left Section */}
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-blue-900 hover:bg-slate-100 rounded-md transition-colors"
+              className="md:hidden p-2 text-emerald-900 hover:bg-emerald-50 rounded-md transition-colors"
               aria-label="Toggle Menu"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -94,12 +90,13 @@ const Header = () => {
           {/* Navigation (Desktop) */}
           <nav className="hidden md:flex items-center gap-8 relative">
             <Link 
-              className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
+              className="text-slate-600 hover:text-emerald-700 font-['Noto_Serif'] text-lg transition-colors" 
               to="/"
               onClick={closeMenus}
             >
               Home
             </Link> 
+            
             {menuItems.map((item) => (
               <div 
                 key={item.title} 
@@ -109,7 +106,7 @@ const Header = () => {
               >
                 <button 
                   onClick={() => toggleDropdown(item.title)}
-                  className="flex items-center gap-1 text-slate-600 hover:text-blue-900 transition-colors font-['Noto_Serif'] text-lg antialiased tracking-tight py-2"
+                  className="flex items-center gap-1 text-slate-600 hover:text-emerald-700 transition-colors font-['Noto_Serif'] text-lg antialiased tracking-tight py-2"
                 >
                   {item.title}
                   <ChevronDown size={16} className={`transition-transform duration-300 ${openDropdown === item.title ? 'rotate-180' : ''}`} />
@@ -121,13 +118,13 @@ const Header = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute left-0 mt-0 w-48 bg-white border border-slate-100 shadow-xl rounded-xl py-2 overflow-hidden"
+                      className="absolute left-0 mt-0 w-48 bg-white border border-emerald-50 shadow-xl rounded-xl py-2 overflow-hidden"
                     >
                       {item.options.map((option, idx) => (
                         <button 
                           key={`${option.name}-${idx}`} 
                           onClick={() => handleNavigation(option.path)}
-                          className="w-full text-left block px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-900 transition-colors"
+                          className="w-full text-left block px-4 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-900 transition-colors"
                         >
                           {option.name}
                         </button>
@@ -138,16 +135,15 @@ const Header = () => {
               </div>
             ))} 
 
-
             <Link 
-              className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
+              className="text-slate-600 hover:text-emerald-700 font-['Noto_Serif'] text-lg transition-colors" 
               to="/Priests"
               onClick={closeMenus}
             >
               Our Priests
             </Link>
             <Link 
-              className="text-slate-600 hover:text-blue-900 font-['Noto_Serif'] text-lg" 
+              className="text-slate-600 hover:text-emerald-700 font-['Noto_Serif'] text-lg transition-colors" 
               to="/Contact"
               onClick={closeMenus}
             >
@@ -158,7 +154,7 @@ const Header = () => {
           {/* Action Button */}
           <motion.button 
             variants={fadeVariants}
-            className="bg-blue-900 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-sm"
+            className="bg-emerald-800 text-white px-6 py-2 rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-sm"
           >
             Donate
           </motion.button>
@@ -171,28 +167,28 @@ const Header = () => {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden bg-white border-t border-slate-100 px-6 py-4 flex flex-col gap-4 overflow-hidden"
+              className="md:hidden bg-white border-t border-emerald-100 px-6 py-4 flex flex-col gap-4 overflow-hidden"
             >
-              <Link to="/" onClick={closeMenus} className="text-slate-600 font-semibold">
+              <Link to="/" onClick={closeMenus} className="text-slate-600 font-semibold hover:text-emerald-700 transition-colors">
                 Home
               </Link>
               {menuItems.map((item) => (
                 <div key={item.title} className="flex flex-col gap-2">
                   <button 
                     onClick={() => toggleDropdown(item.title)}
-                    className="flex justify-between items-center text-slate-600 font-semibold"
+                    className="flex justify-between items-center text-slate-600 font-semibold hover:text-emerald-700 transition-colors"
                   >
                     {item.title}
                     <ChevronDown size={18} className={openDropdown === item.title ? 'rotate-180' : ''} />
                   </button>
                   
                   {openDropdown === item.title && (
-                    <div className="pl-4 flex flex-col gap-2 border-l-2 border-slate-100 ml-1">
+                    <div className="pl-4 flex flex-col gap-2 border-l-2 border-emerald-200 ml-1">
                       {item.options.map((opt, idx) => (
                         <button 
                           key={`${opt.name}-${idx}-mobile`} 
                           onClick={() => handleNavigation(opt.path)}
-                          className="text-left text-slate-500 py-1 text-sm hover:text-blue-900 transition-colors"
+                          className="text-left text-slate-500 py-1 text-sm hover:text-emerald-900 transition-colors"
                         >
                           {opt.name}
                         </button>
@@ -202,10 +198,10 @@ const Header = () => {
                 </div>
               ))}
 
-              <Link to="/Priests" onClick={closeMenus} className="text-slate-600 font-semibold">
+              <Link to="/Priests" onClick={closeMenus} className="text-slate-600 font-semibold hover:text-emerald-700 transition-colors">
                 Our Priests
               </Link>
-              <Link to="/Contact" onClick={closeMenus} className="text-slate-600 font-semibold">
+              <Link to="/Contact" onClick={closeMenus} className="text-slate-600 font-semibold hover:text-emerald-700 transition-colors">
                 Contact Us
               </Link>
             </motion.div>
