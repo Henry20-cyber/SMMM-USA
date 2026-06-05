@@ -9,17 +9,17 @@ const ChatBot = () => {
   ]);
   const scrollRef = useRef(null);
 
-  // Green, white, black palette
+  // Blue variants, white, black palette
   const theme = {
-    greenLight: '#4ade80',
-    greenPrimary: '#166534',
-    greenDeep: '#064e3b',
+    blueLight: '#60a5fa',
+    bluePrimary: '#2563eb',
+    blueDeep: '#1e3a8a',
     white: '#ffffff',
     black: '#111111',
-    offWhite: '#fafaf5',
-    textDark: '#1a1a1a',
-    textMuted: '#4b5563',
-    borderGreen: 'rgba(74, 222, 128, 0.2)'
+    offWhite: '#f8fafc',      // cool off-white / light slate
+    textDark: '#0f172a',      // slate-900
+    textMuted: '#475569',      // slate-600
+    borderBlue: 'rgba(96, 165, 250, 0.2)'
   };
 
   useEffect(() => {
@@ -54,10 +54,10 @@ const ChatBot = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             className="absolute bottom-16 right-0 mb-4 w-80 rounded-xl shadow-2xl overflow-hidden"
-            style={{ backgroundColor: theme.white, border: `1px solid ${theme.borderGreen}` }}
+            style={{ backgroundColor: theme.white, border: `1px solid ${theme.borderBlue}` }}
           >
             {/* Header */}
-            <div className="p-4 text-white flex justify-between items-center" style={{ backgroundColor: theme.greenPrimary }}>
+            <div className="p-4 text-white flex justify-between items-center" style={{ backgroundColor: theme.bluePrimary }}>
               <div>
                 <h4 className="font-bold text-sm">SMMM Support</h4>
                 <p className="text-xs opacity-80">Online</p>
@@ -79,9 +79,9 @@ const ChatBot = () => {
                       : 'self-start rounded-tl-none'
                   }`}
                   style={{
-                    backgroundColor: msg.role === 'user' ? theme.greenLight : theme.white,
+                    backgroundColor: msg.role === 'user' ? theme.blueLight : theme.white,
                     color: msg.role === 'user' ? theme.black : theme.textDark,
-                    border: msg.role === 'user' ? 'none' : `1px solid ${theme.borderGreen}`
+                    border: msg.role === 'user' ? 'none' : `1px solid ${theme.borderBlue}`
                   }}
                 >
                   {msg.content}
@@ -90,7 +90,7 @@ const ChatBot = () => {
             </div>
 
             {/* Input Area */}
-            <form onSubmit={handleSendMessage} className="p-3 border-t flex gap-2" style={{ backgroundColor: theme.white, borderColor: theme.borderGreen }}>
+            <form onSubmit={handleSendMessage} className="p-3 border-t flex gap-2" style={{ backgroundColor: theme.white, borderColor: theme.borderBlue }}>
               <input 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -102,7 +102,7 @@ const ChatBot = () => {
               <button 
                 type="submit" 
                 className="transition-transform hover:scale-110"
-                style={{ color: theme.greenPrimary }}
+                style={{ color: theme.bluePrimary }}
               >
                 <span className="material-symbols-outlined">send</span>
               </button>
@@ -116,7 +116,7 @@ const ChatBot = () => {
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
         className="w-14 h-14 rounded-full shadow-lg flex items-center justify-center"
-        style={{ backgroundColor: theme.greenPrimary, color: theme.white }}
+        style={{ backgroundColor: theme.bluePrimary, color: theme.white }}
       >
         <span className="material-symbols-outlined text-3xl">
           {isOpen ? 'close' : 'chat_bubble'}
@@ -126,4 +126,4 @@ const ChatBot = () => {
   );
 };
 
-export default ChatBot;
+export default ChatBot; 

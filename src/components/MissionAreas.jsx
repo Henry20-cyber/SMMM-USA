@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion';
 
 const MissionAreas = () => {
-  // Green, white, black palette (dark background with green accents)
+  // Blue variants, white, black (dark background with blue accents)
   const theme = {
-    greenLight: '#4ade80',
-    greenPrimary: '#166534',
-    greenDeep: '#064e3b',
+    blueLight: '#60a5fa',
+    bluePrimary: '#2563eb',
+    blueDeep: '#1e3a8a',
     white: '#ffffff',
     whiteMuted: 'rgba(255, 255, 255, 0.7)',
     whiteFaint: 'rgba(255, 255, 255, 0.3)',
-    borderGreen: 'rgba(74, 222, 128, 0.15)',
-    bgGreenTransparent: 'rgba(22, 101, 52, 0.1)',
+    borderBlue: 'rgba(96, 165, 250, 0.15)',
+    bgBlueTransparent: 'rgba(37, 99, 235, 0.1)',
   };
 
   // Shared animation variants
@@ -61,7 +61,7 @@ const MissionAreas = () => {
   ];
 
   return (
-    <section id="mission" className="py-28 px-6 overflow-hidden" style={{ backgroundColor: theme.greenDeep }}>
+    <section id="mission" className="py-28 px-6 overflow-hidden" style={{ backgroundColor: theme.blueDeep }}>
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Title Header */}
@@ -72,9 +72,9 @@ const MissionAreas = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-xs font-bold tracking-[0.25em] uppercase mb-4" style={{ color: theme.greenLight }}>Global Presence</p>
+          <p className="text-xs font-bold tracking-[0.25em] uppercase mb-4" style={{ color: theme.blueLight }}>Global Presence</p>
           <h2 className="text-4xl md:text-5xl font-semibold tracking-wide mb-6 text-white" style={{ fontFamily: "'Cinzel', serif" }}>Mission Areas & Growth</h2>
-          <div className="mx-auto mb-6 h-[1px] w-16" style={{ backgroundColor: theme.greenLight }}></div>
+          <div className="mx-auto mb-6 h-[1px] w-16" style={{ backgroundColor: theme.blueLight }}></div>
           <p 
             style={{ 
               fontFamily: "'Cormorant Garamond', serif", 
@@ -101,9 +101,9 @@ const MissionAreas = () => {
               variants={cardVariants}
               className="rounded-sm flex flex-col justify-between"
               style={{
-                border: region.isHomeRegion ? `1px solid ${theme.greenLight}` : `1px solid ${theme.borderGreen}`,
+                border: region.isHomeRegion ? `1px solid ${theme.blueLight}` : `1px solid ${theme.borderBlue}`,
                 padding: '2rem',
-                backgroundColor: region.isHomeRegion ? theme.bgGreenTransparent : 'rgba(0, 0, 0, 0.2)'
+                backgroundColor: region.isHomeRegion ? theme.bgBlueTransparent : 'rgba(0, 0, 0, 0.2)'
               }}
             >
               <div>
@@ -111,19 +111,18 @@ const MissionAreas = () => {
                 <div className="flex items-center gap-4 mb-6">
                   <div 
                     className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ border: `1.5px solid ${region.isHomeRegion ? theme.greenLight : theme.borderGreen}` }}
+                    style={{ border: `1.5px solid ${region.isHomeRegion ? theme.blueLight : theme.borderBlue}` }}
                   >
                     <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-                      <circle cx="12" cy="12" r="9" stroke={theme.greenLight} strokeWidth="1.2"/>
-                      <line x1="12" y1="3" x2="12" y2="21" stroke={theme.greenLight} strokeWidth="0.8"/>
-                      <line x1="3" y1="9" x2="21" y2="9" stroke={theme.greenLight} strokeWidth="0.8"/>
+                      <circle cx="12" cy="12" r="9" stroke={theme.blueLight} strokeWidth="1.2"/>
+                      <line x1="12" y1="3" x2="12" y2="21" stroke={theme.blueLight} strokeWidth="0.8"/>
+                      <line x1="3" y1="9" x2="21" y2="9" stroke={theme.blueLight} strokeWidth="0.8"/>
                     </svg>
                   </div>
                   <div>
                     <h3 className="text-[1.05rem] font-semibold text-white" style={{ fontFamily: "'Cinzel', serif" }}>
                       {region.name}
                     </h3>
-                    {/* Removed stray boolean display: {region.isHomeRegion} */}
                   </div>
                 </div>
 
@@ -134,9 +133,9 @@ const MissionAreas = () => {
                       key={pillIdx}
                       className="px-3 py-1 text-xs border rounded-full transition-all duration-300"
                       style={{ 
-                        borderColor: region.isHomeRegion ? theme.greenLight : 'rgba(255,255,255,0.08)',
+                        borderColor: region.isHomeRegion ? theme.blueLight : 'rgba(255,255,255,0.08)',
                         color: region.isHomeRegion ? theme.white : theme.whiteMuted,
-                        backgroundColor: region.isHomeRegion ? theme.bgGreenTransparent : 'transparent'
+                        backgroundColor: region.isHomeRegion ? theme.bgBlueTransparent : 'transparent'
                       }}
                     >
                       {pill}
@@ -147,8 +146,8 @@ const MissionAreas = () => {
 
               {/* Special Extension Section For Home Region Details */}
               {region.subtext && (
-                <div className="mt-6 pt-6 border-t" style={{ borderColor: theme.borderGreen }}>
-                  <p className="text-[0.6rem] font-bold tracking-wider uppercase mb-2" style={{ color: theme.greenLight }}>
+                <div className="mt-6 pt-6 border-t" style={{ borderColor: theme.borderBlue }}>
+                  <p className="text-[0.6rem] font-bold tracking-wider uppercase mb-2" style={{ color: theme.blueLight }}>
                     {region.subtext.title}
                   </p>
                   <p className="text-[0.88rem] leading-relaxed" style={{ color: theme.whiteMuted }}>

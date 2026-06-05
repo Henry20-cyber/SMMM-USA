@@ -23,18 +23,18 @@ export default function Contact() {
   });
   const [formStatus, setFormStatus] = useState('idle');
 
-  // Green/white/black theme
+  // Blue/white/black theme
   const theme = {
-    greenPrimary: '#166534',
-    greenLight: '#4ade80',
-    greenDeep: '#064e3b',
+    bluePrimary: '#2563eb',
+    blueLight: '#60a5fa',
+    blueDeep: '#1e3a8a',
     white: '#ffffff',
     black: '#111111',
-    offWhite: '#fafaf5',
-    textDark: '#1a1a1a',
-    textMuted: '#4b5563',
-    borderLight: 'rgba(22, 101, 52, 0.12)',
-    bgSoft: 'rgba(22, 101, 52, 0.06)'
+    offWhite: '#f8fafc',
+    textDark: '#0f172a',
+    textMuted: '#475569',
+    borderLight: 'rgba(37, 99, 235, 0.12)',
+    bgSoft: 'rgba(37, 99, 235, 0.06)'
   };
 
   // 10-second carousel
@@ -83,13 +83,13 @@ export default function Contact() {
           </div>
 
           <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center">
-            <span className="text-[10px] tracking-[0.3em] font-['Cinzel'] font-bold uppercase mb-3" style={{ color: theme.greenLight }}>
+            <span className="text-[10px] tracking-[0.3em] font-['Cinzel'] font-bold uppercase mb-3" style={{ color: theme.blueLight }}>
               Get In Touch With Our Brothers
             </span>
             <h1 className="font-['Cinzel'] text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-wide leading-tight mb-4">
               We Are Here to Serve
             </h1>
-            <div className="w-12 h-[1px] mb-6" style={{ backgroundColor: theme.greenLight }}></div>
+            <div className="w-12 h-[1px] mb-6" style={{ backgroundColor: theme.blueLight }}></div>
             <p className="font-['Cormorant_Garamond'] text-lg sm:text-xl text-white/90 italic max-w-2xl leading-relaxed">
               “Communication is a form of community — a bridge of mercy that connects us. Whether you seek prayer, want to support our mission, or are exploring a vocation, we welcome your voice.”
             </p>
@@ -102,7 +102,7 @@ export default function Contact() {
             {/* Address Card */}
             <div className="bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
               <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
-                <span className="material-symbols-outlined text-2xl" style={{ color: theme.greenPrimary }}>location_on</span>
+                <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>location_on</span>
               </div>
               <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>Regional Secretariat</h3>
               <p className="font-['Cormorant_Garamond'] text-base leading-relaxed flex-grow" style={{ color: theme.textMuted }}>
@@ -115,17 +115,17 @@ export default function Contact() {
             {/* Email Card */}
             <div className="bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
               <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
-                <span className="material-symbols-outlined text-2xl" style={{ color: theme.greenPrimary }}>mail</span>
+                <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>mail</span>
               </div>
               <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>Electronic Inquiries</h3>
               <div className="space-y-2 flex-grow">
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: theme.textMuted }}>General:</span>
-                  <a href="mailto:info@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.greenPrimary, hover: { color: theme.greenLight } }}>info@smmm-american.org</a>
+                  <a href="mailto:info@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>info@smmm-american.org</a>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: theme.textMuted }}>Vocations Office:</span>
-                  <a href="mailto:vocations@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.greenPrimary }}>vocations@smmm-american.org</a>
+                  <a href="mailto:vocations@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>vocations@smmm-american.org</a>
                 </div>
               </div>
             </div>
@@ -133,11 +133,11 @@ export default function Contact() {
             {/* Phone Card */}
             <div className="bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
               <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
-                <span className="material-symbols-outlined text-2xl" style={{ color: theme.greenPrimary }}>call</span>
+                <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>call</span>
               </div>
               <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>Office Support</h3>
               <div className="flex-grow">
-                <span className="text-sm font-semibold block mb-1" style={{ color: theme.greenPrimary }}>+1 (559) 555-0123</span>
+                <span className="text-sm font-semibold block mb-1" style={{ color: theme.bluePrimary }}>+1 (559) 555-0123</span>
                 <p className="text-base leading-relaxed" style={{ color: theme.textMuted }}>Monday – Friday<br />9:00 AM – 5:00 PM PST</p>
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function Contact() {
                   disabled={formStatus === 'sending'}
                   className="w-full sm:w-auto px-8 py-4 text-xs font-['Cinzel'] font-bold uppercase tracking-widest transition-colors shadow-sm cursor-pointer"
                   style={{
-                    backgroundColor: formStatus === 'sending' ? theme.greenDeep : (formStatus === 'success' ? theme.greenPrimary : theme.greenPrimary),
+                    backgroundColor: formStatus === 'sending' ? theme.blueDeep : (formStatus === 'success' ? theme.bluePrimary : theme.bluePrimary),
                     color: theme.white,
                     opacity: formStatus === 'sending' ? 0.8 : 1
                   }}
@@ -245,14 +245,14 @@ export default function Contact() {
                   <ul className="space-y-3 text-xs font-['Cinzel'] font-bold tracking-wider uppercase list-none p-0 m-0" style={{ color: theme.textMuted }}>
                     {['Fresno', 'San Bernardino', 'San Diego', 'Boston'].map((loc) => (
                       <li key={loc} className="flex items-center gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.greenLight }}></span> {loc}
+                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.blueLight }}></span> {loc}
                       </li>
                     ))}
                   </ul>
                   <ul className="space-y-3 text-xs font-['Cinzel'] font-bold tracking-wider uppercase list-none p-0 m-0" style={{ color: theme.textMuted }}>
                     {['Boise', 'Orlando', 'Los Angeles', 'New York'].map((loc) => (
                       <li key={loc} className="flex items-center gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.greenLight }}></span> {loc}
+                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.blueLight }}></span> {loc}
                       </li>
                     ))}
                   </ul>
@@ -277,23 +277,23 @@ export default function Contact() {
         </section>
 
         {/* Prayer Callout */}
-        <section className="py-20 text-white text-center relative overflow-hidden" style={{ backgroundColor: theme.greenDeep }}>
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4ade80_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+        <section className="py-20 text-white text-center relative overflow-hidden" style={{ backgroundColor: theme.blueDeep }}>
+          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#60a5fa_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
           <div className="max-w-2xl mx-auto px-6 relative z-10 flex flex-col items-center">
-            <div className="mb-4" style={{ color: theme.greenLight }}>
+            <div className="mb-4" style={{ color: theme.blueLight }}>
               <span className="material-symbols-outlined text-4xl">volunteer_activism</span>
             </div>
             <h2 className="font-['Cinzel'] text-2xl sm:text-3xl font-bold tracking-wide mb-4">Intercessory Prayer</h2>
-            <div className="w-8 h-[1px] mb-6" style={{ backgroundColor: theme.greenLight }}></div>
+            <div className="w-8 h-[1px] mb-6" style={{ backgroundColor: theme.blueLight }}></div>
             <p className="font-['Cormorant_Garamond'] text-lg text-white/90 max-w-xl mb-8 leading-relaxed">
               Are you in need of spiritual support? Our community remembers every intention shared with us during our daily conventual Mass and community prayers.
             </p>
             <a
               className="inline-block border px-8 py-4 text-xs font-['Cinzel'] font-bold uppercase tracking-widest transition-all duration-300 no-underline"
-              style={{ borderColor: theme.greenLight, color: theme.greenLight }}
+              style={{ borderColor: theme.blueLight, color: theme.blueLight }}
               href="#"
-              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = theme.greenLight; e.currentTarget.style.color = theme.black; }}
-              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = theme.greenLight; }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = theme.blueLight; e.currentTarget.style.color = theme.black; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = theme.blueLight; }}
             >
               Submit a Prayer Request
             </a>
@@ -333,7 +333,7 @@ export default function Contact() {
             <ul className="space-y-3 text-sm font-medium list-none p-0 m-0">
               <li><a className="transition-colors no-underline" href="#" style={{ color: theme.textMuted }}>Gallery Archive</a></li>
               <li><a className="transition-colors no-underline" href="#" style={{ color: theme.textMuted }}>Privacy Policy</a></li>
-              <li><a className="font-bold underline transition-colors" href="#" style={{ color: theme.greenPrimary }}>Contact Us</a></li>
+              <li><a className="font-bold underline transition-colors" href="#" style={{ color: theme.bluePrimary }}>Contact Us</a></li>
             </ul>
           </div>
         </div>

@@ -62,7 +62,7 @@ const Header = () => {
   return (
     <AnimatePresence>
       <motion.header
-        className="fixed top-0 w-full h-17 z-50 border-b border-emerald-900/10 bg-white shadow-sm"
+        className="fixed top-0 w-full h-17 z-50 border-b border-black/10 bg-white shadow-sm"
         initial="initial"
         animate="animate"
         exit="exit"
@@ -74,7 +74,7 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-emerald-900 hover:bg-emerald-50 rounded-md transition-colors"
+              className="md:hidden p-2 text-black hover:bg-blue-50 rounded-md transition-colors"
               aria-label="Toggle Menu"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -90,7 +90,7 @@ const Header = () => {
           {/* Navigation (Desktop) */}
           <nav className="hidden md:flex items-center gap-8 relative">
             <Link 
-              className="text-slate-600 hover:text-emerald-700 font-['Noto_Serif'] text-lg transition-colors" 
+              className="text-black hover:text-blue-700 font-['Noto_Serif'] text-lg transition-colors" 
               to="/"
               onClick={closeMenus}
             >
@@ -106,7 +106,7 @@ const Header = () => {
               >
                 <button 
                   onClick={() => toggleDropdown(item.title)}
-                  className="flex items-center gap-1 text-slate-600 hover:text-emerald-700 transition-colors font-['Noto_Serif'] text-lg antialiased tracking-tight py-2"
+                  className="flex items-center gap-1 text-black hover:text-blue-700 transition-colors font-['Noto_Serif'] text-lg antialiased tracking-tight py-2"
                 >
                   {item.title}
                   <ChevronDown size={16} className={`transition-transform duration-300 ${openDropdown === item.title ? 'rotate-180' : ''}`} />
@@ -118,13 +118,13 @@ const Header = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute left-0 mt-0 w-48 bg-white border border-emerald-50 shadow-xl rounded-xl py-2 overflow-hidden"
+                      className="absolute left-0 mt-0 w-48 bg-white border border-blue-50 shadow-xl rounded-xl py-2 overflow-hidden"
                     >
                       {item.options.map((option, idx) => (
                         <button 
                           key={`${option.name}-${idx}`} 
                           onClick={() => handleNavigation(option.path)}
-                          className="w-full text-left block px-4 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-900 transition-colors"
+                          className="w-full text-left block px-4 py-2 text-sm text-black/80 hover:bg-blue-50 hover:text-blue-700 transition-colors"
                         >
                           {option.name}
                         </button>
@@ -136,14 +136,14 @@ const Header = () => {
             ))} 
 
             <Link 
-              className="text-slate-600 hover:text-emerald-700 font-['Noto_Serif'] text-lg transition-colors" 
+              className="text-black hover:text-blue-700 font-['Noto_Serif'] text-lg transition-colors" 
               to="/Priests"
               onClick={closeMenus}
             >
               Our Priests
             </Link>
             <Link 
-              className="text-slate-600 hover:text-emerald-700 font-['Noto_Serif'] text-lg transition-colors" 
+              className="text-black hover:text-blue-700 font-['Noto_Serif'] text-lg transition-colors" 
               to="/Contact"
               onClick={closeMenus}
             >
@@ -154,7 +154,7 @@ const Header = () => {
           {/* Action Button */}
           <motion.button 
             variants={fadeVariants}
-            className="bg-emerald-800 text-white px-6 py-2 rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-sm"
+            className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 shadow-sm"
           >
             Donate
           </motion.button>
@@ -167,28 +167,28 @@ const Header = () => {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden bg-white border-t border-emerald-100 px-6 py-4 flex flex-col gap-4 overflow-hidden"
+              className="md:hidden bg-white border-t border-black/10 px-6 py-4 flex flex-col gap-4 overflow-hidden"
             >
-              <Link to="/" onClick={closeMenus} className="text-slate-600 font-semibold hover:text-emerald-700 transition-colors">
+              <Link to="/" onClick={closeMenus} className="text-black font-semibold hover:text-blue-700 transition-colors">
                 Home
               </Link>
               {menuItems.map((item) => (
                 <div key={item.title} className="flex flex-col gap-2">
                   <button 
                     onClick={() => toggleDropdown(item.title)}
-                    className="flex justify-between items-center text-slate-600 font-semibold hover:text-emerald-700 transition-colors"
+                    className="flex justify-between items-center text-black font-semibold hover:text-blue-700 transition-colors"
                   >
                     {item.title}
                     <ChevronDown size={18} className={openDropdown === item.title ? 'rotate-180' : ''} />
                   </button>
                   
                   {openDropdown === item.title && (
-                    <div className="pl-4 flex flex-col gap-2 border-l-2 border-emerald-200 ml-1">
+                    <div className="pl-4 flex flex-col gap-2 border-l-2 border-blue-200 ml-1">
                       {item.options.map((opt, idx) => (
                         <button 
                           key={`${opt.name}-${idx}-mobile`} 
                           onClick={() => handleNavigation(opt.path)}
-                          className="text-left text-slate-500 py-1 text-sm hover:text-emerald-900 transition-colors"
+                          className="text-left text-black/70 py-1 text-sm hover:text-blue-700 transition-colors"
                         >
                           {opt.name}
                         </button>
@@ -198,10 +198,10 @@ const Header = () => {
                 </div>
               ))}
 
-              <Link to="/Priests" onClick={closeMenus} className="text-slate-600 font-semibold hover:text-emerald-700 transition-colors">
+              <Link to="/Priests" onClick={closeMenus} className="text-black font-semibold hover:text-blue-700 transition-colors">
                 Our Priests
               </Link>
-              <Link to="/Contact" onClick={closeMenus} className="text-slate-600 font-semibold hover:text-emerald-700 transition-colors">
+              <Link to="/Contact" onClick={closeMenus} className="text-black font-semibold hover:text-blue-700 transition-colors">
                 Contact Us
               </Link>
             </motion.div>

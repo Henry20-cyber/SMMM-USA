@@ -1,21 +1,40 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from '../components/Navbar.jsx';
 import img from '../assets/logo.jpg';
 import cincture from '../assets/cincture.png';
 
+// Hero images (you can replace with your own assets)
+const HERO_IMAGES = [
+  "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1548625361-155deee26575?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1515787366009-7cbdd2dc587b?auto=format&fit=crop&w=1600&q=80",
+];
+
 const Sacredsymbols = () => {
-  // Green, white, black palette
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Rotate hero images every 10 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Blue, white, black palette
   const theme = {
-    greenPrimary: '#166534',
-    greenLight: '#4ade80',
-    greenDeep: '#064e3b',
+    bluePrimary: '#2563eb',
+    blueLight: '#60a5fa',
+    blueDeep: '#1e3a8a',
     white: '#ffffff',
     black: '#111111',
-    offWhite: '#fafaf5',
-    textDark: '#1a1a1a',
-    textMuted: '#4b5563',
-    borderLight: 'rgba(22, 101, 52, 0.12)',
-    bgGreenSoft: 'rgba(22, 101, 52, 0.06)'
+    offWhite: '#f8fafc',
+    textDark: '#0f172a',
+    textMuted: '#475569',
+    borderLight: 'rgba(37, 99, 235, 0.12)',
+    bgBlueSoft: 'rgba(37, 99, 235, 0.06)'
   };
 
   const revealVariant = {
@@ -28,14 +47,64 @@ const Sacredsymbols = () => {
   };
 
   return (
-    <section 
-      style={{ backgroundColor: theme.offWhite, borderColor: theme.borderLight }}
-      className="pt-24 border-t relative"
-    >
+    <div className="min-h-screen" style={{ backgroundColor: theme.offWhite }}>
       <NavBar />
-      
-      <div className="max-w-6xl mx-auto px-6 md:px-8 pb-24">
-        <div className="grid md:grid-cols-2 gap-16 items-start mt-12">
+
+      {/* ========== HERO SECTION ========== */}
+      <section className="relative h-[500px] md:h-[600px] flex items-center overflow-hidden">
+        {/* Rotating Background Images */}
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={currentImageIndex}
+            src={HERO_IMAGES[currentImageIndex]}
+            alt="Sacred symbols backdrop"
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </AnimatePresence>
+
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/60 z-0" />
+
+        {/* Left‑aligned text */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-xl lg:max-w-2xl"
+          >
+            <p
+              className="text-xs font-bold uppercase tracking-[0.3em] mb-3"
+              style={{ color: theme.blueLight }}
+            >
+              Sacred Symbols & Garments
+            </p>
+            <h1
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-4"
+              style={{ fontFamily: "'Cinzel', serif", textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
+            >
+              Signs of Our <br />
+              <span style={{ color: theme.blueLight }}>Merciful Mission</span>
+            </h1>
+            <div
+              className="w-16 h-[2px] mb-6"
+              style={{ backgroundColor: theme.blueLight }}
+            />
+            <p className="text-white/90 text-xl leading-relaxed max-w-lg">
+              Every symbol and garment we wear speaks of God’s mercy, our consecration,
+              and the spiritual heritage of the Sons of Mary Mother of Mercy.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ========== MAIN CONTENT (existing layout) ========== */}
+      <div className="max-w-6xl mx-auto px-6 md:px-8 py-24">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           
           {/* LEFT COLUMN: LOGO SYMBOLS */}
           <motion.div 
@@ -44,7 +113,7 @@ const Sacredsymbols = () => {
             viewport={{ once: true, margin: '-100px' }}
             variants={revealVariant}
           >
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: theme.greenPrimary }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: theme.bluePrimary }}>
               Our Sacred Symbols
             </p>
             <h3 
@@ -54,7 +123,7 @@ const Sacredsymbols = () => {
               The SMMM Logo
             </h3>
             
-            <div className="w-12 h-[2px] mb-8" style={{ backgroundColor: theme.greenLight }} />
+            <div className="w-12 h-[2px] mb-8" style={{ backgroundColor: theme.blueLight }} />
 
             <div className="flex justify-center md:justify-start">
               <img 
@@ -70,7 +139,7 @@ const Sacredsymbols = () => {
               <div className="flex gap-5 items-start">
                 <div 
                   className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center shadow-md"
-                  style={{ backgroundColor: theme.greenPrimary }}
+                  style={{ backgroundColor: theme.bluePrimary }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
                     <path 
@@ -98,7 +167,7 @@ const Sacredsymbols = () => {
               <div className="flex gap-5 items-start">
                 <div 
                   className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center shadow-md"
-                  style={{ backgroundColor: theme.greenPrimary }}
+                  style={{ backgroundColor: theme.bluePrimary }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
                     <path 
@@ -126,7 +195,7 @@ const Sacredsymbols = () => {
               <div className="flex gap-5 items-start">
                 <div 
                   className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center shadow-md"
-                  style={{ backgroundColor: theme.greenPrimary }}
+                  style={{ backgroundColor: theme.bluePrimary }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
                     <line x1="12" y1="3" x2="12" y2="21" stroke={theme.white} strokeWidth="2" strokeLinecap="round"/>
@@ -155,7 +224,7 @@ const Sacredsymbols = () => {
             viewport={{ once: true, margin: '-100px' }}
             variants={revealVariant}
           >
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: theme.greenPrimary }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: theme.bluePrimary }}>
               Our Sacred Garment
             </p>
             <h3 
@@ -165,7 +234,7 @@ const Sacredsymbols = () => {
               Our Religious Habit
             </h3>
             
-            <div className="w-12 h-[2px] mb-8" style={{ backgroundColor: theme.greenLight }} />
+            <div className="w-12 h-[2px] mb-8" style={{ backgroundColor: theme.blueLight }} />
 
             <div className="flex gap-8 flex-col sm:flex-row items-start">
               <div className="flex-shrink-0 w-32 sm:w-40 mx-auto sm:mx-0">
@@ -179,19 +248,19 @@ const Sacredsymbols = () => {
 
               <div className="flex-1 w-full">
                 <p className="text-[1rem] mb-5 leading-relaxed" style={{ color: theme.textMuted }}>
-                  We wear a <strong style={{ color: theme.black }}>white soutane</strong> with <strong style={{ color: theme.greenPrimary }}>twenty-one green buttons</strong> and a <strong style={{ color: theme.greenPrimary }}>green cord cincture</strong> with tassels.
+                  We wear a <strong style={{ color: theme.black }}>white soutane</strong> with <strong style={{ color: theme.bluePrimary }}>twenty-one blue buttons</strong> and a <strong style={{ color: theme.bluePrimary }}>blue cord cincture</strong> with tassels.
                 </p>
                 
                 <div className="flex flex-col gap-3">
                   <div 
                     className="p-4 border-l-[3px]"
-                    style={{ backgroundColor: theme.bgGreenSoft, borderLeftColor: theme.greenPrimary }}
+                    style={{ backgroundColor: theme.bgBlueSoft, borderLeftColor: theme.bluePrimary }}
                   >
                     <p 
                       className="text-xs font-bold mb-1 tracking-wider uppercase"
-                      style={{ fontFamily: "'Cinzel', serif", color: theme.greenPrimary }}
+                      style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
                     >
-                      21 Green Buttons
+                      21 Blue Buttons
                     </p>
                     <p className="text-sm" style={{ color: theme.textMuted }}>
                       14 Stations of the Cross + 7 Sorrows of the Blessed Virgin Mary
@@ -200,11 +269,11 @@ const Sacredsymbols = () => {
                   
                   <div 
                     className="p-4 border-l-[3px]"
-                    style={{ backgroundColor: theme.bgGreenSoft, borderLeftColor: theme.greenPrimary }}
+                    style={{ backgroundColor: theme.bgBlueSoft, borderLeftColor: theme.bluePrimary }}
                   >
                     <p 
                       className="text-xs font-bold mb-1 tracking-wider uppercase"
-                      style={{ fontFamily: "'Cinzel', serif", color: theme.greenPrimary }}
+                      style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
                     >
                       3 Knots on the Cincture
                     </p>
@@ -223,7 +292,7 @@ const Sacredsymbols = () => {
             >
               <p 
                 className="text-xs font-bold tracking-widest uppercase mb-4"
-                style={{ fontFamily: "'Cinzel', serif", color: theme.greenPrimary }}
+                style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
               >
                 Colors & Their Meaning
               </p>
@@ -247,11 +316,11 @@ const Sacredsymbols = () => {
         </div>
       </div>
 
-      {/* Footer - removed absolute positioning */}
+      {/* Footer */}
       <footer className="w-full text-center py-8 text-xs border-t" style={{ color: theme.textMuted, borderColor: theme.borderLight, backgroundColor: theme.white }}>
         <p>&copy; {new Date().getFullYear()} Sons of Mary Mother of Mercy (SMMM). All rights reserved.</p>
       </footer>
-    </section>
+    </div>
   );
 };
 

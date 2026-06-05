@@ -46,16 +46,16 @@ export default function History() {
     return () => clearInterval(interval);
   }, []);
 
-  // Green, white, black palette
+  // Blue variants, white, black palette
   const theme = {
-    greenPrimary: '#166534',
-    greenLight: '#4ade80',
+    bluePrimary: '#2563eb',
+    blueLight: '#60a5fa',
     black: '#111111',
     white: '#ffffff',
-    offWhite: '#fafaf5',
-    textDark: '#1a1a1a',
-    textBody: '#3E5A6C',
-    borderLight: 'rgba(22, 101, 52, 0.12)'
+    offWhite: '#f8fafc',      // cool off-white / light slate
+    textDark: '#0f172a',      // slate-900
+    textBody: '#334155',      // slate-700
+    borderLight: 'rgba(37, 99, 235, 0.12)'
   };
 
   return (
@@ -89,7 +89,7 @@ export default function History() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-xl lg:max-w-2xl"
           >
-            <span className="text-xs uppercase tracking-[0.25em] font-semibold mb-3 block" style={{ color: theme.greenLight }}>
+            <span className="text-xs uppercase tracking-[0.25em] font-semibold mb-3 block" style={{ color: theme.blueLight }}>
               Sons of Mary Mother of Mercy
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
@@ -97,7 +97,7 @@ export default function History() {
             </h1>
             <motion.div 
               className="mt-5 h-1 w-24 rounded-full"
-              style={{ backgroundColor: theme.greenLight }}
+              style={{ backgroundColor: theme.blueLight }}
               initial={{ width: 0 }}
               animate={{ width: 96 }}
               transition={{ delay: 0.6, duration: 0.6 }}
@@ -119,7 +119,7 @@ export default function History() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-xl font-bold tracking-tight pb-3" style={{ color: theme.greenPrimary, borderBottom: `1px solid ${theme.borderLight}` }}>
+            <h2 className="text-xl font-bold tracking-tight pb-3" style={{ color: theme.bluePrimary, borderBottom: `1px solid ${theme.borderLight}` }}>
               Our Foundation & History
             </h2>
             <div className="space-y-4 text-base leading-relaxed" style={{ color: theme.textBody }}>
@@ -156,7 +156,7 @@ export default function History() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h2 className="text-xl font-bold tracking-tight pb-3" style={{ color: theme.greenPrimary, borderBottom: `1px solid ${theme.borderLight}` }}>
+              <h2 className="text-xl font-bold tracking-tight pb-3" style={{ color: theme.bluePrimary, borderBottom: `1px solid ${theme.borderLight}` }}>
                 Current Status & Global Strength
               </h2>
               <div className="space-y-4 text-base leading-relaxed" style={{ color: theme.textBody }}>
@@ -169,7 +169,7 @@ export default function History() {
               </div>
               
               {/* Scripture Highlight */}
-              <div className="border-l-4 pl-4 py-2 rounded-r-xl" style={{ borderLeftColor: theme.greenPrimary, backgroundColor: `${theme.greenPrimary}08` }}>
+              <div className="border-l-4 pl-4 py-2 rounded-r-xl" style={{ borderLeftColor: theme.bluePrimary, backgroundColor: `${theme.bluePrimary}08` }}>
                 <p className="text-base italic font-medium leading-relaxed" style={{ color: theme.textDark }}>
                   Following the mandate of our Lord Jesus Christ, we have, therefore, resolved to bring the Gospel to all nations: “Go and make disciples of all nations…” (Mt 28:19).
                 </p>
@@ -185,7 +185,7 @@ export default function History() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3 className="text-xl font-bold tracking-tight" style={{ color: theme.greenLight }}>
+              <h3 className="text-xl font-bold tracking-tight" style={{ color: theme.blueLight }}>
                 Past and Present Regional Superiors
               </h3>
               
@@ -204,14 +204,14 @@ export default function History() {
                     className={`flex justify-between items-center py-3 transition-colors ${
                       idx !== REGIONAL_SUPERIORS.length - 1 ? 'border-b' : ''
                     }`}
-                    style={{ borderColor: `${theme.white}10`, color: superior.isCurrent ? theme.greenLight : theme.white }}
+                    style={{ borderColor: `${theme.white}10`, color: superior.isCurrent ? theme.blueLight : theme.white }}
                   >
                     <span className={superior.isCurrent ? "font-semibold" : "font-normal"}>
                       {superior.name}
                     </span>
                     <span className={`text-xs px-3 py-1 rounded-full font-normal ${
                       superior.isCurrent 
-                        ? 'bg-green-900/50 text-green-300 border border-green-800/80' 
+                        ? 'bg-blue-900/50 text-blue-300 border border-blue-800/80' 
                         : 'bg-white/10 text-white/60'
                     }`}>
                       {superior.years}

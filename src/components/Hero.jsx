@@ -6,22 +6,26 @@ import wp4 from '../assets/wallpapers/wp(4).jpg';
 import wp5 from '../assets/wallpapers/wp(5).jpg';
 import wp6 from '../assets/wallpapers/wp(6).jpg';
 import mary from '../assets/wallpapers/mary.jpg';
+import img1 from '../assets/priests/image(02).jpg';
+import img2 from '../assets/priests/image(03).jpg';
 
 const Hero = () => {
   const { scrollY } = useScroll();
   const backgroundY = useTransform(scrollY, [0, 500], ['0%', '20%']);
 
-  // New palette: Green variants, white, black
+  // Blue variants, white, black
   const theme = {
-    greenDeep: '#064e3b',    // deep forest green
-    greenPrimary: '#166534', // rich green
-    greenLight: '#4ade80',   // light accent green
+    blueDeep: '#1e3a8a',
+    bluePrimary: '#2563eb',
+    blueLight: '#60a5fa',
     white: '#ffffff',
     black: '#111111',
-    offWhite: '#f5f5f0'
+    offWhite: '#f8fafc'
   };
 
   const images = [
+    img1,
+    img2,
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDg7rGbkSxtRi33eRjEeYidBr6pjcb1tbPePcGF4Wvt8XfBJVTD3scZ16a71r-WGGoEccaDERZZ3nSIm1O-zN04agoLlNYbjRpq_4VHbjuYNIo0OFRaiYkYGKh16B53KFCRzC5cprziLR2zr8UTavBG1zym8FmWUD95Hjbr3Gx-KV7ONKoRs_A0JBmlz5g7pc9Jh8g4pVp4AvcXvFRZdh5aRhb6XF6WjjP8PVXPFyTwzMj96KUmQsdRplaeUF5xtZtF-crMkmqGOZ8",
     wp2,
     mary,
@@ -61,7 +65,7 @@ const Hero = () => {
     <motion.section 
       id="hero"
       className="relative min-h-screen md:h-[760px] flex items-center justify-center overflow-hidden px-4 py-20"
-      style={{ backgroundColor: theme.greenDeep }}
+      style={{ backgroundColor: theme.blueDeep }}
       variants={containerVariants}
       initial="initial"
       animate="animate"
@@ -81,9 +85,9 @@ const Hero = () => {
           />
         </AnimatePresence>
         
-        {/* Overlays – using black and green */}
-        <div className="absolute inset-0 bg-black/40 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-green-900/50 via-transparent to-green-950/90" />
+        {/* Overlays – increased opacity for better readability */}
+        <div className="absolute inset-0 bg-black/70 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-transparent to-blue-950/95" />
       </div>
 
       <div className="relative z-10 text-center px-4 md:px-8 max-w-5xl mx-auto flex flex-col items-center">
@@ -91,7 +95,7 @@ const Hero = () => {
         <motion.span
           variants={elementVariants}
           className="text-[0.65rem] md:text-xs font-bold tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border mb-6 backdrop-blur-sm shadow-sm"
-          style={{ color: theme.greenLight, borderColor: `${theme.greenLight}80`, backgroundColor: `${theme.black}CC` }}
+          style={{ color: theme.blueLight, borderColor: `${theme.blueLight}80`, backgroundColor: `${theme.black}E6` }} // E6 = 90% opacity
         >
           Welcome To The USA Region
         </motion.span>
@@ -102,23 +106,23 @@ const Hero = () => {
           variants={elementVariants}
         >
           Sons of Mary <br />
-          <span style={{ color: theme.greenLight }}>Mother of Mercy</span>
+          <span style={{ color: theme.blueLight }}>Mother of Mercy</span>
         </motion.h1>
 
         <motion.div 
           variants={elementVariants}
           className="gold-divider" 
-          style={{ margin: "0 auto 1.8rem", width: '60px', height: '2px', backgroundColor: theme.greenLight }}
+          style={{ margin: "0 auto 1.8rem", width: '60px', height: '2px', backgroundColor: theme.blueLight }}
         />
 
         <motion.div 
           variants={elementVariants}
           style={{ 
             display: "inline-block", 
-            border: `1px solid ${theme.greenLight}40`, 
+            border: `1px solid ${theme.blueLight}40`, 
             padding: "10px 28px", 
             marginBottom: "3rem", 
-            backgroundColor: `${theme.black}80`,
+            backgroundColor: `${theme.black}CC`, // CC = 80% opacity, increased from 80 to CC
             borderRadius: "8px"
           }}
         >

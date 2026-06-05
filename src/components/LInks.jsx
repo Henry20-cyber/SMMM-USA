@@ -14,18 +14,18 @@ export default function Links() {
   const [isDragging, setIsDragging] = useState(false);
   const [trackWidth, setTrackWidth] = useState(0);
 
-  // Green, white, black palette
+  // Blue variants, white, black
   const theme = {
-    greenLight: '#4ade80',
-    greenPrimary: '#166534',
-    greenDeep: '#064e3b',
+    blueLight: '#60a5fa',
+    bluePrimary: '#2563eb',
+    blueDeep: '#1e3a8a',
     white: '#ffffff',
     black: '#111111',
-    offWhite: '#fafaf5',
-    textDark: '#1a1a1a',
-    textMuted: '#4b5563',
-    borderGreen: 'rgba(74, 222, 128, 0.15)',
-    bgGreenSoft: 'rgba(22, 101, 52, 0.05)'
+    offWhite: '#f8fafc',      // cool off-white / light slate
+    textDark: '#0f172a',
+    textMuted: '#475569',
+    borderBlue: 'rgba(96, 165, 250, 0.15)',
+    bgBlueSoft: 'rgba(37, 99, 235, 0.05)'
   };
 
   const links = [
@@ -73,13 +73,13 @@ export default function Links() {
       <section className="max-w-7xl mx-auto px-6 py-16 overflow-x-hidden select-none">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-xs font-bold uppercase tracking-widest mb-2 font-['Inter']" style={{ color: theme.greenPrimary }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-2 font-['Inter']" style={{ color: theme.bluePrimary }}>
             Resource Network
           </p>
           <h2 className="text-3xl font-semibold tracking-wide font-['Cinzel']" style={{ color: theme.black }}>
             Useful Links
           </h2>
-          <div className="w-12 h-[2px] mx-auto mt-4" style={{ backgroundColor: theme.greenLight }}></div>
+          <div className="w-12 h-[2px] mx-auto mt-4" style={{ backgroundColor: theme.blueLight }}></div>
         </div>
 
         {/* Drag Boundary Window */}
@@ -117,7 +117,7 @@ export default function Links() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 className="flex-shrink-0 flex items-center gap-4 px-6 py-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] w-[310px] pointer-events-auto"
-                style={{ backgroundColor: theme.white, border: `1px solid ${theme.borderGreen}` }}
+                style={{ backgroundColor: theme.white, border: `1px solid ${theme.borderBlue}` }}
               >
                 {/* Logo Graphic Wrap */}
                 <div
@@ -125,8 +125,8 @@ export default function Links() {
                     link.isEwtn ? 'font-["Cinzel"] font-bold text-white text-xs tracking-wider' : ''
                   }`}
                   style={{
-                    backgroundColor: link.isEwtn ? theme.greenPrimary : theme.offWhite,
-                    border: `1px solid ${theme.borderGreen}`
+                    backgroundColor: link.isEwtn ? theme.bluePrimary : theme.offWhite,
+                    border: `1px solid ${theme.borderBlue}`
                   }}
                 >
                   {link.img ? (
@@ -139,7 +139,7 @@ export default function Links() {
                       }}
                     />
                   ) : (
-                    <span style={{ color: link.isEwtn ? theme.white : theme.greenPrimary }}>{link.fallbackText}</span>
+                    <span style={{ color: link.isEwtn ? theme.white : theme.bluePrimary }}>{link.fallbackText}</span>
                   )}
                 </div>
 

@@ -12,14 +12,14 @@ const About = () => {
     }
   };
 
-  // Green, white, black palette
+  // Blue variants, white, black
   const theme = {
-    greenDeep: '#064e3b',
-    greenPrimary: '#166534',
-    greenLight: '#4ade80',
+    blueDeep: '#1e3a8a',    // deep royal blue
+    bluePrimary: '#2563eb', // primary vibrant blue
+    blueLight: '#60a5fa',   // light accent blue
     white: '#ffffff',
     black: '#111111',
-    offWhite: '#fafaf5'
+    offWhite: '#f8fafc'     // cool off-white / light slate
   };
 
   return (
@@ -33,7 +33,7 @@ const About = () => {
           variants={fadeInVariant}
           className="text-center mb-16"
         >
-          <p className="flex justify-center items-center gap-2 mb-4 text-2xl font-bold uppercase tracking-widest" style={{ color: theme.greenPrimary }}>
+          <p className="flex justify-center items-center gap-2 mb-4 text-2xl font-bold uppercase tracking-widest" style={{ color: theme.bluePrimary }}>
             About Us
           </p>
           <h2 
@@ -42,7 +42,7 @@ const About = () => {
           >
             {/* Title can be added here if needed */}
           </h2>
-          <div className="w-16 h-[2px] mx-auto" style={{ backgroundColor: theme.greenLight }} />
+          <div className="w-16 h-[2px] mx-auto" style={{ backgroundColor: theme.blueLight }} />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -62,7 +62,7 @@ const About = () => {
               The First Indigenous Male Religious Order in West Africa
             </h3>
             
-            <div className="w-12 h-[2px] mb-6" style={{ backgroundColor: theme.greenLight }} />
+            <div className="w-12 h-[2px] mb-6" style={{ backgroundColor: theme.blueLight }} />
             
             <p className="mb-4 text-[1.05rem] leading-relaxed" style={{ color: theme.black }}>
               Sons of Mary Mother of Mercy (SMMM) is a Religious Congregation of priests and lay brothers 
@@ -80,14 +80,14 @@ const About = () => {
               <Link 
                 to="/History"
                 className="px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 border shadow-sm"
-                style={{ backgroundColor: theme.greenPrimary, color: theme.white, borderColor: theme.greenPrimary, fontFamily: "'Cinzel', serif" }}
+                style={{ backgroundColor: theme.bluePrimary, color: theme.white, borderColor: theme.bluePrimary, fontFamily: "'Cinzel', serif" }}
               >
                 Our History
               </Link>
               <Link 
                 to="/Charism" 
                 className="px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 border bg-transparent hover:bg-gray-100"
-                style={{ borderColor: theme.greenLight, color: theme.greenPrimary, fontFamily: "'Cinzel', serif" }}
+                style={{ borderColor: theme.blueLight, color: theme.bluePrimary, fontFamily: "'Cinzel', serif" }}
               >
                 Our Charism
               </Link>
@@ -103,9 +103,9 @@ const About = () => {
           >
             <div 
               className="relative overflow-hidden shadow-2xl rounded-sm transition-transform duration-500 hover:-translate-y-1"
-              style={{ background: theme.greenDeep }}
+              style={{ background: theme.blueDeep }}
             >
-              <div className="relative w-full aspect-[4/3] overflow-hidden" style={{ backgroundColor: theme.black, borderBottom: `1px solid ${theme.greenLight}20` }}>
+              <div className="relative w-full aspect-[4/3] overflow-hidden" style={{ backgroundColor: theme.black, borderBottom: `1px solid ${theme.blueLight}20` }}>
                 <img 
                   src={img} 
                   alt="Most Rev. Anthony Gogo Nwedo" 
@@ -117,7 +117,7 @@ const About = () => {
               <div className="p-8 relative">
                 <p 
                   className="mb-2 text-[0.6rem] tracking-[0.2em] uppercase font-bold"
-                  style={{ fontFamily: "'Cinzel', serif", color: theme.greenLight }}
+                  style={{ fontFamily: "'Cinzel', serif", color: theme.blueLight }}
                 >
                   Our Father Founder
                 </p>
@@ -139,8 +139,8 @@ const About = () => {
                 
                 <div className="absolute bottom-6 right-6 opacity-10 pointer-events-none">
                   <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                    <line x1="16" y1="2" x2="16" y2="30" stroke={theme.greenLight} strokeWidth="1.5"/>
-                    <line x1="6" y1="11" x2="26" y2="11" stroke={theme.greenLight} strokeWidth="1.5"/>
+                    <line x1="16" y1="2" x2="16" y2="30" stroke={theme.blueLight} strokeWidth="1.5"/>
+                    <line x1="6" y1="11" x2="26" y2="11" stroke={theme.blueLight} strokeWidth="1.5"/>
                   </svg>
                 </div>
               </div>
@@ -148,7 +148,7 @@ const About = () => {
             
             <div 
               className="absolute top-[16px] left-[16px] right-[-16px] bottom-[-16px] border rounded-sm -z-10 pointer-events-none transition-all duration-500 group-hover:top-[20px] group-hover:left-[20px]" 
-              style={{ borderColor: `${theme.greenLight}30` }}
+              style={{ borderColor: `${theme.blueLight}30` }}
             />
           </motion.div>
 

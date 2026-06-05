@@ -2,15 +2,15 @@ import { motion } from 'framer-motion';
 import ibe from '../assets/images/priest(08).png';
 
 const Superiors = () => {
-  // Green, white, black palette
+  // Blue variants, white, black
   const theme = {
-    greenDeep: '#064e3b',
-    greenPrimary: '#166534',
-    greenLight: '#4ade80',
+    blueDeep: '#1e3a8a',    // deep royal blue
+    bluePrimary: '#2563eb', // primary vibrant blue
+    blueLight: '#60a5fa',   // light accent blue
     white: '#ffffff',
     black: '#111111',
-    offWhite: '#f5f5f0',
-    grayLight: '#e5e7eb'
+    offWhite: '#f8fafc',    // cool off-white / light slate
+    grayLight: '#e2e8f0'
   };
 
   const fadeIn = {
@@ -30,12 +30,12 @@ const Superiors = () => {
         >
           <h2 
             className="text-4xl md:text-5xl font-semibold mb-4 tracking-wide"
-            style={{ fontFamily: "'Cinzel', serif", color: theme.greenPrimary }}
+            style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
           >
             Our Regional Executives
           </h2>
       
-          <div className="w-16 h-[2px] mx-auto mt-6" style={{ backgroundColor: theme.greenLight }} />
+          <div className="w-16 h-[2px] mx-auto mt-6" style={{ backgroundColor: theme.blueLight }} />
         </motion.div>
 
         {/* Grid Container */}
@@ -55,11 +55,11 @@ const Superiors = () => {
             <div className="text-center">
               <h4 
                 className="text-xl font-semibold mb-1"
-                style={{ fontFamily: "'Cinzel', serif", color: theme.greenPrimary }}
+                style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
               >
                 Very Rev. Dr. Anselm Ugochukwu Ibe, SMMM
               </h4>
-              <p className="text-sm font-medium mb-1" style={{ color: theme.greenLight }}>
+              <p className="text-sm font-medium mb-1" style={{ color: theme.blueLight }}>
                 Regional Superior
               </p>
              
@@ -80,11 +80,11 @@ const Superiors = () => {
             <div className="text-center">
               <h4 
                 className="text-xl font-semibold mb-1"
-                style={{ fontFamily: "'Cinzel', serif", color: theme.greenPrimary }}
+                style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
               >
                 Rev. Fr. Michael Okafor, SMMM
               </h4>
-              <p className="text-sm font-medium mb-1" style={{ color: theme.greenLight }}>
+              <p className="text-sm font-medium mb-1" style={{ color: theme.blueLight }}>
                 Regional Bursar
               </p>
              
@@ -105,11 +105,11 @@ const Superiors = () => {
             <div className="text-center">
               <h4 
                 className="text-xl font-semibold mb-1"
-                style={{ fontFamily: "'Cinzel', serif", color: theme.greenPrimary }}
+                style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
               >
                 Rev. Fr. Thaddeus Agbasonu, SMMM
               </h4>
-              <p className="text-sm font-medium mb-1" style={{ color: theme.greenLight }}>
+              <p className="text-sm font-medium mb-1" style={{ color: theme.blueLight }}>
                 Regional Secretary
               </p>
              

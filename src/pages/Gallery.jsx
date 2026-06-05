@@ -49,12 +49,13 @@ const gridConfig = [
 ];
 
 const Gallery = () => {
+  // Blue variants, white, black palette
   const theme = {
-    greenPrimary: '#166534',
-    greenLight: '#4ade80',
-    offWhite: '#fafaf5',
-    textDark: '#1a1a1a',
-    textMuted: '#4b5563',
+    bluePrimary: '#2563eb',
+    blueLight: '#60a5fa',
+    offWhite: '#f8fafc',      // cool off-white / light slate
+    textDark: '#0f172a',      // slate-900 (almost black)
+    textMuted: '#475569',      // slate-600
   };
 
   const fadeUpVariants = {
@@ -76,7 +77,7 @@ const Gallery = () => {
         >
           <span
             className="inline-block mt-4 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase rounded-full mb-4"
-            style={{ backgroundColor: `${theme.greenLight}20`, color: theme.greenPrimary }}
+            style={{ backgroundColor: `${theme.blueLight}20`, color: theme.bluePrimary }}
           >
             Memories
           </span>
@@ -86,7 +87,7 @@ const Gallery = () => {
           >
             Our Gallery
           </h1>
-          <div className="w-24 h-1 rounded-full mx-auto mb-6" style={{ backgroundColor: theme.greenLight }} />
+          <div className="w-24 h-1 rounded-full mx-auto mb-6" style={{ backgroundColor: theme.blueLight }} />
           <p className="text-lg max-w-xl mx-auto" style={{ color: theme.textMuted }}>
             A custom-fit, dynamic look into our community and shared ministry.
           </p>

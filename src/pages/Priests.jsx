@@ -27,17 +27,16 @@ const priestsData = [
   { name: "Fr. Anthony Amadi", role: "" },
   { name: "Fr. Gabriel Eze, SMMM", role: "" },
   { name: "Fr. Michael Okafor, SMMM", role: "" },
-  { name: "Fr. Martin Kenechukwu", role: "" },
   { name: "Fr. Callistus Ojike", role: "" },
   { name: "Fr. Benjamin Onyemaechi", role: "" },
   { name: "Fr. McGrace Onwumere", role: "" },
   { name: "Fr. Vitalis Onyeama", role: "" },
-  { name: "Fr. Xavier Kelechi", role: "" },
   { name: "Fr. Kenneth Onyeabor, SMMM", role: "" },
   { name: "Fr. Kizito Ndugbu", role: "" },
   { name: "Fr. Nichodemus Okafor", role: "" },
   { name: "Fr. Thaddeus Agbasonu, SMMM", role: "" },
   { name: "Fr. Simon Peter Okanumee, SMMM", role: "" },
+  { name: "Fr. Emmanuel C. Chinedu, SMMM", role: "" },
   { name: "Fr. Micheal Egelamba, SMMM", role: "" },
   { name: "Fr. Goodluck Ajaero, SMMM", role: "" },
   { name: "Fr. Desmond Adazie, SMMM", role: "" },
@@ -46,6 +45,8 @@ const priestsData = [
   { name: "Fr. Peter U. Okonkwo, SMMM", role: "" },
   { name: "Fr. Daniel Chimezie, SMMM", role: "" },
   { name: "Fr. Nkeonye Modestus, SMMM", role: "" },
+  { name: "Fr. Nwachukwu Kenneth, SMMM", role: "" },
+  { name: "Fr. Nwachukwu Kenneth, SMMM", role: "" },
   { name: "Fr. Nwachukwu Kenneth, SMMM", role: "" },
 ];
 
@@ -95,18 +96,18 @@ const cardVariants = {
 |--------------------------------------------------------------------------
 */
 
-// Green, white, black palette
+// Blue, white, black palette
 const theme = {
-  greenPrimary: '#166534',
-  greenLight: '#4ade80',
-  greenDeep: '#064e3b',
+  bluePrimary: '#2563eb',
+  blueLight: '#60a5fa',
+  blueDeep: '#1e3a8a',
   white: '#ffffff',
   black: '#111111',
-  offWhite: '#fafaf5',
-  textDark: '#1a1a1a',
-  textMuted: '#4b5563',
-  borderLight: 'rgba(22, 101, 52, 0.12)',
-  bgSoft: 'rgba(22, 101, 52, 0.06)'
+  offWhite: '#f8fafc',
+  textDark: '#0f172a',
+  textMuted: '#475569',
+  borderLight: 'rgba(37, 99, 235, 0.12)',
+  bgSoft: 'rgba(37, 99, 235, 0.06)'
 };
 
 const PriestCard = ({ priest }) => {
@@ -139,7 +140,7 @@ const PriestCard = ({ priest }) => {
           </h3>
           
           {priest.role && (
-            <span className="inline-block mt-1 px-3 py-1 text-xs font-semibold tracking-wide rounded-full uppercase" style={{ backgroundColor: theme.bgSoft, color: theme.greenPrimary }}>
+            <span className="inline-block mt-1 px-3 py-1 text-xs font-semibold tracking-wide rounded-full uppercase" style={{ backgroundColor: theme.bgSoft, color: theme.bluePrimary }}>
               {priest.role}
             </span>
           )}
@@ -155,7 +156,7 @@ const PriestCard = ({ priest }) => {
             title="Email"
             className="p-2 rounded-full transition-colors duration-300"
             style={{ color: theme.textMuted }}
-            onMouseEnter={(e) => e.currentTarget.style.color = theme.greenPrimary}
+            onMouseEnter={(e) => e.currentTarget.style.color = theme.bluePrimary}
             onMouseLeave={(e) => e.currentTarget.style.color = theme.textMuted}
           >
             <Mail size={18} />
@@ -167,7 +168,7 @@ const PriestCard = ({ priest }) => {
             title="Phone"
             className="p-2 rounded-full transition-colors duration-300"
             style={{ color: theme.textMuted }}
-            onMouseEnter={(e) => e.currentTarget.style.color = theme.greenPrimary}
+            onMouseEnter={(e) => e.currentTarget.style.color = theme.bluePrimary}
             onMouseLeave={(e) => e.currentTarget.style.color = theme.textMuted}
           >
             <Phone size={18} />
@@ -187,8 +188,8 @@ const PriestCard = ({ priest }) => {
 const Priests = () => {
   return (
     <div className="min-h-screen font-sans antialiased" style={{ backgroundColor: theme.offWhite }}>
-      {/* Top Border - changed to green gradient */}
-      <div className="h-1 bg-gradient-to-r" style={{ backgroundImage: `linear-gradient(to right, ${theme.greenDeep}, ${theme.greenLight}, ${theme.greenDeep})` }} />
+      {/* Top Border - changed to blue gradient */}
+      <div className="h-1 bg-gradient-to-r" style={{ backgroundImage: `linear-gradient(to right, ${theme.blueDeep}, ${theme.blueLight}, ${theme.blueDeep})` }} />
       <NavBar />
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Header */}
@@ -201,7 +202,7 @@ const Priests = () => {
         >
           <span
             className="inline-block px-4 py-1.5 text-xs font-semibold tracking-widest uppercase rounded-full mb-4"
-            style={{ backgroundColor: theme.bgSoft, color: theme.greenPrimary }}
+            style={{ backgroundColor: theme.bgSoft, color: theme.bluePrimary }}
           >
             Clergy
           </span>
@@ -213,7 +214,7 @@ const Priests = () => {
             Our Priests
           </h1>
 
-          <div className="w-24 h-1 rounded-full mx-auto mb-6" style={{ backgroundColor: theme.greenLight }} />
+          <div className="w-24 h-1 rounded-full mx-auto mb-6" style={{ backgroundColor: theme.blueLight }} />
 
           <p className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: theme.textMuted }}>
             Dedicated servants of God who guide our congregation with faith, wisdom, and compassion.

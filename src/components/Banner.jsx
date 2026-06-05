@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Banner = () => {
-  // New palette: green background, white text
+  // Blue background, white text palette
   const theme = {
-    greenBg: '#166534',     // rich green background (primary)
+    blueBg: '#1e3a8a',      // deep royal blue background
     white: '#ffffff',
     whiteMuted: 'rgba(255, 255, 255, 0.7)',
     whiteFaint: 'rgba(255, 255, 255, 0.3)'
@@ -40,7 +40,7 @@ const Banner = () => {
     <div 
       className="relative w-full py-4 overflow-hidden border-t border-b flex"
       style={{ 
-        backgroundColor: theme.greenBg, 
+        backgroundColor: theme.blueBg, 
         borderColor: theme.whiteFaint 
       }}
     >
