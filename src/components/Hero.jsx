@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import wp2 from '../assets/wallpapers/wp(2).jpg';
 import wp3 from '../assets/wallpapers/wp(3).jpg';
-import wp4 from '../assets/wallpapers/wp(4).jpg';
 import wp5 from '../assets/wallpapers/wp(5).jpg';
 import wp6 from '../assets/wallpapers/wp(6).jpg';
-import mary from '../assets/wallpapers/mary.jpg';
+import wp7 from '../assets/priests/image(30).jpg';
 import img1 from '../assets/priests/image(02).jpg';
 import img2 from '../assets/priests/image(03).jpg';
 
@@ -26,13 +25,11 @@ const Hero = () => {
   const images = [
     img1,
     img2,
+    wp7,
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDg7rGbkSxtRi33eRjEeYidBr6pjcb1tbPePcGF4Wvt8XfBJVTD3scZ16a71r-WGGoEccaDERZZ3nSIm1O-zN04agoLlNYbjRpq_4VHbjuYNIo0OFRaiYkYGKh16B53KFCRzC5cprziLR2zr8UTavBG1zym8FmWUD95Hjbr3Gx-KV7ONKoRs_A0JBmlz5g7pc9Jh8g4pVp4AvcXvFRZdh5aRhb6XF6WjjP8PVXPFyTwzMj96KUmQsdRplaeUF5xtZtF-crMkmqGOZ8",
     wp2,
-    mary,
     wp6,
     wp3,
-    "https://images.unsplash.com/photo-1478147427282-58a87a120781?q=80&w=1200", 
-    wp4,
     wp5,
   ];
 
@@ -70,32 +67,31 @@ const Hero = () => {
       initial="initial"
       animate="animate"
     >
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          <motion.img 
-            key={currentImageIndex} 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }} 
-            style={{ y: backgroundY }}
-            className="w-full h-[120%] object-cover absolute top-0 left-0" 
-            alt="Sacred backdrop rotation" 
-            src={images[currentImageIndex]}
-          />
-        </AnimatePresence>
-        
-        {/* Overlays – increased opacity for better readability */}
-        <div className="absolute inset-0 bg-black/70 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-transparent to-blue-950/95" />
-      </div>
+     <div className="absolute inset-0 z-0">
+  <AnimatePresence mode="wait">
+    <motion.img 
+      key={currentImageIndex} 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1.5 }} 
+      style={{ y: backgroundY }}
+      className="w-full h-[120%] object-cover absolute top-0 left-0" 
+      alt="Sacred backdrop rotation" 
+      src={images[currentImageIndex]}
+    />
+  </AnimatePresence>
+
+  {/* Dark overlay to improve text readability */}
+  <div className="absolute inset-0 bg-black/70" />
+</div>
 
       <div className="relative z-10 text-center px-4 md:px-8 max-w-5xl mx-auto flex flex-col items-center">
         
         <motion.span
           variants={elementVariants}
           className="text-[0.65rem] md:text-xs font-bold tracking-[0.25em] uppercase px-4 py-1.5 rounded-full border mb-6 backdrop-blur-sm shadow-sm"
-          style={{ color: theme.blueLight, borderColor: `${theme.blueLight}80`, backgroundColor: `${theme.black}E6` }} // E6 = 90% opacity
+          style={{ color: theme.blueLight, borderColor: `${theme.blueLight}80`, backgroundColor: `${theme.black}E6` }}
         >
           Welcome To The USA Region
         </motion.span>
@@ -122,12 +118,12 @@ const Hero = () => {
             border: `1px solid ${theme.blueLight}40`, 
             padding: "10px 28px", 
             marginBottom: "3rem", 
-            backgroundColor: `${theme.black}CC`, // CC = 80% opacity, increased from 80 to CC
+            backgroundColor: `${theme.black}CC`,
             borderRadius: "8px"
           }}
         >
           
-          <p style={{ fontFamily: "'Cinzel', serif", fontSize: "0.9rem", letterSpacing: "0.1em", color: theme.white }}>Bearing witness to the mercy of God</p>
+          <p style={{ fontFamily: "'Cinzel', serif", fontSize: "0.9rem", letterSpacing: "0.1em", color: theme.white }}>...bearing witness to the mercy of God</p>
         </motion.div>
         
       </div>

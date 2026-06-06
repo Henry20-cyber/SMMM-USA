@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
-import wp6 from '../assets/wallpapers/wp(6).jpg';
-import wp3 from '../assets/wallpapers/wp(3).jpg';
-import wp7 from '../assets/wallpapers/wp(7).jpg';
+import wp4 from '../assets/priests/image(03).jpg';
+import wp7 from '../assets/priests/image(07).jpg';
+import wp8 from '../assets/priests/image(11).jpg';
+import wp2 from '../assets/priests/image(14).jpg';
 
 const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1600&q=80",
-  wp6,
-  wp7,  
-  "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80", 
-  wp3,
+  wp8,
+  wp4,
+  wp2,
+  wp7,
 ];
 
 const REGIONAL_SUPERIORS = [
@@ -19,7 +19,7 @@ const REGIONAL_SUPERIORS = [
   { name: "Fr. Uche Iheke, SMMM", years: "2010-2012", isCurrent: false },
   { name: "Fr. John Agwu, SMMM", years: "2012-2015", isCurrent: false },
   { name: "Fr. Remigius Owoamanam, SMMM", years: "2015-2019", isCurrent: false },
-  { name: "Fr. Marcellinus Ekenedo, SMMM", years: "2019-2021", isCurrent: false },
+  { name: "Fr. Marcelinus Ekenedo, SMMM", years: "2019-2021", isCurrent: false },
   { name: "Fr. Anselm Ugochukwu Ibe, SMMM", years: "2021-present", isCurrent: true }
 ];
 
@@ -63,7 +63,7 @@ export default function History() {
       <Navbar />
       
       {/* ================= HERO SECTION: FULL-WIDTH BACKGROUND ================= */}
-      <section className="relative min-h-[500px] sm:min-h-[600px] flex items-center overflow-hidden">
+      <section className="relative h-dvh sm:min-h-[600px] flex items-center overflow-hidden">
         {/* Rotating Background Images */}
         <AnimatePresence mode="popLayout">
           <motion.img
@@ -92,8 +92,8 @@ export default function History() {
             <span className="text-xs uppercase tracking-[0.25em] font-semibold mb-3 block" style={{ color: theme.blueLight }}>
               Sons of Mary Mother of Mercy
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
-              Brief Information about the SMMM American Region
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight text-white leading-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
+              Brief <span className="text-blue-400">Information</span> about the SMMM USA Region
             </h1>
             <motion.div 
               className="mt-5 h-1 w-24 rounded-full"
@@ -164,14 +164,14 @@ export default function History() {
                   Currently, our members provide priestly ministry across various Archdioceses and Dioceses, including Fresno, CA; San Bernardino, CA; San Diego, CA; Boston, MA; Boise, ID; and Orlando, FL. Other members serve as Hospital, Veteran, and Prison Chaplains within the dioceses and archdioceses of Los Angeles, CA; San Francisco, CA; San Bernardino, CA; Syracuse, NY; Hartford, Connecticut; Miami, FL; St. Augustine, FL; and St. Petersburg, FL. Notably, our student members currently in the Philippines also belong to the USA Region.
                 </p>
                 <p>
-                  The numerical strength of our Region is a true blessing, with 35 active members. In thanksgiving for God’s love and mercy, we celebrated the Silver Jubilee of our mission in the United States in 2023. This milestone was a moment to appreciate our 25-year journey as missionaries dedicated to God’s work. Our Superior General, Rev. Fr. Dr. Christian Okwuru, joined us for this epoch-making celebration, during which awards for exceptional leadership and missionary services were presented to Fr. Eugene Eburuche, Fr. Paulinus Iwuji, and Fr. Anselm Ibe.
+                  The numerical strength of our Region is a true blessing, with 37 active members. In thanksgiving for God’s love and mercy, we celebrated the Silver Jubilee of our mission in the United States in 2023. This milestone was a moment to appreciate our 25-year journey as missionaries dedicated to God’s work. Our Superior General, Rev. Fr. Dr. Christian Okwuru, joined us for this epoch-making celebration, during which awards for exceptional leadership and missionary services were presented to Fr. Eugene Eburuche, Fr. Paulinus Iwuji, and Fr. Anselm Ibe.
                 </p>
               </div>
               
               {/* Scripture Highlight */}
               <div className="border-l-4 pl-4 py-2 rounded-r-xl" style={{ borderLeftColor: theme.bluePrimary, backgroundColor: `${theme.bluePrimary}08` }}>
                 <p className="text-base italic font-medium leading-relaxed" style={{ color: theme.textDark }}>
-                  Following the mandate of our Lord Jesus Christ, we have, therefore, resolved to bring the Gospel to all nations: “Go and make disciples of all nations…” (Mt 28:19).
+                 Chronology of the Past and Present Regional Superiors
                 </p>
               </div>
             </motion.div>

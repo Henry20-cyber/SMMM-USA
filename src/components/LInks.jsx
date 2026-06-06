@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
-import vatican from '../assets/vatican.png';
-import smmm from '../assets/logo2.png';
-import dmmm from '../assets/dmmm.jpeg';
-import cbcn from '../assets/CBCN.jpeg';
+import vatican from '../assets/vectors/vatican.png';
+import smmm from '../assets/vectors/logo2.png';
+import dmmm from '../assets/vectors/dmmm.jpeg';
+import cbcn from '../assets/vectors/CBCN.jpeg';
 
 export default function Links() {
   const constraintsRef = useRef(null);

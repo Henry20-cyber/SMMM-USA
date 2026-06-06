@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from '../components/Navbar.jsx';
-import img from '../assets/logo.jpg';
-import cincture from '../assets/cincture.png';
+import img from '../assets/vectors/logo.jpg';
+import habit from '../assets/vectors/habit2.png';
 
 // Hero images (you can replace with your own assets)
 const HERO_IMAGES = [
@@ -217,102 +217,113 @@ const Sacredsymbols = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: RELIGIOUS HABIT */}
+          {/* RIGHT COLUMN: RELIGIOUS HABIT - ENLARGED & MODERNIZED */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
             variants={revealVariant}
+            className="space-y-8"
           >
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: theme.bluePrimary }}>
-              Our Sacred Garment
-            </p>
-            <h3 
-              className="text-3xl font-semibold mb-6 tracking-wide"
-              style={{ fontFamily: "'Cinzel', serif", color: theme.black }}
-            >
-              Our Religious Habit
-            </h3>
-            
-            <div className="w-12 h-[2px] mb-8" style={{ backgroundColor: theme.blueLight }} />
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: theme.bluePrimary }}>
+                Our Sacred Garment
+              </p>
+              <h3 
+                className="text-3xl font-semibold mb-6 tracking-wide"
+                style={{ fontFamily: "'Cinzel', serif", color: theme.black }}
+              >
+                Our Religious Habit
+              </h3>
+              <div className="w-12 h-[2px] mb-8" style={{ backgroundColor: theme.blueLight }} />
+            </div>
 
-            <div className="flex gap-8 flex-col sm:flex-row items-start">
-              <div className="flex-shrink-0 w-32 sm:w-40 mx-auto sm:mx-0">
+            {/* ENLARGED HABIT IMAGE - Primary Focus */}
+            <div className="flex justify-center">
+              <div 
+                className="relative rounded-2xl bg-gradient-to-br from-white to-blue-50 p-4 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
+                style={{ border: `1px solid ${theme.borderLight}` }}
+              >
                 <img 
-                  src={cincture} 
-                  alt="Religious Habit Cincture Cord" 
-                  className="w-full h-auto object-contain"
-                  style={{ mixBlendMode: 'multiply' }}
+                  src={habit} 
+                  alt="Religious Habit of the Sons of Mary Mother of Mercy - Detailed view of white soutane with blue buttons and cord" 
+                  className="w-full max-w-[360px] md:max-w-[420px] lg:max-w-[480px] h-auto object-contain rounded-lg"
+                  style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.05))' }}
                 />
-              </div>
-
-              <div className="flex-1 w-full">
-                <p className="text-[1rem] mb-5 leading-relaxed" style={{ color: theme.textMuted }}>
-                  We wear a <strong style={{ color: theme.black }}>white soutane</strong> with <strong style={{ color: theme.bluePrimary }}>twenty-one blue buttons</strong> and a <strong style={{ color: theme.bluePrimary }}>blue cord cincture</strong> with tassels.
-                </p>
-                
-                <div className="flex flex-col gap-3">
-                  <div 
-                    className="p-4 border-l-[3px]"
-                    style={{ backgroundColor: theme.bgBlueSoft, borderLeftColor: theme.bluePrimary }}
-                  >
-                    <p 
-                      className="text-xs font-bold mb-1 tracking-wider uppercase"
-                      style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
-                    >
-                      21 Blue Buttons
-                    </p>
-                    <p className="text-sm" style={{ color: theme.textMuted }}>
-                      14 Stations of the Cross + 7 Sorrows of the Blessed Virgin Mary
-                    </p>
-                  </div>
-                  
-                  <div 
-                    className="p-4 border-l-[3px]"
-                    style={{ backgroundColor: theme.bgBlueSoft, borderLeftColor: theme.bluePrimary }}
-                  >
-                    <p 
-                      className="text-xs font-bold mb-1 tracking-wider uppercase"
-                      style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
-                    >
-                      3 Knots on the Cincture
-                    </p>
-                    <p className="text-sm" style={{ color: theme.textMuted }}>
-                      Mercy as Compassion · Forgiveness · Kindness
-                    </p>
-                  </div>
+                {/* Optional decorative badge */}
+                <div className="absolute -top-3 -right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                  Sacred Vestment
                 </div>
               </div>
             </div>
 
-            {/* Colors Breakdown Box */}
-            <div 
-              className="mt-8 p-6 bg-white shadow-sm border rounded-xl"
-              style={{ borderColor: theme.borderLight }}
-            >
-              <p 
-                className="text-xs font-bold tracking-widest uppercase mb-4"
-                style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
-              >
-                Colors & Their Meaning
+            {/* Descriptive content - stacks beautifully below the enlarged image */}
+            <div className="space-y-6">
+              <p className="text-[1rem] leading-relaxed" style={{ color: theme.textMuted }}>
+                We wear a <strong style={{ color: theme.black }}>white soutane</strong> with <strong style={{ color: theme.bluePrimary }}>twenty-one blue buttons</strong> and a <strong style={{ color: theme.bluePrimary }}>blue cord cincture</strong> with tassels.
               </p>
-              <div className="flex gap-x-6 gap-y-3 flex-wrap">
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full border block" style={{ backgroundColor: theme.white, borderColor: theme.borderLight }} />
-                  <span className="text-sm" style={{ color: theme.textMuted }}>White — Purity & Openness</span>
+              
+              <div className="flex flex-col gap-4">
+                <div 
+                  className="p-5 rounded-xl border-l-[4px] transition-all hover:translate-x-1"
+                  style={{ backgroundColor: theme.bgBlueSoft, borderLeftColor: theme.bluePrimary }}
+                >
+                  <p 
+                    className="text-sm font-bold mb-2 tracking-wider uppercase"
+                    style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
+                  >
+                    21 Blue Buttons
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.textMuted }}>
+                    14 Stations of the Cross + 7 Sorrows of the Blessed Virgin Mary — a constant meditation on Christ’s passion and Our Lady’s suffering.
+                  </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full block bg-red-500" />
-                  <span className="text-sm text-red-500" >Red — Love & Martyrdom</span>
+                
+                <div 
+                  className="p-5 rounded-xl border-l-[4px] transition-all hover:translate-x-1"
+                  style={{ backgroundColor: theme.bgBlueSoft, borderLeftColor: theme.bluePrimary }}
+                >
+                  <p 
+                    className="text-sm font-bold mb-2 tracking-wider uppercase"
+                    style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
+                  >
+                    3 Knots on the Cincture
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.textMuted }}>
+                    Mercy as Compassion · Forgiveness · Kindness — the triple cord that binds us to our merciful mission.
+                  </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full block bg-blue-500"  />
-                  <span className="text-sm text-blue-500" >Blue — The Blessed Virgin Mary</span>
+              </div>
+
+              {/* Colors Breakdown Box - Elevated Design */}
+              <div 
+                className="mt-8 p-6 bg-white shadow-md rounded-2xl transition-all hover:shadow-lg"
+                style={{ border: `1px solid ${theme.borderLight}` }}
+              >
+                <p 
+                  className="text-xs font-bold tracking-widest uppercase mb-5 flex items-center gap-2"
+                  style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
+                >
+                  <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                  Colors & Their Meaning
+                </p>
+                <div className="flex gap-x-8 gap-y-4 flex-wrap">
+                  <div className="flex items-center gap-3">
+                    <span className="w-5 h-5 rounded-full border shadow-sm" style={{ backgroundColor: theme.white, borderColor: theme.borderLight }} />
+                    <span className="text-sm font-medium" style={{ color: theme.textDark }}>White — Purity & Openness</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-5 h-5 rounded-full shadow-sm" style={{ backgroundColor: '#dc2626' }} />
+                    <span className="text-sm font-medium" style={{ color: '#b91c1c' }}>Red — Love & Martyrdom</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-5 h-5 rounded-full shadow-sm" style={{ backgroundColor: '#2563eb' }} />
+                    <span className="text-sm font-medium" style={{ color: '#1e3a8a' }}>Blue — The Blessed Virgin Mary</span>
+                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
-
         </div>
       </div>
 

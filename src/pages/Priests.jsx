@@ -19,35 +19,34 @@ const priestsData = [
   { name: "Fr. Paulinus Iwuji, SMMM", role: "" },
   { name: "Fr. Anselm Ibe, SMMM", role: "" },
   { name: "Fr. Ekegbuchunem Ifionu, SMMM", role: "" },
-  { name: "Fr. Marcelinus Ekenedo", role: "" },
-  { name: "Fr. John Agwu", role: "" },
-  { name: "Fr. Augustine Okwuzu", role: "" },
-  { name: "Fr. Jude Nwachukwu", role: "" },
-  { name: "Fr. Bruno Mbamobi", role: "" },
-  { name: "Fr. Anthony Amadi", role: "" },
+  { name: "Fr. Marcelinus Ekenedo, SMMM", role: "" },
+  { name: "Fr. John Agwu, SMMM", role: "" },
+  { name: "Fr. Augustine Okwuzu, SMMM", role: "" },
+  { name: "Fr. Jude Nwachukwu, SMMM", role: "" },
   { name: "Fr. Gabriel Eze, SMMM", role: "" },
   { name: "Fr. Michael Okafor, SMMM", role: "" },
-  { name: "Fr. Callistus Ojike", role: "" },
-  { name: "Fr. Benjamin Onyemaechi", role: "" },
-  { name: "Fr. McGrace Onwumere", role: "" },
-  { name: "Fr. Vitalis Onyeama", role: "" },
+  { name: "Fr. Bruno Mbamobi, SMMM", role: "Zonal Superior, Boise Community" },
+  { name: "Fr. Callistus Ojike, SMMM", role: "Immigration Coordinator" },
+  { name: "Fr. Benjamin Onyemaechi, SMMM", role: "" },
+  { name: "Fr. Vitalis Onyeama, SMMM", role: "" },
+  { name: "Fr. McGrace Onwumere, SMMM", role: "" },
+  { name: "Fr. Kizito Ndugbu, SMMM", role: "" },
   { name: "Fr. Kenneth Onyeabor, SMMM", role: "" },
-  { name: "Fr. Kizito Ndugbu", role: "" },
-  { name: "Fr. Nichodemus Okafor", role: "" },
+  { name: "Fr. Nichodemus Okafor, SMMM", role: "Communication Coordinator" },
   { name: "Fr. Thaddeus Agbasonu, SMMM", role: "" },
+  { name: "Fr. Augustine Nwagbara, SMMM", role: "" },
   { name: "Fr. Simon Peter Okanumee, SMMM", role: "" },
-  { name: "Fr. Emmanuel C. Chinedu, SMMM", role: "" },
   { name: "Fr. Micheal Egelamba, SMMM", role: "" },
+  { name: "Fr. Kyrian Okonkwo, SMMM", role: "" },
   { name: "Fr. Goodluck Ajaero, SMMM", role: "" },
+  { name: "Fr.  Kenneth Nwachukwu, SMMM", role: "" },
   { name: "Fr. Desmond Adazie, SMMM", role: "" },
   { name: "Fr. Stephen Okoli, SMMM", role: "" },
-  { name: "Fr. Kyrian Okonkwo, SMMM", role: "" },
-  { name: "Fr. Peter U. Okonkwo, SMMM", role: "" },
-  { name: "Fr. Daniel Chimezie, SMMM", role: "" },
   { name: "Fr. Nkeonye Modestus, SMMM", role: "" },
-  { name: "Fr. Nwachukwu Kenneth, SMMM", role: "" },
-  { name: "Fr. Nwachukwu Kenneth, SMMM", role: "" },
-  { name: "Fr. Nwachukwu Kenneth, SMMM", role: "" },
+  { name: "Fr. Daniel Chimezie, SMMM", role: "" },
+  { name: "Fr. Peter U. Okonkwo, SMMM", role: "" },
+  { name: "Fr. Anthony Amadi, SMMM", role: "" },
+  { name: "Fr. Emmanuel C. Chinedu, SMMM", role: "" },
 ];
 
 const imageModules = import.meta.glob(
@@ -138,7 +137,7 @@ const PriestCard = ({ priest }) => {
           <h3 className="font-serif text-xl font-bold mb-1" style={{ color: theme.black }}>
             {priest.name}
           </h3>
-          
+
           {priest.role && (
             <span className="inline-block mt-1 px-3 py-1 text-xs font-semibold tracking-wide rounded-full uppercase" style={{ backgroundColor: theme.bgSoft, color: theme.bluePrimary }}>
               {priest.role}

@@ -1,164 +1,173 @@
 import { motion } from 'framer-motion';
 
 const MissionAreas = () => {
-  // Blue variants, white, black (dark background with blue accents)
+  // Brighter blue background + refined palette
   const theme = {
-    blueLight: '#60a5fa',
-    bluePrimary: '#2563eb',
-    blueDeep: '#1e3a8a',
+    blueLight: '#93c5fd',       // softer light blue for accents
+    bluePrimary: '#3b82f6',     // vibrant primary blue
+    blueDeep: '#1e40af',        // brighter deep blue (was #0f172a)
+    blueGradientStart: '#1e3a8a',
+    blueGradientEnd: '#2563eb',
     white: '#ffffff',
-    whiteMuted: 'rgba(255, 255, 255, 0.7)',
+    whiteMuted: '#f1f5f9',      // almost white
     whiteFaint: 'rgba(255, 255, 255, 0.3)',
-    borderBlue: 'rgba(96, 165, 250, 0.15)',
-    bgBlueTransparent: 'rgba(37, 99, 235, 0.1)',
+    borderLight: 'rgba(147, 197, 253, 0.25)',
+    bgCard: 'rgba(255, 255, 255, 0.05)',
+    bgCardHover: 'rgba(255, 255, 255, 0.1)',
   };
 
-  // Shared animation variants
   const containerVariants = {
-    hidden: {},
+    hidden: { opacity: 0 },
     visible: {
-      transition: {
-        staggerChildren: 0.15
-      }
+      opacity: 1,
+      transition: { staggerChildren: 0.12 }
     }
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }
     }
   };
 
-  // Structured Regions Array
   const regions = [
     {
       name: "Africa",
-      pills: ["Nigeria", "Cameroon", "Ghana", "Burkina Faso"],
-      isHomeRegion: false
+      countries: ["Nigeria", "Cameroon", "Ghana", "Burkina Faso"]
     },
     {
       name: "Europe",
-      pills: ["Italy", "Germany", "Luxembourg", "Switzerland", "Austria", "Belgium", "United Kingdom", "Ireland"],
-      isHomeRegion: false
+      countries: ["Italy", "Germany", "Luxembourg", "Switzerland", "Austria", "Belgium", "United Kingdom", "Ireland"]
     },
     {
       name: "Asia",
-      pills: ["Philippines"],
-      isHomeRegion: false
+      countries: ["Philippines"]
     },
     {
       name: "North America",
-      pills: ["USA", "Canada"],
+      countries: ["USA", "Canada"],
       isHomeRegion: true,
-      subtext: {
-        title: "Active Dioceses (USA)",
-        content: "Fresno · San Bernardino · San Diego · Boston · Boise · Orlando · Los Angeles · San Francisco · Syracuse · Hartford · Miami · St. Augustine · St. Petersburg"
-      }
+      usCitiesByState: [
+        { state: "California", cities: ["Fresno", "San Bernardino", "San Diego", "Los Angeles", "San Francisco"] },
+        { state: "Florida", cities: ["Miami", "St. Augustine", "St. Petersburg", "Orlando"] },
+        { state: "Massachusetts", cities: ["Boston"] },
+        { state: "New York", cities: ["Syracuse"] },
+        { state: "Idaho", cities: ["Boise"] }
+      ]
     }
   ];
 
   return (
-    <section id="mission" className="py-28 px-6 overflow-hidden" style={{ backgroundColor: theme.blueDeep }}>
-      <div className="max-w-6xl mx-auto relative z-10">
-        
-        {/* Section Title Header */}
+    <section 
+      id="mission" 
+      className="py-24 px-6 overflow-hidden"
+      style={{
+        background: `linear-gradient(135deg, ${theme.blueGradientStart}, ${theme.blueGradientEnd})`
+      }}
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Section header – refined typography */}
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
         >
-          <p className="text-xs font-bold tracking-[0.25em] uppercase mb-4" style={{ color: theme.blueLight }}>Global Presence</p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-wide mb-6 text-white" style={{ fontFamily: "'Cinzel', serif" }}>Mission Areas & Growth</h2>
-          <div className="mx-auto mb-6 h-[1px] w-16" style={{ backgroundColor: theme.blueLight }}></div>
-          <p 
-            style={{ 
-              fontFamily: "'Cormorant Garamond', serif", 
-              fontSize: "1.1rem", 
-              color: theme.whiteMuted, 
-              fontStyle: "italic" 
-            }}
+          <span 
+            className="text-xs font-semibold tracking-[0.2em] uppercase"
+            style={{ color: theme.blueLight, letterSpacing: '0.2em', fontFamily: "'Inter', sans-serif" }}
           >
-            From a single mustard seed — to branches across the globe
+            Global Presence
+          </span>
+          <h2 
+            className="text-4xl md:text-5xl font-light tracking-tight mt-3 mb-4"
+            style={{ fontFamily: "'Cormorant Garamond', serif", color: theme.white, fontWeight: 500 }}
+          >
+            Mission Areas
+          </h2>
+          <div className="mx-auto w-12 h-px" style={{ backgroundColor: theme.blueLight }} />
+          <p className="mt-5 text-base font-light italic" style={{ color: theme.whiteMuted, fontFamily: "'Cormorant Garamond', serif" }}>
+            From a mustard seed to branches across the globe
           </p>
         </motion.div>
 
-        {/* Dynamic Card Staggered Grid */}
+        {/* Cards grid – minimalist, clean */}
         <motion.div 
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: "-40px" }}
           variants={containerVariants}
         >
-          {regions.map((region, index) => (
+          {regions.map((region, idx) => (
             <motion.div
-              key={index}
+              key={idx}
               variants={cardVariants}
-              className="rounded-sm flex flex-col justify-between"
+              className="rounded-2xl backdrop-blur-sm transition-all duration-300 hover:bg-opacity-80"
               style={{
-                border: region.isHomeRegion ? `1px solid ${theme.blueLight}` : `1px solid ${theme.borderBlue}`,
-                padding: '2rem',
-                backgroundColor: region.isHomeRegion ? theme.bgBlueTransparent : 'rgba(0, 0, 0, 0.2)'
+                backgroundColor: region.isHomeRegion ? 'rgba(59,130,246,0.15)' : theme.bgCard,
+                border: `1px solid ${theme.borderLight}`,
+                padding: '1.75rem'
               }}
             >
-              <div>
-                {/* Header info bar inside card */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div 
-                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ border: `1.5px solid ${region.isHomeRegion ? theme.blueLight : theme.borderBlue}` }}
-                  >
-                    <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-                      <circle cx="12" cy="12" r="9" stroke={theme.blueLight} strokeWidth="1.2"/>
-                      <line x1="12" y1="3" x2="12" y2="21" stroke={theme.blueLight} strokeWidth="0.8"/>
-                      <line x1="3" y1="9" x2="21" y2="9" stroke={theme.blueLight} strokeWidth="0.8"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-[1.05rem] font-semibold text-white" style={{ fontFamily: "'Cinzel', serif" }}>
-                      {region.name}
-                    </h3>
-                  </div>
-                </div>
+              {/* Region name */}
+              <h3 
+                className="text-xl font-medium mb-5 tracking-wide"
+                style={{ fontFamily: "'Cormorant Garamond', serif", color: theme.white, letterSpacing: '-0.01em', fontWeight: 600 }}
+              >
+                {region.name}
+              </h3>
 
-                {/* Country Pill Badges */}
-                <div className="flex flex-wrap gap-2">
-                  {region.pills.map((pill, pillIdx) => (
-                    <span 
-                      key={pillIdx}
-                      className="px-3 py-1 text-xs border rounded-full transition-all duration-300"
-                      style={{ 
-                        borderColor: region.isHomeRegion ? theme.blueLight : 'rgba(255,255,255,0.08)',
-                        color: region.isHomeRegion ? theme.white : theme.whiteMuted,
-                        backgroundColor: region.isHomeRegion ? theme.bgBlueTransparent : 'transparent'
-                      }}
-                    >
-                      {pill}
-                    </span>
-                  ))}
-                </div>
+              {/* Country pills – subtle */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {region.countries.map((country, cIdx) => (
+                  <span
+                    key={cIdx}
+                    className="px-3 py-1 text-xs rounded-full border"
+                    style={{
+                      borderColor: theme.borderLight,
+                      color: theme.whiteMuted,
+                      backgroundColor: 'transparent',
+                      fontFamily: "'Inter', sans-serif",
+                      fontWeight: 400
+                    }}
+                  >
+                    {country}
+                  </span>
+                ))}
               </div>
 
-              {/* Special Extension Section For Home Region Details */}
-              {region.subtext && (
-                <div className="mt-6 pt-6 border-t" style={{ borderColor: theme.borderBlue }}>
-                  <p className="text-[0.6rem] font-bold tracking-wider uppercase mb-2" style={{ color: theme.blueLight }}>
-                    {region.subtext.title}
+              {/* US cities – structured & space‑efficient */}
+              {region.usCitiesByState && (
+                <div className="mt-4 pt-4 border-t" style={{ borderColor: theme.borderLight }}>
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-wider mb-3" style={{ color: theme.blueLight, fontFamily: "'Inter', sans-serif" }}>
+                    Active Dioceses (USA)
                   </p>
-                  <p className="text-[0.88rem] leading-relaxed" style={{ color: theme.whiteMuted }}>
-                    {region.subtext.content}
-                  </p>
+                  <div className="space-y-3">
+                    {region.usCitiesByState.map((stateGroup, sgIdx) => (
+                      <div key={sgIdx} className="text-xs">
+                        <span className="block font-medium mb-1" style={{ color: theme.white, fontFamily: "'Inter', sans-serif" }}>
+                          {stateGroup.state}
+                        </span>
+                        <div className="flex flex-wrap gap-x-3 gap-y-1 pl-1">
+                          {stateGroup.cities.map((city, cityIdx) => (
+                            <span key={cityIdx} className="text-white/70 text-[0.7rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
+                              {city}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

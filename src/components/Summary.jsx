@@ -8,23 +8,23 @@ const timelineData = [
   },
   {
     year: "1998",
-    title: "Seeds in America",
+    title: "Seeds in USA",
     content: "The mission began in the US on Jan 24 with Fr. Eugene Ujunwa Eburuche's arrival in the Diocese of Fort Wayne-South Bend, Indiana."
   },
   {
     year: "2005",
     title: "Expansion to Fresno",
-    content: "The mission moved to Fresno, California. By the end of 2006, the USA Region grew rapidly to include 15 priests."
+    content: "The mission moved to Fresno, California. By the end of 2006, the USA Region grew rapidly to include 15 priests and subsequently became a Region, with Fr. Eugene serving as the pioneer superior of the Region."
   },
   {
     year: "2009",
-    title: "Official Regional Status",
-    content: "Formally elevated to a Region. First regional elections held with Fr. Nelson Ogwuegbu elected as the first Regional Superior."
+    title: "Inaurgural Regional Election",
+    content: "On Feb. 10, Fr. Nelson was elected Regional Superior with Fr. Anselm as Secretary, and Fr. Bartholonew as Bursar."
   },
   {
     year: "Today",
-    title: "Global Presence",
-    content: "Currently 35 active members serve across various US dioceses, Archdioceses and the Philippines, providing priestly, chaplaincy ministry and continuing education."
+    title: "Apostolic Presence",
+    content: "Currently 37 active members serve across various US dioceses, Archdioceses and the Philippines, providing priestly, chaplaincy ministry and continuing education."
   },
   {
     year: "2023",

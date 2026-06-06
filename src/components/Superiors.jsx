@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import ibe from '../assets/images/priest(08).png';
+import img from '../assets/images/priest(15).png';
+import img2 from '../assets/images/priest(24).jpg';
 
 const Superiors = () => {
   // Blue variants, white, black
@@ -75,7 +77,7 @@ const Superiors = () => {
             <img 
               className="w-full aspect-[3/4] object-cover rounded mb-6" 
               alt="Rev. Fr. Michael Okafor, SMMM - Regional Bursar" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9VlEB6ThPkVJaMEzyCos2tWk4cSe0CRZfT9QELRuVjkuhZRsTr-nc3tFNl6VfgVRWQ6X8Oulwri4mOmZDLcKz5xDKwCSykpEWubLHOhHIPOA6VVr2mtpt4nvYZe2V-ZDJBC9-KuUiQvH5aJuqyeL9zhkATATHCBkf849OPUM38ItOyD4nBt8YSmvUD9Xyq2Ea1azuZkZ9rowKYxWWA7fv9BXxilY23Eu-R7GHmOiArmgbi6Mc_iexN9D_PDv7W5hFMMnCpbTrCSw"
+              src={img}
             />
             <div className="text-center">
               <h4 
@@ -100,7 +102,7 @@ const Superiors = () => {
             <img 
               className="w-full aspect-[3/4] object-cover rounded mb-6" 
               alt="Rev. Fr. Thaddeus Agbasonu, SMMM - Regional Secretary" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ7cB0WioEHP4dDAvgLwb4vn9mUuVY5nc4RFTVSjCWI3lKBVHEG4dCmS1_fgQ63ZHBCsVRcoNZisTtbT9CyPWqwaE-oCiz-VlqTMuMXTIaWWgzG_ys2DMLJ9z78xHHn07usfbOAfueeLV_QOcxfBwZ_pTiHdnnmUie5TA_5VrLBbd4kBacfG4b-Z6xonA8QQjVWyxJj7E7AxidWb5Jx5Vw5T2ZiBms9ESRyPUMaUi0Vy0z9Slq1eRvf0-Slfhkc3UWAjS1JEAiN20"
+              src={img2}
             />
             <div className="text-center">
               <h4 

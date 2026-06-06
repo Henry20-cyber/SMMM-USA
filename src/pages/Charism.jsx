@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from '../components/Navbar';
-import bg from '../assets/bg.webp';
+import bg from '../assets/vectors/bg.webp';
 import wp7 from '../assets/wallpapers/wp(7).jpg';
 import wp8 from '../assets/wallpapers/wp(8).jpg';
 import wp5 from '../assets/wallpapers/wp(5).jpg';
@@ -72,14 +72,14 @@ const Charism = () => {
     },
     {
       pillar: 'Pillar II',
-      title: 'The Apostolate',
+      title: 'Forgiveness',
       body: 'We undertake the apostolate of loving and caring for the spiritually, intellectually and physically poor, the underprivileged by working in homes, and teaching in schools.',
       footer: 'Service & Instruction',
     },
     {
       pillar: 'Pillar III',
-      title: 'Forgiveness & Kindness',
-      body: "As brothers, it is absolutely essential that we have a forgiving heart, excusing one another's faults in charity (Mt. 18:21-22). The basis for our kindness is the injunction of Christ to give because of Him (Mt. 9:4); showing tender heartedness to all, even those difficult to deal with.",
+      title: 'Kindness',
+      body: "The basis for our kindness is the injunction of Christ to give because of Him (Mt. 9:4); showing tender heartedness to all, even those difficult to deal with.",
       footer: 'Mt. 18:21-22 & Mt. 9:4',
     },
   ];

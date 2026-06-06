@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import img from '../assets/web-image.webp';
+import img from '../assets/vectors/web-image.webp';
 
 const About = () => {
   const fadeInVariant = {
@@ -72,7 +72,7 @@ const About = () => {
             
             <p className="text-[1.05rem] leading-relaxed" style={{ color: theme.black }}>
               Through the intercession of Mary, Mother of Mercy, the mission has spread across Africa, 
-              North America, Europe, and the Philippines — and the American Region stands as a testament 
+              North America, Europe, and Asia. The US Region stands as a testament 
               to that enduring vision.
             </p>
             
@@ -126,7 +126,7 @@ const About = () => {
                   className="text-xl text-white font-semibold mb-1 tracking-wide"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
-                  Most Rev. Anthony Gogo Nwedo
+                  Most Rev. Anthony Gogo Nwedo, CSSp
                 </h4>
                 
                 <p 
