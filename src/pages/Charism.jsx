@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from '../components/Navbar';
-import bg from '../assets/vectors/bg.webp';
+import wp1 from '../assets/priests/image(09).jpg';
+import wp2 from '../assets/priests/image(31).jpg';
 import wp7 from '../assets/wallpapers/wp(7).jpg';
 import wp8 from '../assets/wallpapers/wp(8).jpg';
 import wp5 from '../assets/wallpapers/wp(5).jpg';
 
-const heroImages = [bg, wp7, wp5, wp8];
+const heroImages = [wp1,wp2, wp7, wp5, wp8];
 
 const Charism = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

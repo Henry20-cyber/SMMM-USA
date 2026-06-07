@@ -85,11 +85,10 @@ const Footer = () => {
             </p>
             <div className="flex flex-col gap-3">
               {[
-                { path: '/about', label: 'About Us' },
                 { path: '/charism', label: 'Charism' },
                 { path: '/apostolate', label: 'Apostolate' },
                 { path: '/history', label: 'History' },
-                { path: '/mission', label: 'Mission Areas' },
+                { path: '/priests', label: 'Our Priests' },
                 { path: '/donations', label: 'Donate' }
               ].map((item) => (
                 <Link
