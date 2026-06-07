@@ -430,7 +430,7 @@ const Donations = () => {
                 <div className="bg-white border border-slate-200 p-5 rounded-xl flex items-start gap-4 shadow-sm">
                   <span className="material-symbols-outlined text-[#0077ec] text-2xl mt-0.5">corporate_fare</span>
                   <div>
-                    <h4 className="text-sm font-bold text-[#0B132B] mb-0.5">SMMM Regional House Office</h4>
+                    <h4 className="text-sm font-bold text-[#0B132B] mb-0.5">SMMM Regional House</h4>
                     <p className="text-sm text-slate-600 leading-relaxed">1100 W. Hawaii Avenue,</p>
                     <p className="text-sm text-slate-600 leading-relaxed">Nampa, Idaho, 83686</p>
                   </div>
