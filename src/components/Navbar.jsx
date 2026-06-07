@@ -19,7 +19,6 @@ const Header = () => {
         { name: 'Charism', path: "/charism" },
         { name: 'Apostolate', path: "/apostolate" },
         { name: 'Gallery', path: "/Gallery" },
-        { name: 'Donations', path: "/donations" },
       ]
     },
   ];
@@ -144,6 +143,13 @@ const Header = () => {
             </Link>
             <Link 
               className="text-black hover:text-blue-700 font-['Noto_Serif'] text-lg transition-colors" 
+              to="/donations"
+              onClick={closeMenus}
+            >
+            Donations/Mission Support
+            </Link> 
+            <Link 
+              className="text-black hover:text-blue-700 font-['Noto_Serif'] text-lg transition-colors" 
               to="/Contact"
               onClick={closeMenus}
             >
@@ -156,7 +162,9 @@ const Header = () => {
             variants={fadeVariants}
             className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 shadow-sm"
           >
+            <Link to="/donations" onClick={closeMenus}>
             Donate
+            </Link>
           </motion.button>
         </div>
 
@@ -200,6 +208,9 @@ const Header = () => {
 
               <Link to="/Priests" onClick={closeMenus} className="text-black font-semibold hover:text-blue-700 transition-colors">
                 Our Priests
+              </Link>
+              <Link to="/Donations" onClick={closeMenus} className="text-black font-semibold hover:text-blue-700 transition-colors">
+                Donations/Mission Support
               </Link>
               <Link to="/Contact" onClick={closeMenus} className="text-black font-semibold hover:text-blue-700 transition-colors">
                 Contact Us

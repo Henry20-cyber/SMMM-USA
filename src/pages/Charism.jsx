@@ -66,19 +66,17 @@ const Charism = () => {
 
   const mercyCards = [
     {
-      title: 'Compassion',
-      body: "Our compassion is based on the example of our Divine Master—Christ represented by the Good Samaritan who after helping the wounded victim also provided for his future needs.",
-      footer: 'The Good Samaritan Paradigm',
+      title: 'Mercy Through Compassion',
+      body: "Our compassion is modeled after our Divine Master, Christ, represented by the Good Samaritan, who not only helped the wounded victim but also provided for his future needs (Lk 10:25-37). We undertake the apostolate of loving and caring for the spiritually, intellectually, and physically poor and underprivileged by working in homes and teaching in schools.",
     },
     {
-      title: 'Forgiveness',
-      body: 'We undertake the apostolate of loving and caring for the spiritually, intellectually and physically poor, the underprivileged by working in homes, and teaching in schools.',
-      footer: 'Service & Instruction',
+      title: 'Mercy as Forgiveness',
+      body: 'As brothers, it is essential that we have forgiving hearts, excusing one another’s faults in charity (Mt. 18:21-22).',
     },
     {
-      title: 'Kindness',
-      body: "The basis for our kindness is the injunction of Christ to give because of Him (Mt. 9:4); showing tender heartedness to all, even those difficult to deal with.",
-      footer: 'Mt. 18:21-22 & Mt. 9:4',
+      title: 'Mercy as Kindness',
+      body: `Our kindness is rooted in Christ's injunction to give because of Him (Mt. 9:4); we show tender-hearted love toward one another and kindness to those who are difficult to deal with.
+`,
     },
   ];
 
@@ -259,12 +257,6 @@ const Charism = () => {
                   <p className="text-sm leading-relaxed" style={{ color: theme.textBody }}>
                     {card.body}
                   </p>
-                </div>
-                <div
-                  className="mt-8 pt-5 border-t text-xs italic"
-                  style={{ borderColor: theme.borderLight, color: theme.textMuted }}
-                >
-                  {card.footer}
                 </div>
               </motion.div>
             ))}

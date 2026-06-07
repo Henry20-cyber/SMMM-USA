@@ -4,16 +4,12 @@ import NavBar from '../components/Navbar';
 import wp1 from '../assets/priests/image(09).jpg';
 import wp2 from '../assets/priests/image(14).jpg';
 import wp3 from '../assets/wallpapers/wp(5).jpg';
+import wp8 from '../assets/wallpapers/wp(8).jpg';
 
 // Hero images – replace with your own if needed
-const HERO_IMAGES = [
-  wp1,
-  wp2,
-  wp3,
- 
-];
+const HERO_IMAGES = [wp1, wp2, wp3];
 
-// Animation variants
+// Animation variants (unchanged)
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
@@ -37,7 +33,6 @@ const Donations = () => {
   const [copySuccess, setCopySuccess] = useState(false);
   const copyTimeoutRef = useRef(null);
 
-  // Rotate hero images every 10 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
@@ -45,7 +40,6 @@ const Donations = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
       if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
@@ -53,7 +47,7 @@ const Donations = () => {
   }, []);
 
   const copyAccountNumber = async () => {
-    const accountNumber = "987654321012";
+    const accountNumber = "322336006";
     try {
       await navigator.clipboard.writeText(accountNumber);
       setCopySuccess(true);
@@ -68,7 +62,7 @@ const Donations = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <NavBar />
 
-      {/* ========== HERO SECTION (unchanged) ========== */}
+      {/* Hero Section (unchanged) */}
       <section className="relative h-dvh md:min-h-[600px] flex items-center overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
@@ -82,11 +76,7 @@ const Donations = () => {
             className="absolute inset-0 w-full h-full object-cover"
           />
         </AnimatePresence>
-
-        {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/60 z-0" />
-
-        {/* Left‑aligned text */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
           <motion.div
             initial="hidden"
@@ -137,11 +127,11 @@ const Donations = () => {
         </div>
       </section>
 
-      {/* ========== MAIN CONTENT with Blue Gradient Background ========== */}
+      {/* Main Content with Blue Gradient Background */}
       <div className="bg-gradient-to-br from-[#0B132B] via-[#1e3a8a] to-[#004B87]">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 w-full flex-grow">
           
-          {/* Quote block – adjusted text color to white */}
+          {/* Quote block (unchanged) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -155,7 +145,56 @@ const Donations = () => {
             </p>
           </motion.div>
 
-          {/* Two info cards */}
+          {/* ✨ CREATIVE NEW SECTION with Image + Text ✨ */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeUp}
+            className="mb-16 overflow-hidden rounded-2xl bg-gradient-to-r from-white/5 to-white/[0.07] backdrop-blur-sm border border-white/20 shadow-xl"
+          >
+            <div className="flex flex-col md:flex-row md:items-stretch">
+              {/* Image side - Creative visual */}
+              <div className="md:w-2/5 relative overflow-hidden bg-[#0B132B]">
+                <motion.img
+                  initial={{ scale: 1.1, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                  src={wp8}
+                  alt="Hands holding a cross and rosary, symbolizing mission and giving"
+                  className="w-full h-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B]/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 text-white/80 text-xs font-mono bg-black/30 px-2 py-1 rounded-full backdrop-blur-sm">
+                  † Faith in Action
+                </div>
+              </div>
+
+              {/* Text side - creative styling */}
+              <div className="md:w-3/5 p-6 md:p-8 flex flex-col justify-center">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="material-symbols-outlined text-[#0077ec] text-2xl">volunteer_activism</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0077ec] bg-white/20 px-3 py-1 rounded-full">Our Mission Appeal</span>
+                </div>
+                <p className="font-serif text-white text-base sm:text-lg leading-relaxed mb-4">
+                  Missionary work relies on both field service and financial contributions. Within the Sons of Mary Mother of Mercy (SMMM), your donations are essential for advancing our mission.
+                </p>
+                <p className="font-serif text-white text-base sm:text-lg leading-relaxed">
+                  We invite you to participate in the formation of our future clergy. At this time, the SMMM family is blessed with many dedicated candidates pursuing vocations in both religious life and ministerial priesthood.
+                </p>
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  className="mt-6 flex items-center gap-2 text-sm text-[#0077ec] font-medium"
+                >
+                  <span>Join the harvest of souls</span>
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Two info cards (unchanged structure, but note the first card's text repeated? Actually original had similar text – I'll keep it as is) */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -219,7 +258,7 @@ const Donations = () => {
             </motion.div>
           </motion.div>
 
-          {/* Sponsorship Options */}
+          {/* Sponsorship Options (unchanged) */}
           <motion.section
             id="sponsorship-options"
             initial="hidden"
@@ -240,7 +279,6 @@ const Donations = () => {
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-2 gap-8"
             >
-              {/* Track 1: Priestly Formation */}
               <motion.div
                 variants={fadeUp}
                 whileHover={{ y: -5 }}
@@ -253,7 +291,7 @@ const Donations = () => {
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 mb-6">I wish to support the rigorous academic, spiritual, and communal training of an upcoming priest with a gift of:</p>
                   <div className="grid grid-cols-3 gap-2 mb-4">
-                    {['$500', '$300', '$200'].map((amount) => (
+                    {['$500', '$300', '$200', 'others'].map((amount) => (
                       <motion.div
                         key={amount}
                         whileHover={{ scale: 1.02, borderColor: "#0077ec" }}
@@ -267,7 +305,6 @@ const Donations = () => {
                 </div>
               </motion.div>
 
-              {/* Track 2: Educational Missions */}
               <motion.div
                 variants={fadeUp}
                 whileHover={{ y: -5 }}
@@ -280,7 +317,7 @@ const Donations = () => {
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 mb-6">I wish to contribute to our educational missions in the amount of:</p>
                   <div className="grid grid-cols-3 gap-2 mb-4">
-                    {['$500', '$250', '$150'].map((amount) => (
+                    {['$500', '$250', '$150', 'others'].map((amount) => (
                       <motion.div
                         key={amount}
                         whileHover={{ scale: 1.02, borderColor: "#0077ec" }}
@@ -310,7 +347,7 @@ const Donations = () => {
             </motion.div>
           </motion.section>
 
-          {/* Remittance Details */}
+          {/* Remittance Details (unchanged except corrected account number) */}
           <motion.section
             id="remittance-details"
             initial="hidden"
@@ -322,12 +359,11 @@ const Donations = () => {
             <div className="p-8 md:p-12 border-b border-slate-100 text-center bg-slate-50">
               <h2 className="font-['Cinzel'] text-xl md:text-2xl font-bold tracking-wide text-[#0B132B] mb-2">Direct Financial Remittance Details</h2>
               <p className="text-slate-500 text-xs sm:text-sm font-medium max-w-lg mx-auto">
-                We operate without a digital payment processor to protect your contributions from transaction fees. Please utilize our verified banking or regional house routing credentials below.
+               Please utilize our verified banking or regional house routing credentials below.
               </p>
             </div>
 
             <div className="p-8 md:p-12 space-y-10">
-              {/* Bank Wire Details */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -378,7 +414,6 @@ const Donations = () => {
 
               <div className="h-[1px] bg-slate-200"></div>
 
-              {/* Remittance By Check */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -390,7 +425,7 @@ const Donations = () => {
                   <span className="material-symbols-outlined text-[#0077ec]">mail</span> Remittance By Check
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  If making your contribution via physical check or draft order, please make all payments payable to <strong className="text-[#0B132B]">"SMMM American Region"</strong> and route them directly to our regional office:
+                  If making your contribution via physical check or draft order, please make all payments payable to <strong className="text-[#0B132B]">"SMMM USA Region"</strong> and route them directly to our regional office:
                 </p>
                 <div className="bg-white border border-slate-200 p-5 rounded-xl flex items-start gap-4 shadow-sm">
                   <span className="material-symbols-outlined text-[#0077ec] text-2xl mt-0.5">corporate_fare</span>
@@ -422,7 +457,6 @@ const Donations = () => {
         </main>
       </div>
 
-      {/* Footer */}
       <footer className="w-full text-center py-8 text-xs text-slate-500 border-t border-slate-200 bg-slate-50">
         <p>&copy; {new Date().getFullYear()} Sons of Mary Mother of Mercy (SMMM). All rights reserved.</p>
       </footer>
