@@ -18,7 +18,7 @@ const timelineData = [
   },
   {
     year: "2009",
-    title: "Inaurgural Regional Election",
+    title: "Inaugural Regional Election",
     content: "On Feb. 10, Fr. Nelson was elected Regional Superior with Fr. Anselm as Secretary, and Fr. Bartholonew as Bursar."
   },
   {
