@@ -6,13 +6,14 @@ import habit from '../assets/vectors/88.png';
 import wp7 from '../assets/priests/image(07).jpg';
 import wp8 from '../assets/priests/image(11).jpg';
 import wp2 from '../assets/priests/image(14).jpg';
+import wp3 from '../assets/priests/image(24).jpg';
 
 // Hero images (you can replace with your own assets)
 const HERO_IMAGES = [
+  wp3,
   wp2,
   wp8,
   wp7,
-  "https://images.unsplash.com/photo-1515787366009-7cbdd2dc587b?auto=format&fit=crop&w=1600&q=80",
 ];
 
 const Sacredsymbols = () => {

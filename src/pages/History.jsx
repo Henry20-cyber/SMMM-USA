@@ -7,11 +7,12 @@ import wp8 from '../assets/priests/image(11).jpg';
 import wp2 from '../assets/priests/image(14).jpg';
 
 const HERO_IMAGES = [
-   wp2,
+  wp7,
+  wp2,
   wp8,
   wp4,
 
-  wp7,
+
 ];
 
 const REGIONAL_SUPERIORS = [
@@ -62,7 +63,7 @@ export default function History() {
   return (
     <div className="min-h-screen flex flex-col justify-between antialiased" style={{ backgroundColor: theme.offWhite, color: theme.textDark }}>
       <Navbar />
-      
+
       {/* ================= HERO SECTION: FULL-WIDTH BACKGROUND ================= */}
       <section className="relative h-dvh sm:min-h-[600px] flex items-center overflow-hidden">
         {/* Rotating Background Images */}
@@ -96,7 +97,7 @@ export default function History() {
             <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight text-white leading-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
               Brief <span className="text-blue-400">Information</span> about the SMMM USA Region
             </h1>
-            <motion.div 
+            <motion.div
               className="mt-5 h-1 w-24 rounded-full"
               style={{ backgroundColor: theme.blueLight }}
               initial={{ width: 0 }}
@@ -110,9 +111,9 @@ export default function History() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 flex-grow w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          
+
           {/* Left Column: Historical Context */}
-          <motion.div 
+          <motion.div
             className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm space-y-6"
             style={{ border: `1px solid ${theme.borderLight}` }}
             initial={{ opacity: 0, y: 30 }}
@@ -144,12 +145,12 @@ export default function History() {
               </p>
             </div>
           </motion.div>
-          
+
           {/* Right Column */}
           <div className="space-y-8">
-            
+
             {/* Current Status Card */}
-            <motion.div 
+            <motion.div
               className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm space-y-6"
               style={{ border: `1px solid ${theme.borderLight}` }}
               initial={{ opacity: 0, y: 30 }}
@@ -168,17 +169,17 @@ export default function History() {
                   The numerical strength of our Region is a true blessing, with 37 active members. In thanksgiving for God’s love and mercy, we celebrated the Silver Jubilee of our mission in the United States in 2023. This milestone was a moment to appreciate our 25-year journey as missionaries dedicated to God’s work. Our Superior General, Rev. Fr. Dr. Christian Okwuru, joined us for this epoch-making celebration, during which awards for exceptional leadership and missionary services were presented to Fr. Eugene Eburuche, Fr. Paulinus Iwuji, and Fr. Anselm Ibe.
                 </p>
               </div>
-              
+
               {/* Scripture Highlight */}
               <div className="border-l-4 pl-4 py-2 rounded-r-xl" style={{ borderLeftColor: theme.bluePrimary, backgroundColor: `${theme.bluePrimary}08` }}>
                 <p className="text-base italic font-medium leading-relaxed" style={{ color: theme.textDark }}>
-                 Chronology of the Past and Present Regional Superiors
+                  Chronology of the Past and Present Regional Superiors
                 </p>
               </div>
             </motion.div>
-            
+
             {/* Regional Leadership Card */}
-            <motion.div 
+            <motion.div
               className="p-6 sm:p-8 rounded-2xl shadow-md space-y-6"
               style={{ backgroundColor: theme.black, border: `1px solid ${theme.borderLight}` }}
               initial={{ opacity: 0, y: 30 }}
@@ -189,8 +190,8 @@ export default function History() {
               <h3 className="text-xl font-bold tracking-tight" style={{ color: theme.blueLight }}>
                 Past and Present Regional Superiors
               </h3>
-              
-              <motion.div 
+
+              <motion.div
                 className="flex flex-col space-y-1 font-medium"
                 variants={containerVariants}
                 initial="hidden"
@@ -199,33 +200,31 @@ export default function History() {
                 style={{ color: theme.white }}
               >
                 {REGIONAL_SUPERIORS.map((superior, idx) => (
-                  <motion.div 
-                    key={idx} 
+                  <motion.div
+                    key={idx}
                     variants={itemVariants}
-                    className={`flex justify-between items-center py-3 transition-colors ${
-                      idx !== REGIONAL_SUPERIORS.length - 1 ? 'border-b' : ''
-                    }`}
+                    className={`flex justify-between items-center py-3 transition-colors ${idx !== REGIONAL_SUPERIORS.length - 1 ? 'border-b' : ''
+                      }`}
                     style={{ borderColor: `${theme.white}10`, color: superior.isCurrent ? theme.blueLight : theme.white }}
                   >
                     <span className={superior.isCurrent ? "font-semibold" : "font-normal"}>
                       {superior.name}
                     </span>
-                    <span className={`text-xs px-3 py-1 rounded-full font-normal ${
-                      superior.isCurrent 
-                        ? 'bg-blue-900/50 text-blue-300 border border-blue-800/80' 
+                    <span className={`text-xs px-3 py-1 rounded-full font-normal ${superior.isCurrent
+                        ? 'bg-blue-900/50 text-blue-300 border border-blue-800/80'
                         : 'bg-white/10 text-white/60'
-                    }`}>
+                      }`}>
                       {superior.years}
                     </span>
                   </motion.div>
                 ))}
               </motion.div>
             </motion.div>
-            
+
           </div>
         </div>
       </main>
-      
+
       <footer className="w-full text-center py-8 text-xs border-t" style={{ color: theme.textBody, borderColor: theme.borderLight, backgroundColor: theme.white }}>
         <p>&copy; {new Date().getFullYear()} Sons of Mary Mother of Mercy (SMMM). All rights reserved.</p>
       </footer>

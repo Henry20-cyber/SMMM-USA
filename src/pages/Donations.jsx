@@ -4,10 +4,12 @@ import NavBar from '../components/Navbar';
 import wp1 from '../assets/priests/image(09).jpg';
 import wp2 from '../assets/priests/image(14).jpg';
 import wp3 from '../assets/wallpapers/wp(5).jpg';
-import wp8 from '../assets/wallpapers/wp(8).jpg';
+import wp4 from '../assets/priests/image(17).jpg';
+import wp7 from '../assets/priests/image(07).jpg';
+import wp8 from '../assets/priests/image(11).jpg';
 
 // Hero images – replace with your own if needed
-const HERO_IMAGES = [wp1, wp2, wp3];
+const HERO_IMAGES = [wp4, wp1, wp2, wp3, wp7, wp8];
 
 // Animation variants (unchanged)
 const fadeUp = {
