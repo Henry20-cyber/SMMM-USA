@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import ibe from '../assets/images/priest(08).png';
 import img from '../assets/images/priest(15).png';
-import img2 from '../assets/images/priest(24).jpg';
+import img2 from '../assets/images/priest(25).jpg';
 
 const Superiors = () => {
   // Blue variants, white, black

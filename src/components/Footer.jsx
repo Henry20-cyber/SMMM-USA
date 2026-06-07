@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const handleScrollVisibility = () => {
-      if (window.scrollY > 400) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
+      setShowBackToTop(window.scrollY > 400);
     };
     window.addEventListener('scroll', handleScrollVisibility);
     return () => window.removeEventListener('scroll', handleScrollVisibility);
@@ -19,7 +16,6 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Unique blue gradient variants
   const gradientMain = 'linear-gradient(135deg, #0a2a4a 0%, #134b8a 40%, #1e6bb5 80%, #3b8fd9 100%)';
   const gradientOverlay = 'radial-gradient(circle at 0% 20%, rgba(96, 165, 250, 0.15) 0%, transparent 60%)';
   const gradientBorder = 'linear-gradient(90deg, rgba(96,165,250,0.4), rgba(59,130,246,0.8), rgba(96,165,250,0.4))';
@@ -27,20 +23,10 @@ const Footer = () => {
   return (
     <footer
       className="relative py-16 px-6 overflow-hidden"
-      style={{
-        background: gradientMain,
-        color: '#ffffff',
-      }}
+      style={{ background: gradientMain, color: '#ffffff' }}
     >
-      {/* Layered gradient accents for depth */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: gradientOverlay }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-full h-px"
-        style={{ background: gradientBorder }}
-      />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: gradientOverlay }} />
+      <div className="absolute bottom-0 left-0 w-full h-px" style={{ background: gradientBorder }} />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Main footer grid */}
@@ -89,7 +75,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links Column */}
+          {/* Quick Links Column - FIXED */}
           <div>
             <p
               className="text-[0.62rem] font-bold tracking-[0.18em] uppercase mb-5"
@@ -98,17 +84,22 @@ const Footer = () => {
               Navigation
             </p>
             <div className="flex flex-col gap-3">
-              {['about', 'charism', 'apostolate', 'history', 'mission', 'donate'].map((link) => (
-                <a
-                  key={link}
-                  href={`#${link}`}
-                  className="text-[0.92rem] transition-colors duration-300 capitalize"
+              {[
+                { path: '/about', label: 'About Us' },
+                { path: '/charism', label: 'Charism' },
+                { path: '/apostolate', label: 'Apostolate' },
+                { path: '/history', label: 'History' },
+                { path: '/mission', label: 'Mission Areas' },
+                { path: '/donations', label: 'Donate' }
+              ].map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className="text-[0.92rem] capitalize transition-colors duration-300 hover:text-blue-200"
                   style={{ fontFamily: "'Cormorant Garamond', serif", color: '#e2e8f0' }}
-                  onMouseEnter={(e) => (e.target.style.color = '#93c5fd')}
-                  onMouseLeave={(e) => (e.target.style.color = '#e2e8f0')}
                 >
-                  {link === 'about' ? 'About Us' : link === 'mission' ? 'Mission Areas' : link}
-                </a>
+                  {item.label}
+                </Link>
               ))}
             </div>
           </div>
@@ -123,73 +114,44 @@ const Footer = () => {
             </p>
             <div className="flex flex-col gap-4">
               <div>
-                <p
-                  className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5"
-                  style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}
-                >
+                <p className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5" style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}>
                   Superior
                 </p>
-                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>
-                  Very Rev. Dr. Anselm Ibe
-                </p>
+                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>Very Rev. Dr. Anselm Ibe</p>
               </div>
               <div>
-                <p
-                  className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5"
-                  style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}
-                >
+                <p className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5" style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}>
                   Bursar
                 </p>
-                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>
-                  Rev. Fr. Michael Okafor
-                </p>
+                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>Rev. Fr. Michael Okafor</p>
               </div>
               <div>
-                <p
-                  className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5"
-                  style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}
-                >
+                <p className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5" style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}>
                   Secretary
                 </p>
-                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>
-                  Rev. Fr. Thaddeus Agbasonu
-                </p>
+                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>Rev. Fr. Thaddeus Agbasonu</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom panel with gradient border */}
+        {/* Bottom panel */}
         <div
           className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
           style={{ borderTop: '1px solid rgba(147, 197, 253, 0.3)' }}
         >
-          <p
-            className="text-[0.58rem] tracking-wider text-center sm:text-left"
-            style={{ fontFamily: "'Cinzel', serif", color: '#94a3b8' }}
-          >
+          <p className="text-[0.58rem] tracking-wider text-center sm:text-left" style={{ fontFamily: "'Cinzel', serif", color: '#94a3b8' }}>
             © {new Date().getFullYear()} Sons of Mary Mother of Mercy — American Region. All Rights Reserved.
           </p>
-
           <div className="flex gap-4">
-            <span
-              className="w-7 h-7 rounded-full flex items-center justify-center border cursor-pointer transition-all duration-300"
-              style={{ borderColor: '#60a5fa80' }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#93c5fd')}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#60a5fa80')}
-            >
+            <span className="w-7 h-7 rounded-full flex items-center justify-center border border-blue-400/50 cursor-pointer transition-all duration-300 hover:border-blue-300">
               <svg viewBox="0 0 16 16" fill="none" className="w-[12px] h-[12px]">
                 <rect x="2" y="2" width="12" height="12" rx="3" stroke="#93c5fd" strokeWidth="1.2" />
                 <circle cx="8" cy="8" r="2.5" stroke="#93c5fd" strokeWidth="1.2" />
                 <circle cx="11.5" cy="4.5" r="0.8" fill="#93c5fd" />
               </svg>
             </span>
-            <span
-              className="w-7 h-7 rounded-full flex items-center justify-center border cursor-pointer transition-all duration-300"
-              style={{ borderColor: '#60a5fa80' }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#93c5fd')}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#60a5fa80')}
-            >
+            <span className="w-7 h-7 rounded-full flex items-center justify-center border border-blue-400/50 cursor-pointer transition-all duration-300 hover:border-blue-300">
               <svg viewBox="0 0 16 16" fill="none" className="w-[12px] h-[12px]">
                 <path d="M2 4 L8 9 L14 4" stroke="#93c5fd" strokeWidth="1.2" />
                 <rect x="1" y="3" width="14" height="10" rx="2" stroke="#93c5fd" strokeWidth="1.2" />
@@ -199,7 +161,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Back to Top Button – updated gradient style */}
+      {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
         aria-label="Scroll back to top"
@@ -221,13 +183,7 @@ const Footer = () => {
         }
       >
         <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
-          <path
-            d="M4 10 L8 6 L12 10"
-            stroke="#ffffff"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <path d="M4 10 L8 6 L12 10" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
     </footer>

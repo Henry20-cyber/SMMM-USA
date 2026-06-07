@@ -2,13 +2,16 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from '../components/Navbar.jsx';
 import img from '../assets/vectors/logo.jpg';
-import habit from '../assets/vectors/habit2.png';
+import habit from '../assets/vectors/88.png';
+import wp7 from '../assets/priests/image(07).jpg';
+import wp8 from '../assets/priests/image(11).jpg';
+import wp2 from '../assets/priests/image(14).jpg';
 
 // Hero images (you can replace with your own assets)
 const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1548625361-155deee26575?auto=format&fit=crop&w=1600&q=80",
+  wp2,
+  wp8,
+  wp7,
   "https://images.unsplash.com/photo-1515787366009-7cbdd2dc587b?auto=format&fit=crop&w=1600&q=80",
 ];
 
@@ -51,7 +54,7 @@ const Sacredsymbols = () => {
       <NavBar />
 
       {/* ========== HERO SECTION ========== */}
-      <section className="relative h-[500px] md:h-[600px] flex items-center overflow-hidden">
+    <section className="relative h-dvh flex items-center overflow-hidden">
         {/* Rotating Background Images */}
         <AnimatePresence mode="wait">
           <motion.img
@@ -138,8 +141,7 @@ const Sacredsymbols = () => {
               {/* Heart */}
               <div className="flex gap-5 items-start">
                 <div 
-                  className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center shadow-md"
-                  style={{ backgroundColor: theme.bluePrimary }}
+                  className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center shadow-md bg-red-500"
                 >
                   <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
                     <path 
@@ -166,8 +168,7 @@ const Sacredsymbols = () => {
               {/* Flame */}
               <div className="flex gap-5 items-start">
                 <div 
-                  className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center shadow-md"
-                  style={{ backgroundColor: theme.bluePrimary }}
+                  className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center shadow-md bg-red-500"
                 >
                   <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
                     <path 

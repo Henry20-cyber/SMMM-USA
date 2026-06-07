@@ -7,9 +7,10 @@ import wp8 from '../assets/priests/image(11).jpg';
 import wp2 from '../assets/priests/image(14).jpg';
 
 const HERO_IMAGES = [
+   wp2,
   wp8,
   wp4,
-  wp2,
+
   wp7,
 ];
 

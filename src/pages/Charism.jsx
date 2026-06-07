@@ -65,19 +65,16 @@ const Charism = () => {
 
   const mercyCards = [
     {
-      pillar: 'Pillar I',
       title: 'Compassion',
       body: "Our compassion is based on the example of our Divine Master—Christ represented by the Good Samaritan who after helping the wounded victim also provided for his future needs.",
       footer: 'The Good Samaritan Paradigm',
     },
     {
-      pillar: 'Pillar II',
       title: 'Forgiveness',
       body: 'We undertake the apostolate of loving and caring for the spiritually, intellectually and physically poor, the underprivileged by working in homes, and teaching in schools.',
       footer: 'Service & Instruction',
     },
     {
-      pillar: 'Pillar III',
       title: 'Kindness',
       body: "The basis for our kindness is the injunction of Christ to give because of Him (Mt. 9:4); showing tender heartedness to all, even those difficult to deal with.",
       footer: 'Mt. 18:21-22 & Mt. 9:4',
@@ -96,7 +93,7 @@ const Charism = () => {
       <NavBar />
 
       {/* ================= HERO SECTION: FULL-WIDTH BACKGROUND ================= */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative h-dvh flex items-center overflow-hidden">
         {/* Animated Background Images */}
         <AnimatePresence mode="wait">
           <motion.div

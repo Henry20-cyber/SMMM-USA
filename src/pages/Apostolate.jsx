@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from '../components/Navbar';
+import wp7 from '../assets/wallpapers/wp(7).jpg';
+import wp8 from '../assets/wallpapers/wp(8).jpg';
+import wp5 from '../assets/wallpapers/wp(5).jpg';
+import wp6 from '../assets/priests/image(13).jpg';
+import wp2 from '../assets/priests/image(28).jpg';
 
 // Hero images (replace with your own assets if desired)
 const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1548625361-155deee26575?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1515787366009-7cbdd2dc587b?auto=format&fit=crop&w=1600&q=80",
+  wp6,
+  wp2,
+  wp7,
+  wp8,
+  wp5,
+  
 ];
 
 const Apostolate = () => {
@@ -96,7 +103,7 @@ const Apostolate = () => {
       <NavBar />
 
       {/* ========== HERO SECTION ========== */}
-      <section className="relative h-[500px] md:h-[600px] flex items-center overflow-hidden">
+      <section className="relative h-dvh md:min-h-[600px] flex items-center overflow-hidden">
         {/* Rotating Background Images */}
         <AnimatePresence mode="wait">
           <motion.img
