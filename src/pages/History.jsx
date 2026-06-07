@@ -20,7 +20,7 @@ const REGIONAL_SUPERIORS = [
   { name: "Fr. Nelson Ogwuegbu (excardinated)", years: "2009-2010", isCurrent: false },
   { name: "Fr. Uche Iheke, SMMM", years: "2010-2012", isCurrent: false },
   { name: "Fr. John Agwu, SMMM", years: "2012-2015", isCurrent: false },
-  { name: "Fr. Remigius Owoamanam, SMMM", years: "2015-2019", isCurrent: false },
+  { name: "Fr. Remigius Owuamanam, SMMM", years: "2015-2019", isCurrent: false },
   { name: "Fr. Marcelinus Ekenedo, SMMM", years: "2019-2021", isCurrent: false },
   { name: "Fr. Anselm Ugochukwu Ibe, SMMM", years: "2021-present", isCurrent: true }
 ];
