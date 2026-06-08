@@ -1,30 +1,24 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
+import Contacts from '../components/Contact';  // <-- import your provided component
 import wp7 from '../assets/wallpapers/wp(7).jpg';
 import wp8 from '../assets/wallpapers/wp(8).jpg';
 import wp5 from '../assets/wallpapers/wp(5).jpg';
+import wp2 from '../assets/priests/image(30).jpg';
+import wp3 from '../assets/priests/image(17).jpg';
 
 // Hero background images array
 const HERO_IMAGES = [
+  wp2,
+  wp3,
   wp5,
   wp7,
   wp8,
-  "https://images.unsplash.com/photo-1515787366009-7cbdd2dc587b?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
+ 
 ];
 
 export default function Contact() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    inquiryType: 'General Inquiry',
-    message: ''
-  });
-  const [formStatus, setFormStatus] = useState('idle');
 
   const theme = {
     bluePrimary: '#2563eb',
@@ -46,21 +40,6 @@ export default function Contact() {
     return () => clearInterval(timer);
   }, []);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormStatus('sending');
-    setTimeout(() => {
-      setFormStatus('success');
-      setFormData({ fullName: '', email: '', inquiryType: 'General Inquiry', message: '' });
-      setTimeout(() => setFormStatus('idle'), 3000);
-    }, 1200);
-  };
-
   const regionData = [
     { state: "California", cities: ["Fresno", "San Bernardino", "San Diego", "Los Angeles", "San Francisco"] },
     { state: "Florida", cities: ["Miami", "St. Augustine", "St. Petersburg", "Orlando"] },
@@ -73,14 +52,13 @@ export default function Contact() {
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: theme.offWhite }}>
       <Navbar />
 
-      <main className="flex-grow pt-10  ">
+      <main className="flex-grow pt-10">
         {/* ========== HERO SECTION with integrated info cards ========== */}
         <section className="relative min-h-[770px] flex flex-col justify-between overflow-hidden">
-          {/* Rotating background images */}
           <div className="absolute inset-0 z-0">
             {HERO_IMAGES.map((imgUrl, index) => (
               <img
-                key={imgUrl}
+                key={index}
                 src={imgUrl}
                 alt={`Sanctuary scene ${index + 1}`}
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
@@ -88,11 +66,10 @@ export default function Contact() {
                 }`}
               />
             ))}
-            {/* Increased overlay opacity from 60% to 80% for better text readability */}
             <div className="absolute inset-0 bg-black/80"></div>
           </div>
 
-          {/* Top / center text content */}
+          {/* Top text content */}
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 pt-20 pb-12">
             <span className="text-[10px] tracking-[0.3em] font-['Cinzel'] font-bold uppercase mb-3" style={{ color: theme.blueLight }}>
               Get In Touch With Our Brothers
@@ -106,154 +83,69 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Info cards now inside hero section, at the bottom */}
+          {/* Info cards inside hero */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12 md:pb-16">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Address Card */}
-<div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
-  <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
-    <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>location_on</span>
-  </div>
-  <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>SMMM USA Regional House</h3>
-  <p className="font-['Cormorant_Garamond'] text-base leading-relaxed flex-grow" style={{ color: theme.textMuted }}>
-    1100 W. Hawaii Avenue<br />
-    Nampa, Idaho, 83686<br />
-    United States
-  </p>
-</div>
+              {/* Address Card */}
+              <div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
+                <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
+                  <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>location_on</span>
+                </div>
+                <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>SMMM USA Regional House</h3>
+                <p className="font-['Cormorant_Garamond'] text-base leading-relaxed flex-grow" style={{ color: theme.textMuted }}>
+                  1100 W. Hawaii Avenue<br />
+                  Nampa, Idaho, 83686<br />
+                  United States
+                </p>
+              </div>
 
-{/* Email Card */}
-<div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
-  <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
-    <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>mail</span>
-  </div>
-  <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>Electronic Inquiries</h3>
-  <div className="space-y-2 flex-grow">
-    <div className="flex flex-col">
-      <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: theme.textMuted }}>General:</span>
-      <a href="mailto:info@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>info@smmm-american.org</a>
-    </div>
-    <div className="flex flex-col">
-      <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: theme.textMuted }}>Vocations Office:</span>
-      <a href="mailto:vocations@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>vocations@smmm-american.org</a>
-    </div>
-  </div>
-</div>
+              {/* Email Card */}
+              <div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
+                <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
+                  <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>mail</span>
+                </div>
+                <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>Electronic Inquiries</h3>
+                <div className="space-y-2 flex-grow">
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: theme.textMuted }}>General:</span>
+                    <a href="mailto:info@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>info@smmm-american.org</a>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: theme.textMuted }}>Vocations Office:</span>
+                    <a href="mailto:vocations@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>vocations@smmm-american.org</a>
+                  </div>
+                </div>
+              </div>
 
-{/* Phone Card */}
-<div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
-  <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
-    <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>call</span>
-  </div>
-  <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>Office Support</h3>
-  <div className="flex-grow">
-    <span className="text-sm font-semibold block mb-1" style={{ color: theme.bluePrimary }}>+1 (559) 555-0123</span>
-    <p className="text-base leading-relaxed" style={{ color: theme.textMuted }}>Monday – Friday<br />9:00 AM – 5:00 PM PST</p>
-  </div>
-</div>
+              {/* Phone Card */}
+              <div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
+                <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
+                  <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>call</span>
+                </div>
+                <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>Office Support</h3>
+                <div className="flex-grow">
+                  <span className="text-sm font-semibold block mb-1" style={{ color: theme.bluePrimary }}>+1 (559) 555-0123</span>
+                  <p className="text-base leading-relaxed" style={{ color: theme.textMuted }}>Monday – Friday<br />9:00 AM – 5:00 PM PST</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Contact Form Section - unchanged except removal of old card section */}
-        <section className="py-20 px-6 border-t border-b" style={{ backgroundColor: theme.offWhite, borderColor: theme.borderLight }}>
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-7 bg-white p-8 md:p-12 shadow-sm" style={{ border: `1px solid ${theme.borderLight}` }}>
-              <h2 className="font-['Cinzel'] text-2xl font-bold tracking-wide mb-4" style={{ color: theme.black }}>Send a Message</h2>
-              <p className="font-['Cormorant_Garamond'] text-base mb-8 leading-relaxed" style={{ color: theme.textMuted }}>
-                Your messages are handled with utmost pastoral care. Please allow 24–48 hours for a response.
-              </p>
+        {/* ========== CONTACT FORM (imported component) ========== */}
+        <Contacts />
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-['Cinzel'] font-bold tracking-widest uppercase" style={{ color: theme.black }}>Full Name</label>
-                    <input
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleInputChange}
-                      className="w-full p-3.5 text-sm outline-none transition-all rounded-sm"
-                      style={{ backgroundColor: theme.offWhite, border: `1px solid ${theme.borderLight}`, color: theme.textDark }}
-                      placeholder="John Doe"
-                      type="text"
-                      required
-                      disabled={formStatus === 'sending'}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-['Cinzel'] font-bold tracking-widest uppercase" style={{ color: theme.black }}>Email Address</label>
-                    <input
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full p-3.5 text-sm outline-none transition-all rounded-sm"
-                      style={{ backgroundColor: theme.offWhite, border: `1px solid ${theme.borderLight}`, color: theme.textDark }}
-                      placeholder="john@example.com"
-                      type="email"
-                      required
-                      disabled={formStatus === 'sending'}
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-['Cinzel'] font-bold tracking-widest uppercase" style={{ color: theme.black }}>Inquiry Type</label>
-                  <select
-                    name="inquiryType"
-                    value={formData.inquiryType}
-                    onChange={handleInputChange}
-                    disabled={formStatus === 'sending'}
-                    className="w-full p-3.5 text-sm outline-none transition-all rounded-sm appearance-none"
-                    style={{ backgroundColor: theme.offWhite, border: `1px solid ${theme.borderLight}`, color: theme.textDark }}
-                  >
-                    <option>General Inquiry</option>
-                    <option>Prayer Request</option>
-                    <option>Vocations Interest</option>
-                    <option>Mission Appeal Support</option>
-                  </select>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-['Cinzel'] font-bold tracking-widest uppercase" style={{ color: theme.black }}>Message</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full p-3.5 text-sm outline-none transition-all rounded-sm resize-none"
-                    style={{ backgroundColor: theme.offWhite, border: `1px solid ${theme.borderLight}`, color: theme.textDark }}
-                    placeholder="How can we assist you today?"
-                    rows="5"
-                    required
-                    disabled={formStatus === 'sending'}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={formStatus === 'sending'}
-                  className="w-full sm:w-auto px-8 py-4 text-xs font-['Cinzel'] font-bold uppercase tracking-widest transition-colors shadow-sm cursor-pointer"
-                  style={{
-                    backgroundColor: formStatus === 'sending' ? theme.blueDeep : (formStatus === 'success' ? theme.bluePrimary : theme.bluePrimary),
-                    color: theme.white,
-                    opacity: formStatus === 'sending' ? 0.8 : 1
-                  }}
-                >
-                  {formStatus === 'idle' && 'Submit Message'}
-                  {formStatus === 'sending' && 'SENDING REQUEST...'}
-                  {formStatus === 'success' && 'MESSAGE SENT'}
-                </button>
-              </form>
-            </div>
-
-            {/* Right Column: Footprint + Map (unchanged) */}
-            <div className="lg:col-span-5 space-y-12">
+        {/* ========== REGIONAL FOOTPRINT & MAP (separate section) ========== */}
+        <section className="py-20 px-6 border-t" style={{ borderColor: theme.borderLight }}>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              {/* Left side: Regional Footprint */}
               <div>
                 <h3 className="font-['Cinzel'] text-xl font-bold tracking-wide mb-4" style={{ color: theme.black }}>Our Regional Footprint</h3>
                 <p className="font-['Cormorant_Garamond'] text-base mb-6 leading-relaxed" style={{ color: theme.textMuted }}>
                   The Sons of Mary Mother of Mercy actively serve across diverse dioceses and apostolates within North America.
                 </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-6 py-6 border-t border-b" style={{ borderColor: theme.borderLight }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 py-6 border-t border-b" style={{ borderColor: theme.borderLight }}>
                   {regionData.map((region, idx) => (
                     <div key={idx}>
                       <h4 className="font-['Cinzel'] text-sm font-bold mb-3 uppercase tracking-wide" style={{ color: theme.bluePrimary }}>
@@ -272,6 +164,7 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Right side: Map */}
               <div className="relative group shadow-md overflow-hidden bg-white" style={{ border: `1px solid ${theme.borderLight}` }}>
                 <div className="aspect-video overflow-hidden relative">
                   <img
@@ -289,7 +182,7 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* Prayer Callout (unchanged) */}
+        {/* ========== PRAYER CALLOUT (unchanged) ========== */}
         <section className="py-20 text-white text-center relative overflow-hidden" style={{ backgroundColor: theme.blueDeep }}>
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#60a5fa_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
           <div className="max-w-2xl mx-auto px-6 relative z-10 flex flex-col items-center">
