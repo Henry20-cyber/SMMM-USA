@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone } from "lucide-react";
+// import { Mail, Phone } from "lucide-react";
 import NavBar from '../components/Navbar';
 
 /*
@@ -146,7 +146,7 @@ const PriestCard = ({ priest }) => {
         </div>
       </div>
 
-      {/* Action Buttons Container */}
+      {/* Action Buttons Container 
       <div className="p-5 pt-0 text-center">
         <div className="pt-4 border-t flex justify-center gap-3" style={{ borderColor: theme.borderLight }}>
           <motion.button
@@ -173,7 +173,7 @@ const PriestCard = ({ priest }) => {
             <Phone size={18} />
           </motion.button>
         </div>
-      </div>
+      </div> */}
     </motion.div>
   );
 };

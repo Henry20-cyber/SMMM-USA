@@ -89,6 +89,7 @@ const Footer = () => {
                 { path: '/apostolate', label: 'Apostolate' },
                 { path: '/history', label: 'History' },
                 { path: '/priests', label: 'Our Priests' },
+                { path: '/gallery', label: 'Gallery Archive' },
                 { path: '/donations', label: 'Donate' }
               ].map((item) => (
                 <Link
@@ -100,6 +101,9 @@ const Footer = () => {
                   {item.label}
                 </Link>
               ))}
+              <a href='../materials/SMMM_USA_Privacy_Policy.pdf' target="_blank" rel="noopener noreferrer" className="text-[0.92rem] capitalize transition-colors duration-300 hover:text-blue-200">
+                Privacy Policy
+              </a>
             </div>
           </div>
 
@@ -139,9 +143,15 @@ const Footer = () => {
           className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
           style={{ borderTop: '1px solid rgba(147, 197, 253, 0.3)' }}
         >
+          <span className="text-center sm:text-left flex flex-col gap-1">
           <p className="text-[0.58rem] tracking-wider text-center sm:text-left" style={{ fontFamily: "'Cinzel', serif", color: '#94a3b8' }}>
             © {new Date().getFullYear()} Sons of Mary Mother of Mercy — American Region. All Rights Reserved.
           </p>
+          <p className="text-[0.58rem] tracking-wider text-center sm:text-left" style={{ fontFamily: "'Cinzel', serif", color: '#94a3b8' }}
+          href='//https://henrycodes-portfolio.vercel.app/'>
+            Built by HenryCodes ©
+          </p>
+          </span>
           <div className="flex gap-4">
             <span className="w-7 h-7 rounded-full flex items-center justify-center border border-blue-400/50 cursor-pointer transition-all duration-300 hover:border-blue-300">
               <svg viewBox="0 0 16 16" fill="none" className="w-[12px] h-[12px]">
