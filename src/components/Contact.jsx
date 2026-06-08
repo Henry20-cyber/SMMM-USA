@@ -1,6 +1,29 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "../supabase/supabaseClient";
+
+// --- SANITIZATION HELPERS ---
+const sanitizeText = (input) => {
+  if (!input) return "";
+  // Remove any HTML tags (basic XSS protection)
+  return input
+    .replace(/<[^>]*>/g, "")           // remove HTML tags
+    .replace(/&/g, "&amp;")            // escape ampersand
+    .replace(/</g, "&lt;")             // escape <
+    .replace(/>/g, "&gt;")             // escape >
+    .replace(/"/g, "&quot;")           // escape double quotes
+    .replace(/'/g, "&#39;")            // escape single quotes
+    .trim();
+};
+
+const validateEmail = (email) => {
+  const re = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+  return re.test(String(email).toLowerCase());
+};
+
+// Simple rate limiting (in memory per session)
+const RATE_LIMIT = 3;        // max 3 submissions
+const RATE_WINDOW = 60 * 1000; // per minute
 
 const Contact = () => {
   const theme = {
@@ -27,13 +50,39 @@ const Contact = () => {
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Rate limiting state
+  const [rateLimitRemaining, setRateLimitRemaining] = useState(RATE_LIMIT);
+  const [rateLimitReset, setRateLimitReset] = useState(null);
+  const submitHistory = useRef([]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
+    // Real-time sanitization on input (optional, but helps)
+    const sanitized = sanitizeText(value);
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: name === "email" ? value : sanitized, // email not sanitized until submit
     }));
+  };
+
+  const checkRateLimit = () => {
+    const now = Date.now();
+    // Remove entries older than RATE_WINDOW
+    submitHistory.current = submitHistory.current.filter(
+      (timestamp) => now - timestamp < RATE_WINDOW
+    );
+    const remaining = RATE_LIMIT - submitHistory.current.length;
+    setRateLimitRemaining(remaining);
+
+    if (remaining <= 0) {
+      const oldest = Math.min(...submitHistory.current);
+      const resetTime = new Date(oldest + RATE_WINDOW);
+      setRateLimitReset(resetTime);
+      return false;
+    }
+    setRateLimitReset(null);
+    return true;
   };
 
   const handleFormSubmit = async (e) => {
@@ -42,37 +91,64 @@ const Contact = () => {
     setSuccess(false);
     setErrorMessage("");
 
+    // 1. Rate limit
+    if (!checkRateLimit()) {
+      setErrorMessage(
+        `Too many messages. Please wait until ${rateLimitReset?.toLocaleTimeString()} before sending more.`
+      );
+      return;
+    }
+
+    // 2. Sanitize all fields again (defense in depth)
+    const sanitizedName = sanitizeText(formData.name);
+    const sanitizedMessage = sanitizeText(formData.message);
+    const rawEmail = formData.email.trim().toLowerCase();
+
+    // 3. Validate email
+    if (!validateEmail(rawEmail)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    // 4. Check for empty fields after sanitization
+    if (!sanitizedName || !sanitizedMessage) {
+      setErrorMessage("Name and message cannot be empty or contain only invalid characters.");
+      return;
+    }
+
     try {
       setLoading(true);
 
-      const { error } = await supabase
-        .from("inquiries")
-        .insert([
-          {
-            full_name: formData.name,
-            email: formData.email,
-            subject: "Website Contact Form",
-            message: formData.message,
-          },
-        ]);
+      const { error } = await supabase.from("inquiries").insert([
+        {
+          full_name: sanitizedName,
+          email: rawEmail,
+          subject: "Website Contact Form",
+          message: sanitizedMessage,
+          // optional: store user agent, IP (handled by Supabase RLS or edge function)
+        },
+      ]);
 
-      if (error) {
-        throw error;
-      }
+      if (error) throw error;
+
+      // Record successful submission for rate limiting
+      submitHistory.current.push(Date.now());
+      setRateLimitRemaining(RATE_LIMIT - submitHistory.current.length);
 
       setSuccess(true);
-
       setFormData({
         name: "",
         email: "",
         message: "",
       });
+
+      // Clear success message after 5 seconds
+      setTimeout(() => setSuccess(false), 5000);
     } catch (error) {
       console.error("Contact Form Error:", error);
-
       setErrorMessage(
         error.message ||
-          "Unable to send your message at the moment. Please try again."
+          "Unable to send your message at the moment. Please try again later."
       );
     } finally {
       setLoading(false);
@@ -102,8 +178,7 @@ const Contact = () => {
     >
       <div className="max-w-4xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-
-          {/* LEFT SIDE */}
+          {/* LEFT SIDE (unchanged, just styling) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -216,7 +291,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE */}
+          {/* RIGHT SIDE (FORM with sanitization) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -250,6 +325,13 @@ const Contact = () => {
               {errorMessage && (
                 <div className="mb-4 p-3 rounded text-sm bg-red-100 text-red-700 border border-red-200">
                   {errorMessage}
+                </div>
+              )}
+
+              {/* Rate limit warning */}
+              {rateLimitRemaining <= 2 && rateLimitRemaining > 0 && (
+                <div className="mb-3 text-xs text-amber-600">
+                  ⚠️ You have {rateLimitRemaining} message{rateLimitRemaining !== 1 ? "s" : ""} left this minute.
                 </div>
               )}
 
@@ -307,7 +389,7 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={loading || rateLimitRemaining === 0}
                   className="w-full py-3 px-6 text-xs uppercase font-bold tracking-[0.15em] border transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                   style={{
                     borderColor: theme.blueLight,
@@ -320,7 +402,6 @@ const Contact = () => {
               </div>
             </form>
           </motion.div>
-
         </div>
       </div>
     </section>

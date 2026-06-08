@@ -1,10 +1,19 @@
 import { LogOut, LayoutDashboard, Users, BarChart3, Settings } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../../supabase/supabaseClient"; // adjust path
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/login");
+  };
+
   return (
     <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col">
       <div className="p-6 text-white font-bold text-xl">
-      Admin Dashboard
+        Admin Dashboard
       </div>
 
       <nav className="flex-1 px-4 space-y-2">
@@ -14,7 +23,10 @@ export default function Sidebar() {
         <NavItem icon={<Settings />} label="Settings" />
       </nav>
 
-      <button className="p-4 flex items-center gap-2 hover:text-red-400">
+      <button
+        onClick={handleLogout}
+        className="p-4 flex items-center gap-2 hover:text-red-400 transition-colors"
+      >
         <LogOut size={18} /> Logout
       </button>
     </aside>
