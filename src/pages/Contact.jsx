@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Contacts from '../components/Contact';  // <-- import your provided component
+import Footer from '../components/Footer';  // <-- import your provided component
 import wp7 from '../assets/wallpapers/wp(7).jpg';
 import wp8 from '../assets/wallpapers/wp(8).jpg';
 import wp5 from '../assets/wallpapers/wp(5).jpg';
@@ -183,73 +184,55 @@ export default function Contact() {
         </section>
 
         {/* ========== PRAYER CALLOUT (unchanged) ========== */}
-        <section className="py-20 text-white text-center relative overflow-hidden" style={{ backgroundColor: theme.blueDeep }}>
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#60a5fa_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
-          <div className="max-w-2xl mx-auto px-6 relative z-10 flex flex-col items-center">
-            <div className="mb-4" style={{ color: theme.blueLight }}>
-              <span className="material-symbols-outlined text-4xl">volunteer_activism</span>
-            </div>
-            <h2 className="font-['Cinzel'] text-2xl sm:text-3xl font-bold tracking-wide mb-4">Intercessory Prayer</h2>
-            <div className="w-8 h-[1px] mb-6" style={{ backgroundColor: theme.blueLight }}></div>
-            <p className="font-['Cormorant_Garamond'] text-lg text-white/90 max-w-xl mb-8 leading-relaxed">
-              Are you in need of spiritual support? Our community remembers every intention shared with us during our daily conventual Mass and community prayers.
-            </p>
-            <a
-              className="inline-block border px-8 py-4 text-xs font-['Cinzel'] font-bold uppercase tracking-widest transition-all duration-300 no-underline"
-              style={{ borderColor: theme.blueLight, color: theme.blueLight }}
-              href="#"
-              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = theme.blueLight; e.currentTarget.style.color = theme.black; }}
-              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = theme.blueLight; }}
-            >
-              Submit a Prayer Request
-            </a>
-          </div>
-        </section>
+       <section className="py-20 text-center relative overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
+  {/* Subtle grid pattern in light blue (very faint) */}
+  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+  
+  <div className="max-w-2xl mx-auto px-6 relative z-10 flex flex-col items-center">
+    {/* Icon – blue */}
+    <div className="mb-4" style={{ color: '#3b82f6' }}>
+      <span className="material-symbols-outlined text-4xl">volunteer_activism</span>
+    </div>
+    
+    {/* Heading – black */}
+    <h2 className="font-['Cinzel'] text-2xl sm:text-3xl font-bold tracking-wide mb-4" style={{ color: '#000000' }}>
+      Intercessory Prayer
+    </h2>
+    
+    {/* Divider – blue */}
+    <div className="w-8 h-[1px] mb-6" style={{ backgroundColor: '#3b82f6' }}></div>
+    
+    {/* Description – black / slightly muted for readability */}
+    <p className="font-['Cormorant_Garamond'] text-lg max-w-xl mb-8 leading-relaxed" style={{ color: '#1f2937' }}>
+      Are you in need of spiritual support? Our community remembers every intention shared with us during our daily conventual Mass and community prayers.
+    </p>
+    
+    {/* CTA Button – blue background, white text, blue border, hover darker */}
+    <a
+      className="inline-block px-8 py-4 text-xs font-['Cinzel'] font-bold uppercase tracking-widest transition-all duration-300 no-underline rounded"
+      style={{
+        backgroundColor: '#3b82f6',
+        color: '#ffffff',
+        border: '1px solid #3b82f6',
+      }}
+      href="#"
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = '#2563eb';
+        e.currentTarget.style.borderColor = '#2563eb';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = '#3b82f6';
+        e.currentTarget.style.borderColor = '#3b82f6';
+      }}
+    >
+      Submit a Prayer Request
+    </a>
+  </div>
+</section>
       </main>
 
       {/* Footer (unchanged) */}
-      <footer className="border-t py-16 px-6" style={{ backgroundColor: theme.white, borderColor: theme.borderLight }}>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="md:col-span-2 space-y-4">
-            <h4 className="font-['Cinzel'] text-base font-bold tracking-wide" style={{ color: theme.black }}>Sons of Mary Mother of Mercy</h4>
-            <p className="font-['Cormorant_Garamond'] text-base max-w-sm leading-relaxed" style={{ color: theme.textMuted }}>
-              A congregation of religious brothers and priests dedicated to the spiritual and social welfare of God's people through explicit works of mercy.
-            </p>
-            <div className="flex gap-3 pt-2">
-              <a className="w-9 h-9 flex items-center justify-center transition-colors" href="#" style={{ border: `1px solid ${theme.borderLight}`, color: theme.textMuted }}>
-                <span className="material-symbols-outlined text-sm">public</span>
-              </a>
-              <a className="w-9 h-9 flex items-center justify-center transition-colors" href="#" style={{ border: `1px solid ${theme.borderLight}`, color: theme.textMuted }}>
-                <span className="material-symbols-outlined text-sm">share</span>
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h5 className="text-[10px] font-['Cinzel'] font-bold uppercase tracking-widest mb-4" style={{ color: theme.black }}>Explore</h5>
-            <ul className="space-y-3 text-sm font-medium list-none p-0 m-0">
-              {['History', 'Charism', 'Founder', 'Mission Appeal'].map((link) => (
-                <li key={link}><a className="transition-colors no-underline" href="#" style={{ color: theme.textMuted }}>{link}</a></li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="text-[10px] font-['Cinzel'] font-bold uppercase tracking-widest mb-4" style={{ color: theme.black }}>Resources</h5>
-            <ul className="space-y-3 text-sm font-medium list-none p-0 m-0">
-              <li><a className="transition-colors no-underline" href="#" style={{ color: theme.textMuted }}>Gallery Archive</a></li>
-              <li><a className="transition-colors no-underline" href="#" style={{ color: theme.textMuted }}>Privacy Policy</a></li>
-              <li><a className="font-bold underline transition-colors" href="#" style={{ color: theme.bluePrimary }}>Contact Us</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t text-center" style={{ borderColor: theme.borderLight }}>
-          <p className="text-[10px] font-['Cinzel'] font-bold tracking-[0.15em] uppercase" style={{ color: theme.textMuted }}>
-            &copy; {new Date().getFullYear()} Sons of Mary Mother of Mercy (SMMM) American Region. All Rights Reserved.
-          </p>
-        </div>
-      </footer>
+     <Footer />
     </div>
   );
 }

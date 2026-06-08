@@ -1,19 +1,24 @@
 import { motion } from 'framer-motion';
 
 const MissionAreas = () => {
-  // Brighter blue background + refined palette
+  // 🎨 Color pattern extracted from the Footer component
   const theme = {
-    blueLight: '#93c5fd',       // softer light blue for accents
-    bluePrimary: '#3b82f6',     // vibrant primary blue
-    blueDeep: '#1e40af',        // brighter deep blue (was #0f172a)
-    blueGradientStart: '#1e3a8a',
-    blueGradientEnd: '#2563eb',
-    white: '#ffffff',
-    whiteMuted: '#f1f5f9',      // almost white
-    whiteFaint: 'rgba(255, 255, 255, 0.3)',
+    // Main gradient (exact match)
+    gradientMain: 'linear-gradient(135deg, #0a2a4a 0%, #134b8a 40%, #1e6bb5 80%, #3b8fd9 100%)',
+    // Radial overlay for depth
+    radialOverlay: 'radial-gradient(circle at 0% 20%, rgba(96, 165, 250, 0.15) 0%, transparent 60%)',
+    // Text colors (from footer)
+    whitePure: '#ffffff',
+    whiteMuted: '#f1f5f9',
+    whiteSoft: '#e2e8f0',
+    whiteFaint: '#cbd5e1',
+    accentLight: '#93c5fd',      // used for small caps, borders, icons
+    accentMedium: '#bfdbfe',
+    mutedText: '#94a3b8',
+    // Card & border
+    cardBg: 'rgba(255, 255, 255, 0.05)',
+    cardBgHover: 'rgba(255, 255, 255, 0.1)',
     borderLight: 'rgba(147, 197, 253, 0.25)',
-    bgCard: 'rgba(255, 255, 255, 0.05)',
-    bgCardHover: 'rgba(255, 255, 255, 0.1)',
   };
 
   const containerVariants = {
@@ -61,14 +66,19 @@ const MissionAreas = () => {
   ];
 
   return (
-    <section 
-      id="mission" 
-      className="py-24 px-6 overflow-hidden"
-      style={{
-        background: `linear-gradient(135deg, ${theme.blueGradientStart}, ${theme.blueGradientEnd})`
-      }}
-    >
-      <div className="max-w-7xl mx-auto">
+    <section id="mission" className="py-24 px-6 overflow-hidden relative">
+      {/* Main gradient background (footer's exact palette) */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{ background: theme.gradientMain }}
+      />
+      {/* Radial overlay for depth (footer's glow) */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{ background: theme.radialOverlay }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section header – refined typography */}
         <motion.div 
           className="text-center mb-16"
@@ -79,18 +89,18 @@ const MissionAreas = () => {
         >
           <span 
             className="text-xs font-semibold tracking-[0.2em] uppercase"
-            style={{ color: theme.blueLight, letterSpacing: '0.2em', fontFamily: "'Inter', sans-serif" }}
+            style={{ color: theme.accentLight, letterSpacing: '0.2em', fontFamily: "'Inter', sans-serif" }}
           >
             Global Presence
           </span>
           <h2 
             className="text-4xl md:text-5xl font-light tracking-tight mt-3 mb-4"
-            style={{ fontFamily: "'Cormorant Garamond', serif", color: theme.white, fontWeight: 500 }}
+            style={{ fontFamily: "'Cormorant Garamond', serif", color: theme.whiteSoft, fontWeight: 500 }}
           >
             Mission Areas
           </h2>
-          <div className="mx-auto w-12 h-px" style={{ backgroundColor: theme.blueLight }} />
-          <p className="mt-5 text-base font-light italic" style={{ color: theme.whiteMuted, fontFamily: "'Cormorant Garamond', serif" }}>
+          <div className="mx-auto w-12 h-px" style={{ backgroundColor: theme.accentLight }} />
+          <p className="mt-5 text-base font-light italic" style={{ color: theme.whiteFaint, fontFamily: "'Cormorant Garamond', serif" }}>
             From a mustard seed to branches across the globe
           </p>
         </motion.div>
@@ -109,7 +119,7 @@ const MissionAreas = () => {
               variants={cardVariants}
               className="rounded-2xl backdrop-blur-sm transition-all duration-300 hover:bg-opacity-80"
               style={{
-                backgroundColor: region.isHomeRegion ? 'rgba(59,130,246,0.15)' : theme.bgCard,
+                backgroundColor: region.isHomeRegion ? 'rgba(59,130,246,0.15)' : theme.cardBg,
                 border: `1px solid ${theme.borderLight}`,
                 padding: '1.75rem'
               }}
@@ -117,7 +127,7 @@ const MissionAreas = () => {
               {/* Region name */}
               <h3 
                 className="text-xl font-medium mb-5 tracking-wide"
-                style={{ fontFamily: "'Cormorant Garamond', serif", color: theme.white, letterSpacing: '-0.01em', fontWeight: 600 }}
+                style={{ fontFamily: "'Cormorant Garamond', serif", color: theme.whitePure, letterSpacing: '-0.01em', fontWeight: 600 }}
               >
                 {region.name}
               </h3>
@@ -130,7 +140,7 @@ const MissionAreas = () => {
                     className="px-3 py-1 text-xs rounded-full border"
                     style={{
                       borderColor: theme.borderLight,
-                      color: theme.whiteMuted,
+                      color: theme.whiteFaint,
                       backgroundColor: 'transparent',
                       fontFamily: "'Inter', sans-serif",
                       fontWeight: 400
@@ -144,18 +154,18 @@ const MissionAreas = () => {
               {/* US cities – structured & space‑efficient */}
               {region.usCitiesByState && (
                 <div className="mt-4 pt-4 border-t" style={{ borderColor: theme.borderLight }}>
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-wider mb-3" style={{ color: theme.blueLight, fontFamily: "'Inter', sans-serif" }}>
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-wider mb-3" style={{ color: theme.accentLight, fontFamily: "'Inter', sans-serif" }}>
                     Active Dioceses (USA)
                   </p>
                   <div className="space-y-3">
                     {region.usCitiesByState.map((stateGroup, sgIdx) => (
                       <div key={sgIdx} className="text-xs">
-                        <span className="block font-medium mb-1" style={{ color: theme.white, fontFamily: "'Inter', sans-serif" }}>
+                        <span className="block font-medium mb-1" style={{ color: theme.whiteMuted, fontFamily: "'Inter', sans-serif" }}>
                           {stateGroup.state}
                         </span>
                         <div className="flex flex-wrap gap-x-3 gap-y-1 pl-1">
                           {stateGroup.cities.map((city, cityIdx) => (
-                            <span key={cityIdx} className="text-white/70 text-[0.7rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
+                            <span key={cityIdx} className="text-white/70 text-[0.7rem]" style={{ fontFamily: "'Inter', sans-serif", color: theme.whiteFaint }}>
                               {city}
                             </span>
                           ))}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import pdf from '../materials/SMMM_USA_Privacy_Policy.pdf';
 
 const Footer = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -101,9 +102,15 @@ const Footer = () => {
                   {item.label}
                 </Link>
               ))}
-              <a href='../materials/SMMM_USA_Privacy_Policy.pdf' target="_blank" rel="noopener noreferrer" className="text-[0.92rem] capitalize transition-colors duration-300 hover:text-blue-200">
-                Privacy Policy
-              </a>
+              <a
+      href={pdf}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-[0.92rem] capitalize transition-colors duration-300 hover:text-blue-200"
+      style={{ fontFamily: "'Cormorant Garamond', serif", color: '#e2e8f0' }}
+    >
+      Privacy Policy
+    </a>
             </div>
           </div>
 
