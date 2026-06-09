@@ -6,7 +6,7 @@ import wp2 from '../assets/priests/image(14).jpg';
 import wp3 from '../assets/wallpapers/wp(5).jpg';
 import wp4 from '../assets/priests/image(17).jpg';
 import wp7 from '../assets/priests/image(07).jpg';
-import wp8 from '../assets/priests/image(11).jpg';
+import wp8 from '../assets/wallpapers/wp(9).jpg';
 
 // Hero images – replace with your own if needed
 const HERO_IMAGES = [wp4, wp1, wp2, wp3, wp7, wp8];
@@ -196,69 +196,55 @@ const Donations = () => {
             </div>
           </motion.div>
 
-          {/* Two info cards (unchanged structure, but note the first card's text repeated? Actually original had similar text – I'll keep it as is) */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
-          >
-            <motion.div
-              variants={fadeUp}
-              whileHover={cardHover}
-              className="bg-white p-8 border border-[rgba(0,119,236,0.1)] rounded-xl shadow-sm flex flex-col justify-between transition hover:shadow-md"
-            >
-              <div>
-                <div className="flex items-center gap-3 text-[#0B132B] mb-4">
-                  <span className="material-symbols-outlined text-2xl text-[#0077ec]">school</span>
-                  <h3 className="font-['Cinzel'] font-bold text-sm tracking-widest uppercase">The School Apostolate</h3>
-                </div>
-                <p className="font-serif text-[15px] sm:text-base text-slate-600 leading-relaxed mb-4">
-                  The school apostolate is another core focus, allowing us to care for indigent children. Missionary work relies on both field service and financial contributions. Within the Sons of Mary Mother of Mercy (SMMM), your donations are essential for advancing our mission.
-                </p>
-                <p className="font-serif text-[15px] sm:text-base text-slate-600 leading-relaxed">
-                  We invite you to participate in the formation of our future clergy. At this time, the SMMM family is blessed with many dedicated candidates pursuing vocations in both religious life and ministerial priesthood.
-                </p>
-              </div>
-            </motion.div>
+         {/* Upgraded flush grid – no gap, unified container */}
+<motion.div
+  variants={staggerContainer}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-50px" }}
+  className="grid grid-cols-1 lg:grid-cols-2 mb-16 rounded-xl overflow-hidden shadow-md border border-white/10"
+>
+  {/* LEFT COLUMN – IMAGE (flush to the edge) */}
+  <motion.div
+    variants={fadeUp}
+    className="relative overflow-hidden min-h-[320px] lg:min-h-full"
+  >
+    <motion.img
+      initial={{ scale: 1.08, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+      src={wp1}
+      alt="School apostolate – teaching and caring for children"
+      className="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    {/* Optional: subtle overlay to deepen the image if text is over it – not needed here because text is on separate side */}
+  </motion.div>
 
-            <motion.div
-              variants={fadeUp}
-              whileHover={cardHover}
-              className="bg-white p-8 border border-[rgba(0,119,236,0.1)] rounded-xl shadow-sm flex flex-col justify-between transition hover:shadow-md"
-            >
-              <div>
-                <div className="flex items-center gap-3 text-[#0B132B] mb-4">
-                  <span className="material-symbols-outlined text-2xl text-[#0077ec]">assignment_turned_in</span>
-                  <h3 className="font-['Cinzel'] font-bold text-sm tracking-widest uppercase">Our Core Targets</h3>
-                </div>
-                <p className="text-xs text-slate-500 mb-4 font-medium uppercase tracking-wider">Your contributions most effectively assist these areas:</p>
-                <ul className="space-y-3 font-medium text-slate-700 text-sm sm:text-base">
-                  <li className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[#0077ec] text-xs mt-1.5">fiber_manual_record</span>
-                    <span>Constructing mission schools</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[#0077ec] text-xs mt-1.5">fiber_manual_record</span>
-                    <span>Providing educational scholarships</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[#0077ec] text-xs mt-1.5">fiber_manual_record</span>
-                    <span>Digitalizing classroom facilities</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[#0077ec] text-xs mt-1.5">fiber_manual_record</span>
-                    <span>Supporting personnel in difficult mission regions</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[#0077ec] text-xs mt-1.5">fiber_manual_record</span>
-                    <span>Teacher professional development</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-          </motion.div>
+  {/* RIGHT COLUMN – SCHOOL APOSTOLATE CONTENT (flush to the edge) */}
+  <motion.div
+    variants={fadeUp}
+    whileHover={cardHover}
+    className="bg-white p-8 md:p-10 flex flex-col justify-between"
+  >
+    <div>
+      <div className="flex items-center gap-3 text-[#0B132B] mb-4">
+        <span className="material-symbols-outlined text-2xl text-[#0077ec]">school</span>
+        <h3 className="font-['Cinzel'] font-bold text-sm tracking-widest uppercase">The School Apostolate</h3>
+      </div>
+      <p className="font-serif text-[15px] sm:text-base text-slate-600 leading-relaxed mb-4">
+        The school apostolate is another core focus, allowing us to care for indigent children. 
+        Missionary work relies on both field service and financial contributions. Within the Sons 
+        of Mary Mother of Mercy (SMMM), your donations are essential for advancing our mission.
+      </p>
+      <p className="font-serif text-[15px] sm:text-base text-slate-600 leading-relaxed">
+        We invite you to participate in the formation of our future clergy. At this time, the 
+        SMMM family is blessed with many dedicated candidates pursuing vocations in both 
+        religious life and ministerial priesthood.
+      </p>
+    </div>
+  </motion.div>
+</motion.div>
 
           {/* Sponsorship Options (unchanged) */}
           <motion.section
@@ -293,7 +279,7 @@ const Donations = () => {
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 mb-6">I wish to support the rigorous academic, spiritual, and communal training of an upcoming priest with a gift of:</p>
                   <div className="grid grid-cols-3 gap-2 mb-4">
-                    {['$500', '$300', '$200', 'others'].map((amount) => (
+                    {['$500', '$300', '$200', 'other'].map((amount) => (
                       <motion.div
                         key={amount}
                         whileHover={{ scale: 1.02, borderColor: "#0077ec" }}
@@ -319,7 +305,7 @@ const Donations = () => {
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 mb-6">I wish to contribute to our educational missions in the amount of:</p>
                   <div className="grid grid-cols-3 gap-2 mb-4">
-                    {['$500', '$250', '$150', 'others'].map((amount) => (
+                    {['$500', '$250', '$150', 'other'].map((amount) => (
                       <motion.div
                         key={amount}
                         whileHover={{ scale: 1.02, borderColor: "#0077ec" }}

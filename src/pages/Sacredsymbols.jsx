@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from '../components/Navbar.jsx';
 import img from '../assets/vectors/logo.jpg';
-import habit from '../assets/vectors/88.png';
+import habit from '../assets/vectors/64.jpg';
 import wp7 from '../assets/priests/image(07).jpg';
 import wp8 from '../assets/priests/image(11).jpg';
 import wp2 from '../assets/priests/image(14).jpg';

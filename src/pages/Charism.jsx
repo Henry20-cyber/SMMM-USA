@@ -7,7 +7,7 @@ import wp7 from '../assets/wallpapers/wp(7).jpg';
 import wp8 from '../assets/wallpapers/wp(8).jpg';
 import wp5 from '../assets/wallpapers/wp(5).jpg';
 
-const heroImages = [wp1,wp2, wp7, wp5, wp8];
+const heroImages = [wp1, wp2, wp7, wp5, wp8];
 
 const Charism = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -19,21 +19,22 @@ const Charism = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // New palette: Blue variants, white, black
+  // 🎨 Blue gradient theme – same as Mission Areas + readable light text
   const theme = {
-    bgLight: '#F8FAFC',       // cool white-blue
-    bgWhite: '#FFFFFF',
-    bgSection: '#F0F4F8',
-    textMain: '#0F172A',      // slate-900
-    textBody: '#334155',      // slate-700
-    textMuted: '#64748B',     // slate-500
-    accentBlueDeep: '#1e3a8a', // deep royal blue
-    accentBluePrimary: '#2563eb',
-    accentBlueLight: '#60a5fa',
-    accentBlueSoft: 'rgba(37, 99, 235, 0.08)',
-    accentBlueMid: 'rgba(96, 165, 250, 0.3)',
-    borderLight: 'rgba(37, 99, 235, 0.12)',
-    borderMid: 'rgba(96, 165, 250, 0.25)',
+    // Main gradient (exact match from footer / mission)
+    gradientMain: 'linear-gradient(135deg, #0a2a4a 0%, #134b8a 40%, #1e6bb5 80%, #3b8fd9 100%)',
+    radialOverlay: 'radial-gradient(circle at 0% 20%, rgba(96, 165, 250, 0.15) 0%, transparent 60%)',
+    // Text colors (light)
+    textMain: '#ffffff',
+    textBody: '#f1f5f9',
+    textMuted: '#cbd5e1',
+    accentBlueLight: '#93c5fd',
+    accentBluePrimary: '#3b82f6',
+    accentBlueDeep: '#1e3a8a',
+    // Card & border (translucent, like mission cards)
+    cardBg: 'rgba(255, 255, 255, 0.05)',
+    cardBgHover: 'rgba(255, 255, 255, 0.1)',
+    borderLight: 'rgba(147, 197, 253, 0.25)',
   };
 
   const fadeUpVariants = {
@@ -45,55 +46,40 @@ const Charism = () => {
     },
   };
 
- {/* const categoriesOfCharisms = [
-    {
-      title: 'Teaching Charisms',
-      items:
-        "Comprise those of apostles or itinerant missionaries, evangelists or preachers of the gospel, prophets who spoke in God's name under the inspiration of the Holy Spirit and teachers who instructed the Christians and catechumens.",
-    },
-    {
-      title: 'Service Charisms',
-      items: 'This include gifts for governing and guiding as well as serving.',
-    },
-    {
-      title: 'Extraordinary / Miraculous',
-      items:
-        'It embraces the gifts of healing, miracles, faith, exorcism and immunity from harm arising from deadly things such as serpent or poison, and Discernment of spirits.',
-    },
-  ]; */}
-
   const congregationalSpirits = ['Charity', 'Humility', 'Penance', 'Abandonment to God'];
 
   const mercyCards = [
     {
-      title: 'Mercy Through Compassion',
-      body: "Our compassion is modeled after our Divine Master, Christ, represented by the Good Samaritan, who not only helped the wounded victim but also provided for his future needs (Lk 10:25-37). We undertake the apostolate of loving and caring for the spiritually, intellectually, and physically poor and underprivileged by working in homes and teaching in schools.",
+      title: 'Compassion',
+      body: "Our compassion is modeled after our Divine Master, Christ, represented by the Good Samaritan, who not only helped the wounded victim but also provided for his future needs (Lk 10:25-37).",
     },
     {
-      title: 'Mercy as Forgiveness',
+      title: 'Forgiveness',
       body: 'As brothers, it is essential that we have forgiving hearts, excusing one another’s faults in charity (Mt. 18:21-22).',
     },
     {
-      title: 'Mercy as Kindness',
-      body: `Our kindness is rooted in Christ's injunction to give because of Him (Mt. 9:4); we show tender-hearted love toward one another and kindness to those who are difficult to deal with.
-`,
+      title: 'Kindness',
+      body: `Our kindness is rooted in Christ's injunction to give because of Him (Mt. 9:4); we show tender-hearted love toward one another and kindness to those who are difficult to deal with.`,
     },
   ];
 
   return (
-    <div
-      className="min-h-screen antialiased"
-      style={{
-        backgroundColor: theme.bgLight,
-        color: theme.textMain,
-        fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-      }}
-    >
+    <div className="min-h-screen antialiased relative overflow-hidden">
+      {/* Main blue gradient background */}
+      <div
+        className="fixed inset-0 -z-20"
+        style={{ background: theme.gradientMain }}
+      />
+      {/* Radial overlay for depth */}
+      <div
+        className="fixed inset-0 -z-10 pointer-events-none"
+        style={{ background: theme.radialOverlay }}
+      />
+
       <NavBar />
 
-      {/* ================= HERO SECTION: FULL-WIDTH BACKGROUND ================= */}
+      {/* ================= HERO SECTION ================= */}
       <section className="relative h-dvh flex items-center overflow-hidden">
-        {/* Animated Background Images */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -106,16 +92,15 @@ const Charism = () => {
           />
         </AnimatePresence>
 
-        {/* Dark overlay for text readability - increased to 70% for better contrast */}
+        {/* Dark overlay – keep it strong for contrast */}
         <div className="absolute inset-0 bg-black/70 z-0" />
 
-        {/* Slide dot indicators */}
+        {/* Slide dots */}
         <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3 z-20">
           {heroImages.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrentSlide(i)}
-              aria-label={`Go to slide ${i + 1}`}
               className="transition-all duration-500 rounded-full"
               style={{
                 width: i === currentSlide ? '28px' : '6px',
@@ -127,13 +112,13 @@ const Charism = () => {
           ))}
         </div>
 
-        {/* Content – left aligned on all screens */}
+        {/* Hero content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 py-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-lg lg:max-w-2lg"
+            className="max-w-lg lg:max-w-2xl"
           >
             <p
               className="text-sm font-semibold tracking-[0.3em] uppercase mb-5"
@@ -141,7 +126,6 @@ const Charism = () => {
             >
               The Gifts of the Holy Spirit
             </p>
-
             <motion.h1
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
@@ -155,7 +139,6 @@ const Charism = () => {
             >
               Our Charism
             </motion.h1>
-
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
@@ -163,7 +146,6 @@ const Charism = () => {
               className="w-20 h-[2px] rounded-full mb-8"
               style={{ backgroundColor: theme.accentBlueLight, transformOrigin: 'left' }}
             />
-
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -188,9 +170,10 @@ const Charism = () => {
         />
       </section>
 
-      {/* ================= CONGREGATIONAL CHARISM ================= */}
-      <section id="charism" className="py-28 md:py-36 px-6" style={{ backgroundColor: theme.bgWhite }}>
+      {/* ================= CONGREGATIONAL CHARISM SECTION ================= */}
+      <section id="charism" className="py-28 md:py-36 px-6">
         <div className="max-w-6xl mx-auto">
+          {/* Section header */}
           <motion.div
             className="text-center mb-24"
             initial="hidden"
@@ -200,7 +183,7 @@ const Charism = () => {
           >
             <p
               className="text-xs font-semibold tracking-[0.3em] uppercase mb-3"
-              style={{ color: theme.accentBluePrimary }}
+              style={{ color: theme.accentBlueLight }}
             >
               Sons of Mary Mother of Mercy
             </p>
@@ -214,7 +197,10 @@ const Charism = () => {
             >
               The Congregational Charism at a Glance
             </h2>
-            <div className="w-12 h-px mx-auto mb-6 bg-current opacity-40" style={{ color: theme.accentBluePrimary }} />
+            <div
+              className="w-12 h-px mx-auto mb-6 bg-current opacity-60"
+              style={{ color: theme.accentBlueLight }}
+            />
             <p
               className="text-lg md:text-xl italic max-w-2xl mx-auto font-light"
               style={{ color: theme.textBody }}
@@ -225,6 +211,7 @@ const Charism = () => {
             </p>
           </motion.div>
 
+          {/* Mercy Cards (now with translucent backgrounds, matching mission cards) */}
           <div className="grid md:grid-cols-3 gap-8 mb-28 items-stretch">
             {mercyCards.map((card, index) => (
               <motion.div
@@ -234,20 +221,13 @@ const Charism = () => {
                 whileHover={{ y: -6 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3 }}
-                className="rounded-2xl p-8 flex flex-col justify-between transition-all"
+                className="rounded-2xl backdrop-blur-sm p-8 flex flex-col justify-between transition-all"
                 style={{
-                  backgroundColor: theme.bgWhite,
+                  backgroundColor: theme.cardBg,
                   border: `1px solid ${theme.borderLight}`,
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.03)',
                 }}
               >
                 <div>
-                  <p
-                    className="text-[11px] font-bold tracking-[0.2em] uppercase mb-3"
-                    style={{ color: theme.accentBluePrimary }}
-                  >
-                    {card.pillar}
-                  </p>
                   <h3
                     className="mb-5 text-2xl font-serif"
                     style={{ fontFamily: "'Cormorant Garamond', serif", color: theme.textMain }}
@@ -262,21 +242,21 @@ const Charism = () => {
             ))}
           </div>
 
+          {/* Spirits section – also translucent */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUpVariants}
-            className="rounded-2xl p-10 md:p-14 text-center"
+            className="rounded-2xl backdrop-blur-sm p-10 md:p-14 text-center"
             style={{
-              backgroundColor: `${theme.accentBlueSoft}20`,
-              backdropFilter: 'blur(2px)',
+              backgroundColor: theme.cardBg,
               border: `1px solid ${theme.borderLight}`,
             }}
           >
             <p
               className="text-xs font-semibold tracking-[0.25em] uppercase mb-10"
-              style={{ color: theme.accentBluePrimary }}
+              style={{ color: theme.accentBlueLight }}
             >
               Spirit of Our Congregation
             </p>
@@ -312,7 +292,8 @@ const Charism = () => {
         style={{
           color: theme.textMuted,
           borderTop: `1px solid ${theme.borderLight}`,
-          backgroundColor: theme.bgWhite,
+          backgroundColor: 'rgba(0,0,0,0.2)',
+          backdropFilter: 'blur(4px)',
         }}
       >
         <p>&copy; {new Date().getFullYear()} Sons of Mary Mother of Mercy (SMMM). All rights reserved.</p>

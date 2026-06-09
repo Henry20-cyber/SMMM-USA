@@ -152,7 +152,7 @@ const Footer = () => {
         >
           <span className="text-center sm:text-left flex flex-col gap-1">
           <p className="text-[0.58rem] tracking-wider text-center sm:text-left" style={{ fontFamily: "'Cinzel', serif", color: '#94a3b8' }}>
-            © {new Date().getFullYear()} Sons of Mary Mother of Mercy — American Region. All Rights Reserved.
+            © {new Date().getFullYear()} Sons of Mary Mother of Mercy — USA Region. All Rights Reserved.
           </p>
           <p className="text-[0.58rem] tracking-wider text-center sm:text-left" style={{ fontFamily: "'Cinzel', serif", color: '#94a3b8' }}
           href='//https://henrycodes-portfolio.vercel.app/'>

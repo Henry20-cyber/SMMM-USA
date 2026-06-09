@@ -285,7 +285,7 @@ const Contact = () => {
                   className="text-[0.95rem]"
                   style={{ color: theme.textMuted }}
                 >
-                  SMMM American Region, USA
+                  SMMM USA Region
                 </span>
               </div>
             </div>

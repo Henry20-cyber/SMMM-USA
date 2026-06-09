@@ -12,7 +12,7 @@ const Banner = () => {
   const items = [
     "Evangelizare Pauperibus Misit Me",
     "Sons of Mary Mother of Mercy",
-    "American Region · Est. 1998",
+    "USA Region · Est. 1998",
     "Mercy · Compassion · Forgiveness · Kindness"
   ];
 
