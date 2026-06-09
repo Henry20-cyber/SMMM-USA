@@ -4,7 +4,6 @@ import vatican from '../assets/vectors/vatican.png';
 import smmm from '../assets/vectors/logo2.png';
 import dmmm from '../assets/vectors/dmmm.jpeg';
 import cbcn from '../assets/vectors/CBCN.jpeg';
-import dob from '../assets/vectors/boise logo.jpeg';
 
 export default function Links() {
   const constraintsRef = useRef(null);
@@ -32,7 +31,6 @@ export default function Links() {
   const links = [
     { name: 'The Vatican', url: 'https://www.vatican.va', img: vatican, fallbackText: 'VAT' },
     { name: 'EWTN Global Network', url: 'https://www.ewtn.com', img: null, fallbackText: 'EWTN', isEwtn: true },
-    { name: 'Diocese of Boise', url: 'https://www.dioceseofboise.org', img: dob, fallbackText: 'Diocese of Boise' },
     { name: 'SMMM Nigeria Congregation', url: 'https://smmmcongregation.org/', img: smmm, fallbackText: 'SMMM' },
     { name: 'SMMM Canada', url: 'https://smmmcanadaregion.ca/', img: smmm, fallbackText: 'SMMM' },
     { name: 'DMMM Congregation', url: 'https://sistersdmmm.org/', img: dmmm, fallbackText: 'DMMM' },
