@@ -285,7 +285,9 @@ const Contact = () => {
                   className="text-[0.95rem]"
                   style={{ color: theme.textMuted }}
                 >
-                  SMMM USA Region
+                  1100 W. Hawaii Avenue<br />
+                  Nampa, Idaho, 83686<br />
+                  United States
                 </span>
               </div>
             </div>
