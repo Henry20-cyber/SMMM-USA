@@ -5,8 +5,7 @@ import wp3 from '../assets/priests/image(12).jpg';
 import wp5 from '../assets/wallpapers/wp(5).jpg';
 import wp7 from '../assets/priests/image(30).jpg';
 import img1 from '../assets/priests/image(02).jpg';
-import img2 from '../assets/priests/image(03).jpg';
-import img3 from '../assets/priests/image(11).jpg';
+import img3 from '../assets/priests/image(21).jpg';
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -24,11 +23,11 @@ const Hero = () => {
 
   const images = [
     img3,
-    img2,
+    wp2,
     img1,
     wp7,
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDg7rGbkSxtRi33eRjEeYidBr6pjcb1tbPePcGF4Wvt8XfBJVTD3scZ16a71r-WGGoEccaDERZZ3nSIm1O-zN04agoLlNYbjRpq_4VHbjuYNIo0OFRaiYkYGKh16B53KFCRzC5cprziLR2zr8UTavBG1zym8FmWUD95Hjbr3Gx-KV7ONKoRs_A0JBmlz5g7pc9Jh8g4pVp4AvcXvFRZdh5aRhb6XF6WjjP8PVXPFyTwzMj96KUmQsdRplaeUF5xtZtF-crMkmqGOZ8",
-    wp2,
+    
     wp3,
     wp5,
   ];
