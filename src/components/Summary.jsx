@@ -8,7 +8,7 @@ const timelineData = [
   },
   {
     year: "1998",
-    title: "Seeds in USA",
+    title: "Mission Presence in the USA",
     content: "The mission began in the US on Jan 24 with Fr. Eugene Ujunwa Eburuche's arrival in the Diocese of Fort Wayne-South Bend, Indiana."
   },
   {
