@@ -4,8 +4,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
+  
+  // Replace 1234567890 with the actual admin phone number (include country code, no spaces, no + sign)
+  const whatsappNumber = '+2349124824683'; 
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Peace%20be%20with%20you.%20I%20am%20reaching%20out%20from%20the%20SMMM%20USA%20Region%20website.`;
+
+  // Configured with 2 separate initial responses
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Peace be with you! How can we help you today?' }
+    { 
+      id: 'welcome-1',
+      role: 'assistant', 
+      content: 'Peace be with you! How can we help you today?' 
+    },
+    { 
+      id: 'welcome-2',
+      role: 'assistant', 
+      content: 'You can also chat directly with our regional administration on WhatsApp for immediate support.',
+      isWhatsappLink: true 
+    }
   ]);
   const scrollRef = useRef(null);
 
@@ -32,14 +48,15 @@ const ChatBot = () => {
     e.preventDefault();
     if (!input.trim()) return;
 
-    const userMessage = { role: 'user', content: input };
+    const userMessage = { id: `user-${Date.now()}`, role: 'user', content: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
 
     setTimeout(() => {
       const aiResponse = { 
+        id: `ai-${Date.now()}`,
         role: 'assistant', 
-        content: "Thank you for your message. A member of the SMMM community or our AI assistant will respond shortly." 
+        content: "Thank you for your message. A member of the SMMM community or our administration will respond shortly." 
       };
       setMessages((prev) => [...prev, aiResponse]);
     }, 1000);
@@ -70,10 +87,10 @@ const ChatBot = () => {
               className="p-4 h-64 overflow-y-auto space-y-4 flex flex-col"
               style={{ backgroundColor: theme.offWhite }}
             >
-              {messages.map((msg, index) => (
+              {messages.map((msg) => (
                 <div 
-                  key={index}
-                  className={`p-3 rounded-lg text-sm max-w-[85%] ${
+                  key={msg.id}
+                  className={`p-3 rounded-lg text-sm max-w-[85%] flex flex-col gap-2 ${
                     msg.role === 'user' 
                       ? 'self-end rounded-tr-none' 
                       : 'self-start rounded-tl-none'
@@ -84,7 +101,20 @@ const ChatBot = () => {
                     border: msg.role === 'user' ? 'none' : `1px solid ${theme.borderBlue}`
                   }}
                 >
-                  {msg.content}
+                  <span>{msg.content}</span>
+                  
+                  {/* Styled Interactive WhatsApp Button Element */}
+                  {msg.isWhatsappLink && (
+                    <a 
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 flex items-center justify-center gap-1 bg-[#25D366] text-white font-semibold text-xs py-2 px-3 rounded-md shadow-sm hover:bg-[#20ba5a] transition-colors decoration-none"
+                      style={{ color: '#ffffff' }}
+                    >
+                      <span>Chat on WhatsApp</span>
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
@@ -126,4 +156,4 @@ const ChatBot = () => {
   );
 };
 
-export default ChatBot; 
+export default ChatBot;
