@@ -5,7 +5,7 @@ import { supabase } from "../supabase/supabaseClient";
 // --- SANITIZATION HELPERS ---
 const sanitizeText = (input) => {
   if (!input) return "";
-  // Remove any HTML tags (basic XSS protection)
+  // Remove any HTML tags (basic XSS protection) and escape
   return input
     .replace(/<[^>]*>/g, "")           // remove HTML tags
     .replace(/&/g, "&amp;")            // escape ampersand
@@ -55,14 +55,12 @@ const Contact = () => {
   const [rateLimitReset, setRateLimitReset] = useState(null);
   const submitHistory = useRef([]);
 
+  // FIXED: No longer sanitizing/trimming on every single keystroke
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
-    // Real-time sanitization on input (optional, but helps)
-    const sanitized = sanitizeText(value);
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "email" ? value : sanitized, // email not sanitized until submit
+      [name]: value, 
     }));
   };
 
@@ -99,7 +97,7 @@ const Contact = () => {
       return;
     }
 
-    // 2. Sanitize all fields again (defense in depth)
+    // 2. Sanitize all fields here (Defense in depth working properly)
     const sanitizedName = sanitizeText(formData.name);
     const sanitizedMessage = sanitizeText(formData.message);
     const rawEmail = formData.email.trim().toLowerCase();
@@ -125,7 +123,6 @@ const Contact = () => {
           email: rawEmail,
           subject: "Website Contact Form",
           message: sanitizedMessage,
-          // optional: store user agent, IP (handled by Supabase RLS or edge function)
         },
       ]);
 
@@ -178,7 +175,7 @@ const Contact = () => {
     >
       <div className="max-w-4xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* LEFT SIDE (unchanged, just styling) */}
+          {/* LEFT SIDE */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -293,7 +290,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE (FORM with sanitization) */}
+          {/* RIGHT SIDE (FORM) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -330,7 +327,6 @@ const Contact = () => {
                 </div>
               )}
 
-              {/* Rate limit warning */}
               {rateLimitRemaining <= 2 && rateLimitRemaining > 0 && (
                 <div className="mb-3 text-xs text-amber-600">
                   ⚠️ You have {rateLimitRemaining} message{rateLimitRemaining !== 1 ? "s" : ""} left this minute.
