@@ -12,51 +12,46 @@ const About = () => {
     }
   };
 
-  // Blue variants, white, black
   const theme = {
-    blueDeep: '#1e3a8a',    // deep royal blue
-    bluePrimary: '#2563eb', // primary vibrant blue
-    blueLight: '#60a5fa',   // light accent blue
+    blueDeep: '#1e3a8a',
+    bluePrimary: '#2563eb',
+    blueLight: '#60a5fa',
     white: '#ffffff',
     black: '#111111',
-    offWhite: '#f8fafc'     // cool off-white / light slate
+    offWhite: '#f8fafc'
   };
 
   return (
-    <section id="about" className="py-28 px-6" style={{ backgroundColor: theme.offWhite }}>
+    <section id="about" className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 overflow-hidden" style={{ backgroundColor: theme.offWhite }}>
       <div className="max-w-6xl mx-auto">
         
+        {/* Section Header */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: '-50px' }}
           variants={fadeInVariant}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <p className="flex justify-center items-center gap-2 mb-4 text-2xl font-bold uppercase tracking-widest" style={{ color: theme.bluePrimary }}>
+          <p className="flex justify-center items-center gap-2 mb-3 text-lg sm:text-2xl font-bold uppercase tracking-widest" style={{ color: theme.bluePrimary }}>
             About Us
           </p>
-          <h2 
-            className="text-4xl md:text-5xl mb-6 font-semibold tracking-wide"
-            style={{ fontFamily: "'Cinzel', serif", color: theme.black }}
-          >
-            {/* Title can be added here if needed */}
-          </h2>
           <div className="w-16 h-[2px] mx-auto" style={{ backgroundColor: theme.blueLight }} />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
           
+          {/* Text Content Block */}
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: '-50px' }}
             variants={fadeInVariant}
+            className="flex flex-col items-start"
           >
-          
-            
             <h3 
-              className="text-2xl font-semibold mb-5 leading-snug"
+              className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-5 leading-snug"
               style={{ fontFamily: "'Cinzel', serif", color: theme.black }}
             >
               The First Indigenous Male Religious Order in West Africa
@@ -64,29 +59,29 @@ const About = () => {
             
             <div className="w-12 h-[2px] mb-6" style={{ backgroundColor: theme.blueLight }} />
             
-            <p className="mb-4 text-[1.05rem] leading-relaxed" style={{ color: theme.black }}>
+            <p className="mb-4 text-sm sm:text-base leading-relaxed" style={{ color: theme.black }}>
               Sons of Mary Mother of Mercy (SMMM) is a Religious Congregation of priests and lay brothers 
               founded by Most Rev. Anthony Gogo Nwedo, C.S.Sp., of blessed memory — the pioneer bishop of 
               Umuahia Diocese — whose vision reached beyond his time.
             </p>
             
-            <p className="text-[1.05rem] leading-relaxed" style={{ color: theme.black }}>
+            <p className="text-sm sm:text-base leading-relaxed" style={{ color: theme.black }}>
               Through the intercession of Mary, Mother of Mercy, the mission has spread across Africa, 
               North America, Europe, and Asia. The US Region stands as a testament 
               to that enduring vision.
             </p>
             
-            <div className="flex gap-4 mt-8 flex-wrap">
+            <div className="flex gap-4 mt-8 flex-wrap w-full sm:w-auto">
               <Link 
                 to="/History"
-                className="px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 border shadow-sm"
+                className="w-full sm:w-auto text-center px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 border shadow-sm"
                 style={{ backgroundColor: theme.bluePrimary, color: theme.white, borderColor: theme.bluePrimary, fontFamily: "'Cinzel', serif" }}
               >
                 Our History
               </Link>
               <Link 
                 to="/Charism" 
-                className="px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 border bg-transparent hover:bg-gray-100"
+                className="w-full sm:w-auto text-center px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-300 border bg-transparent hover:bg-gray-100"
                 style={{ borderColor: theme.blueLight, color: theme.bluePrimary, fontFamily: "'Cinzel', serif" }}
               >
                 Our Charism
@@ -94,27 +89,33 @@ const About = () => {
             </div>
           </motion.div>
 
+          {/* Founder Card Block */}
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: '-50px' }}
             variants={fadeInVariant}
-            className="relative group"
+            className="relative group w-full"
           >
             <div 
-              className="relative overflow-hidden shadow-2xl rounded-sm transition-transform duration-500 hover:-translate-y-1"
+              className="relative overflow-hidden shadow-2xl rounded-sm transition-transform duration-500 hover:-translate-y-1 w-full"
               style={{ background: theme.blueDeep }}
             >
-              <div className="relative w-full aspect-[4/3] overflow-hidden" style={{ backgroundColor: theme.black, borderBottom: `1px solid ${theme.blueLight}20` }}>
+              {/* Responsive Image Aspect Ratio Box */}
+              <div 
+                className="relative w-full h-64 sm:h-80 md:h-[340px] lg:h-[380px] overflow-hidden" 
+                style={{ backgroundColor: theme.black, borderBottom: `1px solid ${theme.blueLight}20` }}
+              >
                 <img 
                   src={img} 
                   alt="Most Rev. Anthony Gogo Nwedo" 
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 max-w-full"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
               </div>
 
-              <div className="p-8 relative">
+              {/* Card Details */}
+              <div className="p-5 sm:p-8 relative">
                 <p 
                   className="mb-2 text-[0.6rem] tracking-[0.2em] uppercase font-bold"
                   style={{ fontFamily: "'Cinzel', serif", color: theme.blueLight }}
@@ -123,14 +124,14 @@ const About = () => {
                 </p>
                 
                 <h4 
-                  className="text-xl text-white font-semibold mb-1 tracking-wide"
+                  className="text-lg sm:text-xl text-white font-semibold mb-2 tracking-wide leading-snug"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
                   Most Rev. Anthony Gogo Nwedo, CSSp
                 </h4>
                 
                 <p 
-                  className="text-[1rem] leading-relaxed relative z-10 font-light"
+                  className="text-sm sm:text-base leading-relaxed relative z-10 font-light"
                   style={{ fontFamily: "'Cormorant Garamond', serif", color: theme.offWhite }}
                 >
                   "A visionary leader who saw beyond his time — he had the vision that a time would come when the 
@@ -146,8 +147,9 @@ const About = () => {
               </div>
             </div>
             
+            {/* Offset Accent Border (Hidden on extra small screens to avoid overflow) */}
             <div 
-              className="absolute top-[16px] left-[16px] right-[-16px] bottom-[-16px] border rounded-sm -z-10 pointer-events-none transition-all duration-500 group-hover:top-[20px] group-hover:left-[20px]" 
+              className="hidden sm:block absolute top-[16px] left-[16px] right-[-12px] bottom-[-12px] border rounded-sm -z-10 pointer-events-none transition-all duration-500 group-hover:top-[20px] group-hover:left-[20px]" 
               style={{ borderColor: `${theme.blueLight}30` }}
             />
           </motion.div>
