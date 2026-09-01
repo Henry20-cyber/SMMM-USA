@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import ibe from '../assets/images/priest(08).png';
-import img from '../assets/images/priest(15).png';
-import img2 from '../assets/images/priest(25).jpg';
+import img2 from '../assets/images/priest(16).png';
+import img3 from '../assets/images/priest(29).jpg';
 
 const Superiors = () => {
   // Blue variants, white, black
@@ -23,7 +23,7 @@ const Superiors = () => {
   };
 
   return (
-    <section className="py-28 px-6" style={{ backgroundColor: theme.offWhite }}>
+    <section className="py-20 md:py-28 px-6" style={{ backgroundColor: theme.offWhite }}>
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div 
@@ -40,12 +40,12 @@ const Superiors = () => {
           <div className="w-16 h-[2px] mx-auto mt-6" style={{ backgroundColor: theme.blueLight }} />
         </motion.div>
 
-        {/* Grid Container */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Responsive 3-Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
           
           {/* Superior Card 1 */}
           <motion.div 
-            className="p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+            className="p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col h-full"
             style={{ backgroundColor: theme.white }}
             {...fadeIn}
           >
@@ -54,7 +54,7 @@ const Superiors = () => {
               alt="Very Rev. Dr. Anselm Ugochukwu Ibe, SMMM - Regional Superior" 
               src={ibe}
             />
-            <div className="text-center">
+            <div className="text-center mt-auto">
               <h4 
                 className="text-xl font-semibold mb-1"
                 style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
@@ -64,22 +64,21 @@ const Superiors = () => {
               <p className="text-sm font-medium mb-1" style={{ color: theme.blueLight }}>
                 Regional Superior
               </p>
-             
             </div>
           </motion.div>
 
           {/* Superior Card 2 */}
           <motion.div 
-            className="p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+            className="p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col h-full"
             style={{ backgroundColor: theme.white }}
             {...fadeIn}
           >
             <img 
               className="w-full aspect-[3/4] object-cover rounded mb-6" 
               alt="Rev. Fr. Michael Okafor, SMMM - Regional Bursar" 
-              src={img}
+              src={img2}
             />
-            <div className="text-center">
+            <div className="text-center mt-auto">
               <h4 
                 className="text-xl font-semibold mb-1"
                 style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
@@ -89,32 +88,30 @@ const Superiors = () => {
               <p className="text-sm font-medium mb-1" style={{ color: theme.blueLight }}>
                 Regional Bursar
               </p>
-             
             </div>
           </motion.div>
 
           {/* Superior Card 3 */}
           <motion.div 
-            className="p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+            className="p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col h-full"
             style={{ backgroundColor: theme.white }}
             {...fadeIn}
           >
             <img 
               className="w-full aspect-[3/4] object-cover rounded mb-6" 
-              alt="Rev. Fr. Thaddeus Agbasonu, SMMM - Regional Secretary" 
-              src={img2}
+              alt="Rev. Fr. Stephen Okoli, SMMM - Regional Secretary" 
+              src={img3}
             />
-            <div className="text-center">
+            <div className="text-center mt-auto">
               <h4 
                 className="text-xl font-semibold mb-1"
                 style={{ fontFamily: "'Cinzel', serif", color: theme.bluePrimary }}
               >
-                Rev. Fr. Thaddeus Agbasonu, SMMM
+                Rev. Fr. Stephen Okoli, SMMM
               </h4>
               <p className="text-sm font-medium mb-1" style={{ color: theme.blueLight }}>
                 Regional Secretary
               </p>
-             
             </div>
           </motion.div>
 

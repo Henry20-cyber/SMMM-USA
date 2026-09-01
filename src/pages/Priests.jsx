@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 // import { Mail, Phone } from "lucide-react";
-import NavBar from '../components/Navbar';
+import NavBar from "../components/Navbar";
 
 /*
 |--------------------------------------------------------------------------
@@ -22,36 +22,34 @@ const priestsData = [
   { name: "Fr. Marcelinus Ekenedo, SMMM", role: "" },
   { name: "Fr. John Agwu, SMMM", role: "" },
   { name: "Fr. Augustine Okwuzu, SMMM", role: "" },
-  { name: "Fr. Jude Nwachukwu, SMMM", role: "" },
   { name: "Fr. Gabriel Eze, SMMM", role: "" },
-  { name: "Fr. Michael Okafor, SMMM", role: "" },
+  { name: "Fr. Jude Nwachukwu, SMMM", role: "" },
   { name: "Fr. Bruno Mbamobi, SMMM", role: "Zonal Superior, Boise Community" },
-  { name: "Fr. Callistus Ojike, SMMM", role: "Immigration Coordinator" },
-  { name: "Fr. Benjamin Onyemaechi, SMMM", role: "" },
-  { name: "Fr. Vitalis Onyeama, SMMM", role: "" },
+  { name: "Fr. Michael Okafor, SMMM", role: "" },
   { name: "Fr. McGrace Onwumere, SMMM", role: "" },
+  { name: "Fr. Vitalis Onyeama, SMMM", role: "" },
+  { name: "Fr. Benjamin Onyemaechi, SMMM", role: "" },
   { name: "Fr. Kizito Ndugbu, SMMM", role: "" },
-  { name: "Fr. Kenneth Onyeabor, SMMM", role: "" }, 
-  { name: "Fr. Emmanuel C. Chinedu, SMMM", role: "" },
+  { name: "Fr. Kenneth Onyeabor, SMMM", role: "" },
   { name: "Fr. Nichodemus Okafor, SMMM", role: "Communication Coordinator" },
-  { name: "Fr. Thaddeus Agbasonu, SMMM", role: "" },
   { name: "Fr. Augustine Nwagbara, SMMM", role: "" },
-  { name: "Fr. Micheal Egelamba, SMMM", role: "" }, 
-  { name: "Fr. Simon Peter Okanumee, SMMM", role: "" }, 
+  { name: "Fr. Simon Peter Okanumee, SMMM", role: "" },
+  { name: "Fr. Micheal Egelamba, SMMM", role: "" },
+  { name: "Fr. Emmanuel C. Chinedu, SMMM", role: "" },
   { name: "Fr. Goodluck Ajaero, SMMM", role: "" },
+  { name: "Fr. Modestus Nkeonye, SMMM", role: "" },
+  { name: "Fr. Stephen Okoli, SMMM", role: "" },
+  { name: "Fr. Daniel Chimezie, SMMM", role: "" },
+  { name: "Fr. Kyrian Okonkwo, SMMM", role: "" },
   { name: "Fr. Kenneth Nwachukwu, SMMM", role: "" },
   { name: "Fr. Desmond Adazie, SMMM", role: "" },
-  { name: "Fr. Stephen Okoli, SMMM", role: "" }, 
-  { name: "Fr. Daniel Chimezie, SMMM", role: "" },
-  { name: "Fr. Peter U. Okonkwo, SMMM", role: "" }, 
-  { name: "Fr. Modestus Nkeonye, SMMM", role: "" },
-  { name: "Fr. Kyrian Okonkwo, SMMM", role: "" }, 
+  { name: "Fr. Peter U. Okonkwo, SMMM", role: "" },
   { name: "Fr. Anthony Amadi, SMMM", role: "" },
 ];
 
 const imageModules = import.meta.glob(
   "../assets/images/*.{jpg,jpeg,png,webp}",
-  { eager: true }
+  { eager: true },
 );
 
 const priestImages = Object.entries(imageModules)
@@ -97,16 +95,16 @@ const cardVariants = {
 
 // Blue, white, black palette
 const theme = {
-  bluePrimary: '#2563eb',
-  blueLight: '#60a5fa',
-  blueDeep: '#1e3a8a',
-  white: '#ffffff',
-  black: '#111111',
-  offWhite: '#f8fafc',
-  textDark: '#0f172a',
-  textMuted: '#475569',
-  borderLight: 'rgba(37, 99, 235, 0.12)',
-  bgSoft: 'rgba(37, 99, 235, 0.06)'
+  bluePrimary: "#2563eb",
+  blueLight: "#60a5fa",
+  blueDeep: "#1e3a8a",
+  white: "#ffffff",
+  black: "#111111",
+  offWhite: "#f8fafc",
+  textDark: "#0f172a",
+  textMuted: "#475569",
+  borderLight: "rgba(37, 99, 235, 0.12)",
+  bgSoft: "rgba(37, 99, 235, 0.06)",
 };
 
 const PriestCard = ({ priest }) => {
@@ -134,12 +132,21 @@ const PriestCard = ({ priest }) => {
 
         {/* Content */}
         <div className="p-5 text-center">
-          <h3 className="font-serif text-xl font-bold mb-1" style={{ color: theme.black }}>
+          <h3
+            className="font-serif text-xl font-bold mb-1"
+            style={{ color: theme.black }}
+          >
             {priest.name}
           </h3>
 
           {priest.role && (
-            <span className="inline-block mt-1 px-3 py-1 text-xs font-semibold tracking-wide rounded-full uppercase" style={{ backgroundColor: theme.bgSoft, color: theme.bluePrimary }}>
+            <span
+              className="inline-block mt-1 px-3 py-1 text-xs font-semibold tracking-wide rounded-full uppercase"
+              style={{
+                backgroundColor: theme.bgSoft,
+                color: theme.bluePrimary,
+              }}
+            >
               {priest.role}
             </span>
           )}
@@ -186,9 +193,17 @@ const PriestCard = ({ priest }) => {
 
 const Priests = () => {
   return (
-    <div className="min-h-screen font-sans antialiased" style={{ backgroundColor: theme.offWhite }}>
+    <div
+      className="min-h-screen font-sans antialiased"
+      style={{ backgroundColor: theme.offWhite }}
+    >
       {/* Top Border - changed to blue gradient */}
-      <div className="h-1 bg-gradient-to-r" style={{ backgroundImage: `linear-gradient(to right, ${theme.blueDeep}, ${theme.blueLight}, ${theme.blueDeep})` }} />
+      <div
+        className="h-1 bg-gradient-to-r"
+        style={{
+          backgroundImage: `linear-gradient(to right, ${theme.blueDeep}, ${theme.blueLight}, ${theme.blueDeep})`,
+        }}
+      />
       <NavBar />
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Header */}
@@ -213,10 +228,17 @@ const Priests = () => {
             Our Priests
           </h1>
 
-          <div className="w-24 h-1 rounded-full mx-auto mb-6" style={{ backgroundColor: theme.blueLight }} />
+          <div
+            className="w-24 h-1 rounded-full mx-auto mb-6"
+            style={{ backgroundColor: theme.blueLight }}
+          />
 
-          <p className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: theme.textMuted }}>
-            Dedicated servants of God who guide our congregation with faith, wisdom, and compassion.
+          <p
+            className="text-lg max-w-2xl mx-auto leading-relaxed"
+            style={{ color: theme.textMuted }}
+          >
+            Dedicated servants of God who guide our congregation with faith,
+            wisdom, and compassion.
           </p>
         </motion.div>
 

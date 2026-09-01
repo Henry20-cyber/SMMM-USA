@@ -209,7 +209,7 @@ const Contact = () => {
               style={{ color: theme.textMuted }}
             >
               Whether you have questions about our mission, want to invite us
-              to serve in your parish, or wish to inquire about vocations — we
+              to serve in your diocese as missionaries — we
               welcome your message.
             </p>
 

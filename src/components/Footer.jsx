@@ -56,7 +56,7 @@ const Footer = () => {
                     className="text-[0.75rem] tracking-wide mt-0.5"
                     style={{ fontFamily: "'Cormorant Garamond', serif", color: '#cbd5e1' }}
                   >
-                    American Region
+                    USA Region
                   </div>
                 </div>
               </div>
@@ -65,7 +65,7 @@ const Footer = () => {
                 style={{ fontFamily: "'Cormorant Garamond', serif", color: '#f1f5f9' }}
               >
                 Sons of Mary Mother of Mercy — bearing witness to God's mercy through compassion,
-                forgiveness, and kindness in mission across America.
+                forgiveness, and kindness in mission across the USA.
               </p>
             </div>
             <p
@@ -124,22 +124,20 @@ const Footer = () => {
             </p>
             <div className="flex flex-col gap-4">
               <div>
-                <p className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5" style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}>
-                  Superior
+                <p className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5" style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}>Regional Superior
                 </p>
-                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>Very Rev. Dr. Anselm Ibe</p>
+                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>Very Rev. Dr. Anselm Ibe, SMMM</p>
+              </div>
+              <div>
+                <p className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5" style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}>Regional Bursar
+                </p>
+                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>Rev. Fr. Michael Okafor, SMMM</p>
               </div>
               <div>
                 <p className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5" style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}>
-                  Bursar
+                  Regional Secretary
                 </p>
-                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>Rev. Fr. Michael Okafor</p>
-              </div>
-              <div>
-                <p className="text-[0.68rem] font-bold tracking-wider uppercase mb-0.5" style={{ fontFamily: "'Cinzel', serif", color: '#bfdbfe' }}>
-                  Secretary
-                </p>
-                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>Rev. Fr. Thaddeus Agbasonu</p>
+                <p className="text-[0.88rem]" style={{ color: '#f8fafc' }}>Rev. Fr. Stephen Okoli, SMMM</p>
               </div>
             </div>
           </div>

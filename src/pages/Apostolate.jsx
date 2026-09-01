@@ -88,6 +88,26 @@ const Apostolate = () => {
           <circle cx="16" cy="4" r="2" stroke={theme.accentBlueLight} strokeWidth="1.2" fill="none"/>
         </svg>
       )
+    },
+    {
+      title: "Catechetical Instruction",
+      description: "Through faith formation, our perpetually professed lay brothers teach catechism in parishes, guiding individuals to cultivate a deep love for God.",
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7">
+          <path d="M6 8 C6 8, 11 6, 16 9 C21 6, 26 8, 26 8 L26 24 C26 24, 21 22, 16 25 C11 22, 6 24, 6 24 Z" stroke={theme.accentBlueLight} strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+          <line x1="16" y1="9" x2="16" y2="25" stroke={theme.accentBlueLight} strokeWidth="1.5"/>
+        </svg>
+      )
+    },
+    {
+      title: "Sewing Sacred Vestments",
+      description: "To support public worship, perpetually professed lay brothers also craft and sew liturgical vestments.",
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7">
+          <path d="M10 6 L16 10 L22 6 L26 10 L22 26 L10 26 L6 10 Z" stroke={theme.accentBlueLight} strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+          <path d="M16 10 L16 26" stroke={theme.accentBlueLight} strokeWidth="1.2" strokeDasharray="2 2"/>
+        </svg>
+      )
     }
   ];
 

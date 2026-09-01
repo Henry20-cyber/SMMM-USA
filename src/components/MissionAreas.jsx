@@ -60,7 +60,8 @@ const MissionAreas = () => {
         { state: "Florida", cities: ["Miami", "St. Augustine", "St. Petersburg", "Orlando"] },
         { state: "Massachusetts", cities: ["Boston"] },
         { state: "New York", cities: ["Syracuse"] },
-        { state: "Idaho", cities: ["Boise"] }
+        { state: "Idaho", cities: ["Boise"] },
+        { state: "Connecticut", cities: ["Hartford"] }
       ]
     }
   ];
@@ -154,8 +155,8 @@ const MissionAreas = () => {
               {/* US cities – structured & space‑efficient */}
               {region.usCitiesByState && (
                 <div className="mt-4 pt-4 border-t" style={{ borderColor: theme.borderLight }}>
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-wider mb-3" style={{ color: theme.accentLight, fontFamily: "'Inter', sans-serif" }}>
-                    Active Dioceses (USA)
+                  <p className="text-[0.7rem] text-center font-semibold uppercase tracking-wider mb-3" style={{ color: theme.accentLight, fontFamily: "'Inter', sans-serif" }}>
+                    Active Dioceses / Archdioceses (USA)
                   </p>
                   <div className="space-y-3">
                     {region.usCitiesByState.map((stateGroup, sgIdx) => (

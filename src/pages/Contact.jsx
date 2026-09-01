@@ -46,7 +46,8 @@ export default function Contact() {
     { state: "Florida", cities: ["Miami", "St. Augustine", "St. Petersburg", "Orlando"] },
     { state: "Massachusetts", cities: ["Boston"] },
     { state: "New York", cities: ["Syracuse"] },
-    { state: "Idaho", cities: ["Boise"] }
+    { state: "Idaho", cities: ["Boise"] },
+    { state: "Connecticut", cities: ["Hartford"] }
   ];
 
   return (
@@ -110,10 +111,6 @@ export default function Contact() {
                   <div className="flex flex-col">
                     <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: theme.textMuted }}>General:</span>
                     <a href="mailto:info@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>info@smmm-american.org</a>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: theme.textMuted }}>Vocations Office:</span>
-                    <a href="mailto:vocations@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>vocations@smmm-american.org</a>
                   </div>
                 </div>
               </div>

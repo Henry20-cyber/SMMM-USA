@@ -23,8 +23,8 @@ const timelineData = [
   },
   {
     year: "Today",
-    title: "Apostolic Presence",
-    content: "Currently 37 active members serve across various US dioceses, Archdioceses and the Philippines, providing priestly, chaplaincy ministry and continuing education."
+    title: "Missionary Presence",
+    content: "Currently 36 active members serve across various US dioceses, Archdioceses and the Philippines, providing priestly, chaplaincy ministry and continuing education."
   },
   {
     year: "2023",

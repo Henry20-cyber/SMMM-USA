@@ -99,7 +99,7 @@ const Sacredsymbols = () => {
               style={{ backgroundColor: theme.blueLight }}
             />
             <p className="text-white/90 text-xl leading-relaxed max-w-lg">
-              Every symbol and garment we wear speaks of God’s mercy, our consecration,
+              Every symbol we use and garment we wear speaks of God’s mercy, our consecration,
               and the spiritual heritage of the Sons of Mary Mother of Mercy.
             </p>
           </motion.div>
