@@ -110,7 +110,7 @@ export default function Contact() {
                 <div className="space-y-2 flex-grow">
                   <div className="flex flex-col">
                     <span className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: theme.textMuted }}>General:</span>
-                    <a href="mailto:info@smmm-american.org" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>info@smmm-american.org</a>
+                    <a href="mailto:smmmusaregion878@gmail.com" className="font-medium transition-colors no-underline" style={{ color: theme.bluePrimary }}>smmmusaregion878@gmail.com</a>
                   </div>
                 </div>
               </div>

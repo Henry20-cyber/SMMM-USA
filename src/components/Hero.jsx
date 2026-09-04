@@ -5,8 +5,8 @@ import wp2 from '../assets/wallpapers/wp(2).jpg';
 // import wp3 from '../assets/priests/image(12).jpg';
 import wp5 from '../assets/wallpapers/wp(5).jpg';
 // import wp7 from '../assets/priests/image(30).jpg';
-import img1 from '../assets/priests/image(02).jpg';
-import img3 from '../assets/priests/image(21).jpg';
+// import img1 from '../assets/priests/image(02).jpg';
+// import img3 from '../assets/priests/image(21).jpg';
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -22,10 +22,10 @@ const Hero = () => {
   };
 
   const images = [
-    img3,
+    //img3,
     wp2,
     wp5,
-    img1,
+   // img1,
     // wp7,
     // wp3,
   ];
