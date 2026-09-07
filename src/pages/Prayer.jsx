@@ -1,14 +1,6 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import NavBar from '../components/Navbar';
-import wp1 from '../assets/priests/image(09).jpg';
-import wp2 from '../assets/priests/image(14).jpg';
-import wp3 from '../assets/wallpapers/wp(5).jpg';
-import wp4 from '../assets/priests/image(17).jpg';
-import wp7 from '../assets/priests/image(07).jpg';
-import wp8 from '../assets/wallpapers/wp(9).jpg';
-
-const HERO_IMAGES = [wp3, wp4, wp1, wp8, wp2, wp7];
+import img from '../assets/vectors/web-image.webp';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,85 +8,75 @@ const fadeUp = {
 };
 
 const Prayer = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, 10000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="min-h-screen flex flex-col bg-white font-sans antialiased">
-      {/* Exact Screen-Fitting Hero Section */}
-      <section className="relative w-full h-screen h-[100dvh] flex flex-col justify-between overflow-hidden">
-        {/* Carousel Background */}
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentImageIndex}
-            src={HERO_IMAGES[currentImageIndex]}
-            alt="Prayer backdrop"
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.96 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </AnimatePresence>
+    <div className="min-h-screen flex flex-col bg-slate-50 font-sans antialiased text-slate-900">
+      {/* Full-Screen Hero Section (Taking up 100% of viewport height & width) */}
+      <section className="relative w-full h-screen h-[100dvh] flex flex-col justify-between bg-white overflow-hidden">
         
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60 z-0" />
-
         {/* Top Navbar Container */}
-        <div className="relative z-20 w-full">
+        <div className="relative z-20 w-full bg-white/80 backdrop-blur-md border-b border-slate-100 shrink-0">
           <NavBar />
         </div>
 
-        {/* Left-Aligned Hero Content with Added Padding */}
-        <div className="relative z-10 w-full px-8 sm:px-12 md:px-16 lg:px-24 py-6 my-auto">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            className="max-w-xl lg:max-w-2xl text-left"
-          >
-            <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="material-symbols-outlined text-[#60a5fa] text-3xl sm:text-4xl mb-3 block"
-            >
-              church
-            </motion.span>
-            <motion.h1
+        {/* Main 3-Div Graphic Layout (1 Outer Div containing 2 Nested Divs for Text and Image, vertically centered in the remaining full screen space) */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 my-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Text Child Div */}
+          <div className="lg:col-span-7 text-left">
+            <motion.div
+              initial="hidden"
+              animate="visible"
               variants={fadeUp}
-              className="font-['Cinzel'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white mb-4"
-              style={{ textShadow: '0 2px 10px rgba(0,0,0,0.4)' }}
+              className="max-w-xl lg:max-w-2xl"
             >
-              Prayer for Beatification
-            </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="font-['EB_Garamond',serif] text-base sm:text-lg text-slate-200/90 max-w-xl italic mb-6 font-normal leading-normal"
-            >
-              For the cause of the beatification of Bishop Anthony Gogo Nwedo, CSSp
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-start">
-              <motion.a
-                href="#prayer-text"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="bg-[#0077ec] hover:bg-blue-600 text-white font-medium px-5 py-2.5 rounded-full shadow-md transition duration-300 flex items-center gap-2 text-xs sm:text-sm tracking-wide"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-[#0077ec] text-xs font-semibold mb-6 tracking-wide"
               >
-                <span className="material-symbols-outlined text-lg">auto_stories</span> Pray With Us
-              </motion.a>
+                <span className="material-symbols-outlined text-sm">church</span> 
+              </motion.div>
+
+              <motion.h1
+                variants={fadeUp}
+                className="font-['Cinzel'] text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6 leading-[1.15]"
+              >
+                Prayer for <span className="text-[#0077ec]">Beatification</span>
+              </motion.h1>
+
+              <motion.p
+                variants={fadeUp}
+                className="font-['EB_Garamond',serif] text-lg sm:text-xl text-slate-600 max-w-xl italic mb-8 font-normal leading-relaxed"
+              >
+                For the cause of the beatification of Bishop Anthony Gogo Nwedo, CSSp — dedicated to winning souls for Christ and fostering holiness of life.
+              </motion.p>
+
             </motion.div>
-          </motion.div>
+          </div>
+
+          {/* Right Image/Graphic Display Child Div */}
+          <div className="lg:col-span-5 flex justify-center items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative w-full max-w-md bg-white p-4 rounded-3xl shadow-2xl shadow-slate-200 border border-slate-100 group"
+            >
+              <div className="relative w-full h-[400px] rounded-2xl overflow-hidden bg-slate-100">
+                <img
+                  src={img}
+                  alt="Bishop Anthony Gogo Nwedo graphic display"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                />  
+                </div>
+            </motion.div>
+          </div>
+
         </div>
 
-        {/* Bottom spacer */}
-        <div className="relative z-10 py-4"></div>
+        {/* Bottom spacing helper */}
+        <div className="relative z-10 py-2 shrink-0"></div>
       </section>
 
       {/* Main Content Container */}
@@ -134,7 +116,7 @@ const Prayer = () => {
 
             <div className="p-6 sm:p-8 md:p-10 space-y-6 font-['EB_Garamond',serif] text-slate-800 text-base sm:text-lg leading-relaxed font-normal tracking-normal max-w-2xl mx-auto">
               <p className="first-letter:text-3xl first-letter:font-['Cinzel'] first-letter:font-bold first-letter:text-[#0077ec] first-letter:mr-2 first-letter:float-left first-letter:leading-none">
-                O God, You, who inspired your servant +Anthony Gogo Nwedo as the pioneer Bishop of the Diocese of Umuahia to dedicate his life selflessly to the course of winning souls for Christ and to found two religious Congregations for fostering holiness of life and the work of evangelization, hasten the day when the Church will be able to celebrate the saintliness of his life.
+                O God, You, who inspired your servant Anthony Gogo Nwedo as the pioneer Bishop of the Diocese of Umuahia to dedicate his life selflessly to the course of winning souls for Christ and to found two religious Congregations for fostering holiness of life and the work of evangelization, hasten the day when the Church will be able to celebrate the saintliness of his life.
               </p>
 
               <p>

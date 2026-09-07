@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import ibe from '../assets/images/priest(08).png';
 import img2 from '../assets/images/priest(16).png';
-// import img3 from '../assets/images/priest(29).jpg';
+import img3 from '../assets/images/priest(29).jpg';
 
 const Superiors = () => {
   // Blue variants, white, black
@@ -91,7 +91,7 @@ const Superiors = () => {
             </div>
           </motion.div>
 
-    {/**        Superior Card 3 
+    {/**        Superior Card 3  **/}
           <motion.div 
             className="p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col h-full"
             style={{ backgroundColor: theme.white }}
@@ -113,7 +113,7 @@ const Superiors = () => {
                 Regional Secretary
               </p>
             </div>
-          </motion.div> **/}
+          </motion.div> 
 
         </div>
       </div>
