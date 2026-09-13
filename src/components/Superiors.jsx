@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import ibe from '../assets/images/priest(08).png';
+import ibe from '../assets/images/priest(08).jpg';
 import img2 from '../assets/images/priest(16).png';
 import img3 from '../assets/images/priest(29).jpg';
 

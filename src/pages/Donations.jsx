@@ -32,7 +32,12 @@ const cardHover = {
 const Donations = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [copyRoutingSuccess, setCopyRoutingSuccess] = useState(false);
+  const [copyAllSuccess, setCopyAllSuccess] = useState(false);
+  
   const copyTimeoutRef = useRef(null);
+  const copyRoutingTimeoutRef = useRef(null);
+  const copyAllTimeoutRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,19 +49,35 @@ const Donations = () => {
   useEffect(() => {
     return () => {
       if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+      if (copyRoutingTimeoutRef.current) clearTimeout(copyRoutingTimeoutRef.current);
+      if (copyAllTimeoutRef.current) clearTimeout(copyAllTimeoutRef.current);
     };
   }, []);
 
-  const copyAccountNumber = async () => {
-    const accountNumber = "322336006";
+  const copyTextToClipboard = async (text, setSuccessState, timeoutRef) => {
     try {
-      await navigator.clipboard.writeText(accountNumber);
-      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
-      setCopySuccess(true);
-      copyTimeoutRef.current = setTimeout(() => setCopySuccess(false), 2000);
+      await navigator.clipboard.writeText(text);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      setSuccessState(true);
+      timeoutRef.current = setTimeout(() => setSuccessState(false), 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
     }
+  };
+
+  const copyAccountNumber = () => 
+    copyTextToClipboard("322336006", setCopySuccess, copyTimeoutRef);
+
+  const copyRoutingNumber = () => 
+    copyTextToClipboard("322271627", setCopyRoutingSuccess, copyRoutingTimeoutRef);
+
+  const copyAllAccountDetails = () => {
+    const detailsText = 
+      "Bank Name: JPMorgan Chase Trust Bank\n" +
+      "Account Name: Sons of Mary Mother of Mercy, SMMM\n" +
+      "Account Number: 322336006\n" +
+      "Routing Transit: 322271627";
+    copyTextToClipboard(detailsText, setCopyAllSuccess, copyAllTimeoutRef);
   };
 
   return (
@@ -354,14 +375,27 @@ const Donations = () => {
             variants={fadeUp}
             className="bg-white rounded-2xl shadow-2xl overflow-hidden scroll-mt-10"
           >
-            <div className="p-8 sm:p-10 border-b border-slate-100 text-center bg-slate-50">
-              <h2 className="font-['Cinzel'] text-2xl font-bold tracking-wide text-[#0B132B] mb-2">
-                Direct Financial Remittance Details
-              </h2>
-              <p className="text-slate-500 text-sm max-w-lg mx-auto">
-                Please utilize our verified banking or regional house routing
-                credentials below.
-              </p>
+            <div className="p-8 sm:p-10 border-b border-slate-100 text-center bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-center sm:text-left">
+                <h2 className="font-['Cinzel'] text-2xl font-bold tracking-wide text-[#0B132B] mb-2">
+                  Direct Financial Remittance Details
+                </h2>
+                <p className="text-slate-500 text-sm max-w-lg">
+                  Please utilize our verified banking or regional house routing
+                  credentials below.
+                </p>
+              </div>
+              <motion.button
+                onClick={copyAllAccountDetails}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 bg-[#0B132B] hover:bg-[#0077ec] text-white text-xs font-semibold px-4 py-2.5 rounded-lg shadow transition duration-200 flex-shrink-0"
+              >
+                <span className="material-symbols-outlined text-sm">
+                  {copyAllSuccess ? "check" : "content_copy"}
+                </span>
+                <span>{copyAllSuccess ? "Copied All Details!" : "Copy All Details"}</span>
+              </motion.button>
             </div>
 
             <div className="p-8 sm:p-10 space-y-10">
@@ -419,8 +453,19 @@ const Donations = () => {
                     <div className="p-4 text-xs font-bold font-['Cinzel'] text-slate-500 uppercase tracking-wider bg-slate-50">
                       Routing Transit
                     </div>
-                    <div className="p-4 sm:col-span-2 text-sm font-mono font-semibold text-[#0B132B]">
-                      322271627
+                    <div className="p-4 sm:col-span-2 text-sm font-mono font-semibold text-[#0B132B] flex items-center justify-between">
+                      <span>322271627</span>
+                      <motion.button
+                        onClick={copyRoutingNumber}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="relative flex items-center gap-1 text-[11px] font-sans font-medium text-[#0077ec] bg-blue-50 hover:bg-[#0077ec] hover:text-white px-3 py-1 border border-[#0077ec]/30 rounded transition duration-200"
+                      >
+                        <span className="material-symbols-outlined text-xs">
+                          {copyRoutingSuccess ? "check" : "content_copy"}
+                        </span>
+                        <span>{copyRoutingSuccess ? "Copied" : "Copy"}</span>
+                      </motion.button>
                     </div>
                   </div>
                 </div>

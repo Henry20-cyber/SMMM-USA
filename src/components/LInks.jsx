@@ -34,7 +34,7 @@ export default function Links() {
     { name: 'SMMM Nigeria Congregation', url: 'https://smmmcongregation.org/', img: smmm, fallbackText: 'SMMM' },
     { name: 'SMMM Canada', url: 'https://smmmcanadaregion.ca/', img: smmm, fallbackText: 'SMMM' },
     { name: 'DMMM Congregation', url: 'https://sistersdmmm.org/', img: dmmm, fallbackText: 'DMMM' },
-    { name: 'CBCN Nigeria', url: 'https://www.cbcn.org', img: cbcn, fallbackText: 'CBCN' },
+    { name: 'CBCN Nigeria', url: 'https://www.catholicsecretariatng.org/cbcn', img: cbcn, fallbackText: 'CBCN' },
   ];
 
   // Triplicate array to ensure a seamless continuous loop layout
