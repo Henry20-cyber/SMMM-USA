@@ -247,7 +247,7 @@ const Contact = () => {
                   className="text-[0.95rem]"
                   style={{ color: theme.textMuted }}
                 >
-                  info@smmmamerican.org
+                  info@smmmusaregion.org
                 </span>
               </div>
 
