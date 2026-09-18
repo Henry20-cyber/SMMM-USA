@@ -172,7 +172,7 @@ export default function History() {
                 </p>
               </div>
 
-              {/* Scripture Highlight */}
+              {/* ---Scripture Highlight---- */}
               <div className="border-l-4 pl-4 py-2 rounded-r-xl" style={{ borderLeftColor: theme.bluePrimary, backgroundColor: `${theme.bluePrimary}08` }}>
                 <p className="text-base italic font-medium leading-relaxed" style={{ color: theme.textDark }}>
                   Chronology of the Past and Present Regional Superiors
