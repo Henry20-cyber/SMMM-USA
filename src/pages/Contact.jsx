@@ -101,7 +101,7 @@ export default function Contact() {
                 </p>
               </div>
 
-              {/* Email Card */}
+              {/*--- Email Card ---*/}
               <div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col h-full" style={{ border: `1px solid ${theme.borderLight}` }}>
                 <div className="w-12 h-12 flex items-center justify-center mb-6" style={{ backgroundColor: theme.bgSoft, border: `1px solid ${theme.borderLight}` }}>
                   <span className="material-symbols-outlined text-2xl" style={{ color: theme.bluePrimary }}>mail</span>
