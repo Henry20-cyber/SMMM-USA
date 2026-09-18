@@ -122,7 +122,7 @@ export default function Contact() {
                 </div>
                 <h3 className="font-['Cinzel'] text-sm font-bold tracking-widest uppercase mb-3" style={{ color: theme.black }}>Office Support</h3>
                 <div className="flex-grow">
-                  <span className="text-sm font-semibold block mb-1" style={{ color: theme.bluePrimary }}>+1 (559) 555-0123</span>
+                  <span className="text-sm font-semibold block mb-1" style={{ color: theme.bluePrimary }}>+1 (313) 408-2667</span>
                   <p className="text-base leading-relaxed" style={{ color: theme.textMuted }}>Monday – Friday<br />9:00 AM – 5:00 PM PST</p>
                 </div>
               </div>
